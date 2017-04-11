@@ -4,7 +4,7 @@ const path = require('path');
 const BUILD_DIR = path.resolve(__dirname, 'src/public');
 const APP_DIR = path.resolve(__dirname, 'src/app');
 
-module.exports = {
+const config = {
   entry: `${APP_DIR}/app.jsx`,
   output: {
     path: BUILD_DIR,
@@ -20,3 +20,4 @@ module.exports = {
     ],
   },
 };
+module.exports = config;

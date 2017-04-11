@@ -1,16 +1,35 @@
 import React from 'react';
-import { render } from 'react-dom';
-import AwesomeComponent from './AwesomeComponent.jsx';
+import ReactDOM from 'react-dom';
+import { Router, Route, IndexRoute, hashHistory } from 'react-router';
+import Layout from './components/Layout';
+import Logic from './components/Logic';
+import Button from './components/Button';
+
+const NotFound = () => {
+  <h1>404...Page not found</h1>;
+};
 
 class App extends React.Component {
   render() {
     return (
       <div>
-        <p> Hello React!</p>
-        <AwesomeComponent />
+        <h1> From App.jsx </h1>
+        <Layout />
       </div>
     );
   }
 }
+export default App;
 
-render(<App />, document.getElementById('app'));
+const app = document.getElementById('app');
+ReactDOM.render(
+  <Router history={hashHistory}>
+    <Route path="/" component={App}>
+      <IndexRoute component={Layout} />
+      <Route path="logic" component={Logic} />
+      <Route path="button" component={Button} />
+      <Route path="*" component={NotFound} />
+    </Route>
+  </Router>,
+app);
+
