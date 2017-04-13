@@ -3,7 +3,7 @@ import Article from './Article';
 
 class Home extends React.Component {
   constructor() {
-    super();
+    super()
     this.state = { name: 'Ignatius', career: 'Software Developer' };
   }
 
