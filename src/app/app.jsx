@@ -1,19 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Router, Route, IndexRoute, hashHistory } from 'react-router';
+import Request from 'superagent';
 import Layout from './components/Layout';
 import Logic from './components/Logic';
 import Button from './components/Button';
 
-const NotFound = () => {
-  <h1>404...Page not found</h1>;
-};
 
 class App extends React.Component {
   render() {
     return (
       <div>
-        <h1> From App.jsx </h1>
+        <h1> From App.jsx File </h1>
         <Layout />
       </div>
     );
@@ -28,7 +26,6 @@ ReactDOM.render(
       <IndexRoute component={Layout} />
       <Route path="logic" component={Logic} />
       <Route path="button" component={Button} />
-      <Route path="*" component={NotFound} />
     </Route>
   </Router>,
 app);
