@@ -1,21 +1,21 @@
 import React from 'react';
-import Button from './Button';
+import Article from './Article';
 
-class Logic extends React.Component {
-  constructor(props) {
-    super(props);
+class Home extends React.Component {
+  constructor() {
+    super();
     this.state = { name: 'Ignatius', career: 'Software Developer' };
   }
 
   changeName(name) {
     this.setState({ name });
   }
-
+  
   render() {
     return (
       <div>
         <h2> Welcome {this.state.name}</h2>
-        <Button 
+        <Article 
           career={this.state.career} name={this.state.name}
           changeName={this.changeName.bind(this)}
         />
@@ -23,4 +23,4 @@ class Logic extends React.Component {
     );
   }
 }
-export default Logic;
+export default Home;

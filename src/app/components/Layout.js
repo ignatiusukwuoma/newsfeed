@@ -1,14 +1,22 @@
 import React from 'react';
-import Logic from './Logic';
+import { Link } from 'react-router';
+import Nav from './Nav';
 import './Layout.scss';
 
 class Layout extends React.Component {
   render() {
-    const myName = 'Ignatius';
+    const { location } = this.props;
     return (
       <div>
-        <h1>O My Goodness!<span>{myName}</span></h1>
-        <Logic />
+        <Nav location={location} />
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-12">
+              <h1>News</h1>
+              {this.props.children}
+            </div>
+          </div>
+        </div>
       </div>
     );
   }

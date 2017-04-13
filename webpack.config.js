@@ -16,6 +16,9 @@ const config = {
         test: /\.jsx?/,
         include: APP_DIR,
         loader: 'babel-loader',
+        query: {
+          plugins: ['react-html-attrs', 'transform-decorators-legacy', 'transform-class-properties'],
+        },
       },
       {
         test: /\.scss$/,

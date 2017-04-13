@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default class Button extends React.Component {
+export default class Article extends React.Component {
   handleChange(e) {
     const name = e.target.value;
     this.props.changeName(name);

@@ -17,8 +17,8 @@ export default class Nav extends React.Component {
   render() {
     const { location } = this.props;
     const { collapsed } = this.state;
-    const featuredClass = location.pathname === "/" ? "active" : "";
-    const archivesClass = location.pathname.match(/^\/articles/) ? "active" : "";
+    const homeClass = location.pathname === "/" ? "active" : "";
+    const articleClass = location.pathname.match(/^\/news/) ? "active" : "";
     const navClass = collapsed ? "collapse" : "";
 
     return (
@@ -34,11 +34,11 @@ export default class Nav extends React.Component {
           </div>
           <div class={"navbar-collapse navbar-inverse-collapse " + navClass}>
             <ul class="nav navbar-nav navbar-right">
-              <li class={featuredClass}>
+              <li class={homeClass}>
                 <IndexLink to="/" onClick={this.toggleCollapse.bind(this)}>Home</IndexLink>
               </li>
-              <li class={articlesClass}>
-                <Link to="articles" onClick={this.toggleCollapse.bind(this)}>Articles</Link>
+              <li class={articleClass}>
+                <Link to="news" onClick={this.toggleCollapse.bind(this)}>Article</Link>
               </li>
               <li class="dropdown">
                 <a href="bootstrap-elements.html" data-target="#" class="dropdown-toggle" data-toggle="dropdown">User
