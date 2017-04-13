@@ -1,16 +1,17 @@
 import React from 'react';
-import { render } from 'react-dom';
-import AwesomeComponent from './AwesomeComponent.jsx';
+import ReactDOM from 'react-dom';
+import { Router, Route, IndexRoute, hashHistory } from 'react-router';
 
-class App extends React.Component {
-  render() {
-    return (
-      <div>
-        <p> Hello React!</p>
-        <AwesomeComponent />
-      </div>
-    );
-  }
-}
+import Layout from './components/Layout';
+import Home from './components/Home';
+import Article from './components/Article';
 
-render(<App />, document.getElementById('app'));
+ReactDOM.render(
+  <Router history={hashHistory}>
+    <Route path="/" component={Layout}> 
+      <IndexRoute component={Home} />
+      <Route path="news(/:story)" name="news" component={Article} />
+    </Route>
+  </Router>,
+document.getElementById("app"));
+

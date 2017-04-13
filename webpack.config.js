@@ -4,7 +4,7 @@ const path = require('path');
 const BUILD_DIR = path.resolve(__dirname, 'src/public');
 const APP_DIR = path.resolve(__dirname, 'src/app');
 
-module.exports = {
+const config = {
   entry: `${APP_DIR}/app.jsx`,
   output: {
     path: BUILD_DIR,
@@ -16,7 +16,15 @@ module.exports = {
         test: /\.jsx?/,
         include: APP_DIR,
         loader: 'babel-loader',
+        query: {
+          plugins: ['react-html-attrs', 'transform-decorators-legacy', 'transform-class-properties'],
+        },
+      },
+      {
+        test: /\.scss$/,
+        loaders: ['style-loader', 'css-loader', 'sass-loader'],
       },
     ],
   },
 };
+module.exports = config;
