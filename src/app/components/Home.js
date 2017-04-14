@@ -1,24 +1,54 @@
 import React from 'react';
 import Article from './Article';
+import Source from './Source';
+import * as NewsActions from '../actions/NewsActions';
+import Newstore from '../stores/Newstore';
+
 
 class Home extends React.Component {
   constructor() {
-    super()
-    this.state = { name: 'Ignatius', career: 'Software Developer' };
+    super();
+    this.getAll = this.getAll.bind(this);
+    this.state = {
+      news: Newstore.getNews(),
+      sources: Newstore.getSources(),
+    };
   }
 
-  changeName(name) {
-    this.setState({ name });
+  componentWillMount() {
+    Newstore.on('change', this.getAll);
+  }
+
+  componentDidMount() {
+    this.displayNews();
+  }
+
+  displayNews() {
+    NewsActions.displayNews();
+    NewsActions.displaySources();
+  }
+
+  getAll() {
+    this.setState({
+      news: Newstore.getNews(),
+      sources: Newstore.getSources(),
+    });
   }
   
   render() {
+    const { news } = this.state;
+    const { sources } = this.state;
+    const sourceComponent = sources.map((source, i) => {
+        return <Source key={i} source={source} />;
+    });
     return (
       <div>
-        <h2> Welcome {this.state.name}</h2>
-        <Article 
-          career={this.state.career} name={this.state.name}
-          changeName={this.changeName.bind(this)}
-        />
+        <button onClick={this.displayNews.bind(this)}>Display News</button>
+        <h1>Latest from TechCrunch</h1>
+        <p>{news}</p>
+        <ul>
+          {sourceComponent}
+        </ul>
       </div>
     );
   }
