@@ -1,15 +1,13 @@
-import React from 'react';
+import React from "react";
+import { Link } from 'react-router';
 
 export default class Article extends React.Component {
-  handleChange(e) {
-    const name = e.target.value;
-    this.props.changeName(name);
-  }
+  
   render() {
+    const { article } = this.props;
     return (
       <div>
-        <input value={this.props.name} onChange={this.handleChange.bind(this)} />
-        <small>{this.props.name} is a {this.props.career}</small>
+        <h3><a href={article.url} target="/blank">{article.title}</a></h3>
       </div>
     );
   }

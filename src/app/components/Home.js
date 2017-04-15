@@ -23,9 +23,13 @@ class Home extends React.Component {
     this.displayNews();
   }
 
-  displayNews() {
-    NewsActions.displayNews();
+  displayNews() {  
     NewsActions.displaySources();
+  }
+
+  displayHeadlines(id) {
+    console.log(id);
+    NewsActions.displayNews(id);
   }
 
   getAll() {
@@ -37,18 +41,22 @@ class Home extends React.Component {
   
   render() {
     const { news } = this.state;
+    const articleComponent = news.map((article, i) => {
+      return <Article key={i} article={article} />;
+    });
     const { sources } = this.state;
     const sourceComponent = sources.map((source, i) => {
-        return <Source key={i} source={source} />;
+      return <Source key={i} source={source} news={this.displayHeadlines} />;
     });
     return (
       <div>
-        <button onClick={this.displayNews.bind(this)}>Display News</button>
         <h1>Latest from TechCrunch</h1>
-        <p>{news}</p>
         <ul>
           {sourceComponent}
         </ul>
+        <div>
+          {articleComponent}
+        </div>
       </div>
     );
   }
