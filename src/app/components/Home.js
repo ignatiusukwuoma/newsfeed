@@ -1,9 +1,8 @@
 import React from 'react';
-import Article from './Article';
 import Source from './Source';
-import * as NewsActions from '../actions/NewsActions';
+import Article from './Article';
 import Newstore from '../stores/Newstore';
-
+import * as NewsActions from '../actions/NewsActions';
 
 class Home extends React.Component {
   constructor() {
@@ -20,16 +19,15 @@ class Home extends React.Component {
   }
 
   componentDidMount() {
-    this.displayNews();
+    this.showSources();
   }
 
-  displayNews() {  
+  showSources() {  
     NewsActions.displaySources();
   }
 
-  displayHeadlines(id) {
-    console.log(id);
-    NewsActions.displayNews(id);
+  displayHeadlines(id, sort='top') {
+    NewsActions.displayNews(id, sort);
   }
 
   getAll() {
@@ -42,15 +40,17 @@ class Home extends React.Component {
   render() {
     const { news } = this.state;
     const articleComponent = news.map((article, i) => {
-      return <Article key={i} article={article} />;
+      return (<Article key={i} article={article} />);
+
     });
     const { sources } = this.state;
     const sourceComponent = sources.map((source, i) => {
-      return <Source key={i} source={source} news={this.displayHeadlines} />;
+      if (source.category === 'entertainment') {
+        return (<Source key={i} source={source} headlines={this.displayHeadlines} />);
+      }
     });
     return (
       <div>
-        <h1>Latest from TechCrunch</h1>
         <ul>
           {sourceComponent}
         </ul>

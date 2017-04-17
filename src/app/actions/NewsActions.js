@@ -1,11 +1,11 @@
 import Request from 'superagent';
 import dispatcher from '../dispatcher';
 
-export const displayNews = (id) => {
+export const displayNews = (id, sort) => {
   const url = 'https://newsapi.org/v1/articles?apiKey=213327409d384371851777e7c7f78dfe';
   Request.get(url)
     .query({ source: id })
-    .query({ sortBy: 'top' })
+    .query({ sortBy: sort })
     .end((err, response) => {
       if (err) {
         console.log('Error', err);
@@ -20,7 +20,7 @@ export const displayNews = (id) => {
 };
 
 export const displaySources = () => {
-  const url = 'https://newsapi.org/v1/sources?language=en&category=business';
+  const url = 'https://newsapi.org/v1/sources?language=en';
   Request.get(url).end((err, response) => {
     if (err) {
       console.log('Error', err);

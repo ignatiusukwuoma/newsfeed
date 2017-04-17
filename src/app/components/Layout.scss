@@ -1,10 +1,15 @@
 @import '../../public/stylesheets/style';
 
-$pry-color: red;
+$pry-color: purple;
 
 h1 {
   color: green;
   span {
     color: $pry-color;
   }
+}
+.sidebar-main {
+  margin: 0;
+  height: 100vh;
+  background-color: lightgrey;
 }

@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router';
-import Nav from './Nav';
+import Nav from './layouts/Nav';
+import Sidebar from './layouts/Sidebar';
+import Home from './Home';
 import './Layout.scss';
 
 class Layout extends React.Component {
@@ -9,11 +11,12 @@ class Layout extends React.Component {
     return (
       <div>
         <Nav location={location} />
-        <div class="container">
+        <div class="container-fluid">
           <div class="row">
-            <div class="col-lg-12">
+            <Sidebar />
+            <div class="col-md-9">
               <h1>News</h1>
-              {this.props.children}
+              
             </div>
           </div>
         </div>

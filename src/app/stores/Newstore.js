@@ -13,6 +13,7 @@ class Newstore extends EventEmitter {
         id: source.id,
         name: source.name,
         sortBy: source.sortBysAvailable,
+        category: source.category,
         description: source.description,
       });
     });
