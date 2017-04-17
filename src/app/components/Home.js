@@ -1,6 +1,6 @@
 import React from 'react';
-import Source from './Source';
 import Article from './Article';
+import Sidebar from './layouts/Sidebar';
 import Newstore from '../stores/Newstore';
 import * as NewsActions from '../actions/NewsActions';
 
@@ -41,19 +41,10 @@ class Home extends React.Component {
     const { news } = this.state;
     const articleComponent = news.map((article, i) => {
       return (<Article key={i} article={article} />);
-
-    });
-    const { sources } = this.state;
-    const sourceComponent = sources.map((source, i) => {
-      if (source.category === 'entertainment') {
-        return (<Source key={i} source={source} headlines={this.displayHeadlines} />);
-      }
     });
     return (
       <div>
-        <ul>
-          {sourceComponent}
-        </ul>
+        <Sidebar sources={this.state.sources}/>
         <div>
           {articleComponent}
         </div>
