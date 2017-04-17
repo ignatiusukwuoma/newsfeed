@@ -54,7 +54,7 @@ export default class Nav extends React.Component {
             </ul>
             <form class="navbar-form navbar-right">
               <div class="form-group">
-                <input type="text" class="form-control col-md-8" placeholder="Search" />
+                <input type="text" class="form-control" placeholder="Search" />
               </div>
             </form>
           </div>
