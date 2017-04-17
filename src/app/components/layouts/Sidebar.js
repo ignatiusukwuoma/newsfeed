@@ -4,6 +4,14 @@ import Source from '../Source';
 import * as NewsActions from '../../actions/NewsActions';
 
 export default class Sidebar extends React.Component {
+  componentDidMount() {
+    this.showSources();
+  }
+
+  showSources() {  
+    NewsActions.displaySources();
+  }
+
   displayHeadlines(id, sort='top') {
     NewsActions.displayNews(id, sort);
   }

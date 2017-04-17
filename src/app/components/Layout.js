@@ -12,7 +12,7 @@ class Layout extends React.Component {
         <Nav location={location} />
         <div class="container-fluid">
           <div class="row">
-              <Home />
+            <Home />
           </div>
         </div>
       </div>

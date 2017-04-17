@@ -1,7 +1,7 @@
 import React from 'react';
-import Article from './Article';
-import Sidebar from './layouts/Sidebar';
 import Newstore from '../stores/Newstore';
+import Sidebar from './layouts/Sidebar';
+import MainScreen from './layouts/MainScreen';
 import * as NewsActions from '../actions/NewsActions';
 
 class Home extends React.Component {
@@ -18,18 +18,6 @@ class Home extends React.Component {
     Newstore.on('change', this.getAll);
   }
 
-  componentDidMount() {
-    this.showSources();
-  }
-
-  showSources() {  
-    NewsActions.displaySources();
-  }
-
-  displayHeadlines(id, sort='top') {
-    NewsActions.displayNews(id, sort);
-  }
-
   getAll() {
     this.setState({
       news: Newstore.getNews(),
@@ -38,16 +26,10 @@ class Home extends React.Component {
   }
   
   render() {
-    const { news } = this.state;
-    const articleComponent = news.map((article, i) => {
-      return (<Article key={i} article={article} />);
-    });
     return (
       <div>
         <Sidebar sources={this.state.sources}/>
-        <div>
-          {articleComponent}
-        </div>
+        <MainScreen news={this.state.news}/>
       </div>
     );
   }
