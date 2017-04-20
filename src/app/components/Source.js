@@ -14,9 +14,6 @@ export default class Source extends React.Component {
     return (
       <li>
         <Link onClick={this.getHeadlines.bind(this)}>{name}</Link>
-        <ul>
-          {sortComponent}
-        </ul>
       </li>
     );
   }

@@ -10,7 +10,7 @@ export default class MainScreen extends React.Component {
       return (<Article key={i} article={article} />);
     });
     return (
-      <div class="col-sm-9 mainscreen-main">
+      <div class="col-sm-10 mainscreen-main">
         {articleComponent}
       </div>
     );
