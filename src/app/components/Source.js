@@ -13,7 +13,7 @@ export default class Source extends React.Component {
     });
     return (
       <li class="sources">
-        <Link onClick={this.getHeadlines.bind(this)} class="sourcesLink">{name}</Link>
+        <Link to="news" onClick={this.getHeadlines.bind(this)} class="sourcesLink">{name}</Link>
       </li>
     );
   }

@@ -63,6 +63,7 @@ export default class Sidebar extends React.Component {
         return (<Source key={i} source={source} headlines={this.displayHeadlines} />);
       }
     });
+
     return (
       <div class="col-sm-2 sidebar-main">
         <h4>News Sources</h4>

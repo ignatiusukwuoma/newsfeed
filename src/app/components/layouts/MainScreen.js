@@ -11,6 +11,7 @@ export default class MainScreen extends React.Component {
     });
     return (
       <div class="col-sm-10 mainscreen-main">
+        <h2>HeadLines</h2>
         {articleComponent}
       </div>
     );

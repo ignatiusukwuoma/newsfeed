@@ -1,22 +1,32 @@
 @import '../../public/stylesheets/style';
+$primary-color: darkblue;
+$secondary-color: #B0FC23;
 
 .sidebar-main {
   position: fixed;
-  background-color: #DDD; 
+  background-color: #DDD;
   overflow-y: scroll;
+  width: 200px;
   top: 0;
   bottom: 0;
   z-index: -1;
   margin-top: 50px;
+  border-right: 1px solid silver;
   h4 {
     text-transform: uppercase;
   }
 }
+
+.mainscreen-main {
+  margin-left: 200px;
+  position: relative;
+}
+
 .sources {
   list-style-type: none;
   margin-left: -35px;
   .sourcesLink {
-    color: darkblue;
+    color: $primary-color;
     cursor: pointer;
     font-weight: bold;
   } 

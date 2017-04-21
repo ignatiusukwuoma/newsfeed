@@ -8,9 +8,7 @@ export default class Sort extends React.Component {
   render() {
     const { sort } = this.props;
     return (
-      <li>
-        <Link onClick={this.getWithSort.bind(this)}>{sort}</Link>
-      </li>
+      <option value={sort}> {sort} </option>
     );
   }
 }
