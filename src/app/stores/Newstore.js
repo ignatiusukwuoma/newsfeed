@@ -33,12 +33,15 @@ class Newstore extends EventEmitter {
     });
     this.emit('change');
   }
+
   getNews() {
     return this.news;
   }
+
   getSources() {
     return this.sourceNames;
   }
+
   handleActions(action) {
     switch (action.type) {
       case 'DISPLAY_NEWS':

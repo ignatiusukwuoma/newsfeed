@@ -2,24 +2,24 @@
 $primary-color: darkblue;
 $secondary-color: #B0FC23;
 
-.sidebar-main {
-  position: fixed;
-  background-color: #DDD;
+html, body {
+  height: 100%;
+}
+.mainscreen-main {
+  max-height: 673px;
   overflow-y: scroll;
-  width: 200px;
+}
+
+.sidebar-main {
+  background-color: #DDD;
+  max-height: 673px;
+  overflow-y: scroll;
   top: 0;
   bottom: 0;
-  z-index: -1;
-  margin-top: 50px;
   border-right: 1px solid silver;
   h4 {
     text-transform: uppercase;
   }
-}
-
-.mainscreen-main {
-  margin-left: 200px;
-  position: relative;
 }
 
 .sources {
@@ -37,4 +37,8 @@ $secondary-color: #B0FC23;
   font-weight: bold;
   margin-top: 20px;
   margin-bottom: 5px;
+}
+
+.navbar {
+  margin-bottom: 0;
 }

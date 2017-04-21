@@ -14,8 +14,12 @@ class Home extends React.Component {
     };
   }
 
-  componentWillMount() {
+  componentDidMount() {
     Newstore.on('change', this.getAll);
+  }
+
+  componentWillUnMount() {
+    Newstore.removeListener('change', this.getAll);
   }
 
   getAll() {
@@ -27,7 +31,7 @@ class Home extends React.Component {
   
   render() {
     return (
-      <div>
+      <div class="row">
         <Sidebar sources={this.state.sources}/>
         <MainScreen news={this.state.news}/>
       </div>
