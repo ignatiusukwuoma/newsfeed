@@ -1,15 +1,30 @@
 @import '../../public/stylesheets/style';
 
-$pry-color: purple;
-
-h1 {
-  color: green;
-  span {
-    color: $pry-color;
+.sidebar-main {
+  position: fixed;
+  background-color: #DDD; 
+  overflow-y: scroll;
+  top: 0;
+  bottom: 0;
+  z-index: -1;
+  margin-top: 50px;
+  h4 {
+    text-transform: uppercase;
   }
 }
-.sidebar-main {
-  margin: 0;
-  height: 100vh;
-  background-color: lightgrey;
+.sources {
+  list-style-type: none;
+  margin-left: -35px;
+  .sourcesLink {
+    color: darkblue;
+    cursor: pointer;
+    font-weight: bold;
+  } 
+}
+
+.sourceGroup {
+  text-transform: uppercase;
+  font-weight: bold;
+  margin-top: 20px;
+  margin-bottom: 5px;
 }

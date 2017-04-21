@@ -12,11 +12,8 @@ export default class Source extends React.Component {
       return <Sort key={i} id={id} sort={sort} headlines={this.props.headlines}/>;
     });
     return (
-      <li>
-        <Link onClick={this.getHeadlines.bind(this)}>{name}</Link>
-        <ul>
-          {sortComponent}
-        </ul>
+      <li class="sources">
+        <Link onClick={this.getHeadlines.bind(this)} class="sourcesLink">{name}</Link>
       </li>
     );
   }
