@@ -1,6 +1,6 @@
 @import '../../public/stylesheets/style';
 $primary-color: darkblue;
-$secondary-color: #B0FC23;
+$secondary-color: #009688;
 
 html, body {
   height: 100%;
@@ -8,6 +8,11 @@ html, body {
 .mainscreen-main {
   max-height: 673px;
   overflow-y: scroll;
+  h2 {
+    color: $secondary-color;
+    font-weight: 500;
+
+  }
 }
 
 .sidebar-main {
@@ -19,6 +24,7 @@ html, body {
   border-right: 1px solid silver;
   h4 {
     text-transform: uppercase;
+    margin-top: 28px;
   }
 }
 
@@ -41,4 +47,14 @@ html, body {
 
 .navbar {
   margin-bottom: 0;
+}
+
+.article {
+  margin-top: 25px;
+  h4 {
+    font-weight: 500;
+  }
+  p a {
+    font-size: 0.8em;
+  }
 }
