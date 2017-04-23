@@ -1,15 +1,60 @@
 @import '../../public/stylesheets/style';
+$primary-color: darkblue;
+$secondary-color: #009688;
 
-$pry-color: purple;
+html, body {
+  height: 100%;
+}
+.mainscreen-main {
+  max-height: 673px;
+  overflow-y: scroll;
+  h2 {
+    color: $secondary-color;
+    font-weight: 500;
 
-h1 {
-  color: green;
-  span {
-    color: $pry-color;
   }
 }
+
 .sidebar-main {
-  margin: 0;
-  height: 100vh;
-  background-color: lightgrey;
+  background-color: #DDD;
+  max-height: 673px;
+  overflow-y: scroll;
+  top: 0;
+  bottom: 0;
+  border-right: 1px solid silver;
+  h4 {
+    text-transform: uppercase;
+    margin-top: 28px;
+  }
+}
+
+.sources {
+  list-style-type: none;
+  margin-left: -35px;
+  .sourcesLink {
+    color: $primary-color;
+    cursor: pointer;
+    font-weight: bold;
+  } 
+}
+
+.sourceGroup {
+  text-transform: uppercase;
+  font-weight: bold;
+  margin-top: 20px;
+  margin-bottom: 5px;
+}
+
+.navbar {
+  margin-bottom: 0;
+}
+
+.article {
+  margin-top: 25px;
+  h4 {
+    font-weight: 500;
+  }
+  p a {
+    font-size: 0.8em;
+  }
 }

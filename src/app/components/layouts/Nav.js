@@ -1,5 +1,6 @@
 import React from "react";
 import { IndexLink, Link } from "react-router";
+import SearchSources from '../SearchSources';
 
 export default class Nav extends React.Component {
   constructor() {
@@ -52,11 +53,7 @@ export default class Nav extends React.Component {
                 </ul>
               </li>
             </ul>
-            <form class="navbar-form navbar-right">
-              <div class="form-group">
-                <input type="text" class="form-control" placeholder="Search" />
-              </div>
-            </form>
+            <SearchSources />
           </div>
         </div>
       </div>

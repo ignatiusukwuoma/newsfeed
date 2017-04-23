@@ -6,8 +6,12 @@ export default class Article extends React.Component {
   render() {
     const { article } = this.props;
     return (
-      <div>
-        <h3><a href={article.url} target="/blank">{article.title}</a></h3>
+      <div class="article">
+        <h4>{article.title}</h4>
+        <p> {article.description} 
+          <a href={article.url} target="/blank"> Read More</a>
+        </p>
+        
       </div>
     );
   }

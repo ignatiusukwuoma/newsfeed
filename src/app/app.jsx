@@ -4,13 +4,14 @@ import { Router, Route, IndexRoute, hashHistory } from 'react-router';
 
 import Layout from './components/Layout';
 import Home from './components/Home';
-import Article from './components/Article';
+import Sidebar from './components/layouts/Sidebar.js';
+import MainScreen from './components/layouts/MainScreen.js';
 
 ReactDOM.render(
   <Router history={hashHistory}>
     <Route path="/" component={Layout}> 
-      <IndexRoute component={Home} />
-      <Route path="news(/:story)" name="news" component={Article} />
+      <IndexRoute component={Sidebar} />
+      <Route path="news" name="news" component={MainScreen} />
     </Route>
   </Router>,
 document.getElementById("app"));
