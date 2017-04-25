@@ -10,10 +10,9 @@ class Layout extends React.Component {
     return (
       <div>
         <Nav location={location} />
-        <div class="container-fluid">
-          <Home />
-        </div>
+        {this.props.children}
       </div>
+      
     );
   }
 }

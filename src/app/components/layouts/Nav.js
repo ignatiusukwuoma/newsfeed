@@ -15,6 +15,13 @@ export default class Nav extends React.Component {
     this.setState({collapsed});
   }
 
+  signOut() {
+    const auth2 = gapi.auth2.getAuthInstance();
+    auth2.signOut().then(() => {
+      console.log('User signed out.');
+    });
+  }
+
   render() {
     const { location } = this.props;
     const { collapsed } = this.state;
@@ -49,7 +56,7 @@ export default class Nav extends React.Component {
                   <li><a href="javascript:void(0)">Another action</a></li>
                   <li><a href="javascript:void(0)">Something else here</a></li>
                   <li class="divider"></li>
-                  <li><a href="javascript:void(0)">Logout</a></li>
+                  <li><a href="#" onClick={this.signOut.bind(this)}>Sign out</a></li>
                 </ul>
               </li>
             </ul>
