@@ -14,7 +14,7 @@ class Home extends React.Component {
     };
   }
 
-  componentWillReceiveProps() {
+  componentDidMount() {
     Newstore.on('change', this.getAll);
   }
 

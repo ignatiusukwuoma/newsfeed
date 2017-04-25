@@ -1,8 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Router, Route, IndexRoute, hashHistory} from 'react-router';
-import createBrowserHistory from 'history/lib/createBrowserHistory';
-let history = new createBrowserHistory();
+import { Router, Route, IndexRoute, browserHistory} from 'react-router';
 import Login from './components/Login';
 import NotFound from './components/NotFound';
 
@@ -12,10 +10,9 @@ import Sidebar from './components/layouts/Sidebar.js';
 import MainScreen from './components/layouts/MainScreen.js';
 
 ReactDOM.render(
-  <Router history={hashHistory}>
+  <Router history={browserHistory}>
     <Route component={Layout}>
       <Route path="/" component={Home} />
-      <Route path="/login" component={Login} />
       <Route path="*" component={NotFound} />
     </Route>
   </Router>,
