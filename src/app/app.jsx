@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Router, Route, IndexRoute, hashHistory } from 'react-router';
+import { Router, Route, IndexRoute, hashHistory} from 'react-router';
+import createBrowserHistory from 'history/lib/createBrowserHistory';
+let history = new createBrowserHistory();
 import Login from './components/Login';
 import NotFound from './components/NotFound';
 

@@ -1,4 +1,7 @@
 import React from 'react';
+import createBrowserHistory from 'history/lib/createBrowserHistory';
+const history = new createBrowserHistory();
+
 let Parent = null;
 export default class Login extends React.Component {
   constructor (props) {
@@ -10,7 +13,6 @@ export default class Login extends React.Component {
   }
 
   renderLoginButton() {
-    console.log(Parent,'Parent');
 		gapi.signin2.render('g-signin2', {
 			'scope': 'https://www.googleapis.com/auth/plus.login',
 			'width': 400,
@@ -22,9 +24,9 @@ export default class Login extends React.Component {
 		});
   }
 	
-  
   onSignIn(googleUser) {
-     console.log("Google User", googleUser);
+    history.replace("/");
+    console.log('History',history);
     const profile = googleUser.getBasicProfile();
     console.log('ID: ' + profile.getId());
     console.log('Name: ' + profile.getName());
