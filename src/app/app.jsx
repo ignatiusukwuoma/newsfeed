@@ -13,9 +13,9 @@ import MainScreen from './components/layouts/MainScreen.js';
 
 ReactDOM.render(
   <Router history={hashHistory}>
-    <Route path="/" component={Layout}>
-      <Route path="login" component={Login} />
-      <IndexRoute component={Home} />
+    <Route component={Layout}>
+      <Route path="/" component={Home} />
+      <Route path="/login" component={Login} />
       <Route path="*" component={NotFound} />
     </Route>
   </Router>,

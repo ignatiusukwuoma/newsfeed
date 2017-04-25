@@ -14,13 +14,13 @@ export default class Login extends React.Component {
 
   renderLoginButton() {
 		gapi.signin2.render('g-signin2', {
-			'scope': 'https://www.googleapis.com/auth/plus.login',
-			'width': 400,
-			'height': 100,
-			'longtitle': true,
-			'theme': 'dark',
-			'onsuccess': Parent.onSignIn,
-      'onfailure': Parent.signInFail
+			scope: 'https://www.googleapis.com/auth/plus.login',
+			width: 400,
+			height: 100,
+			longtitle: true,
+			theme: 'dark',
+			onsuccess: Parent.onSignIn,
+      onfailure: Parent.signInFail
 		});
   }
 	
