@@ -9,8 +9,12 @@ class Home extends React.Component {
     super();
     this.getAll = this.getAll.bind(this);
     this.state = {
-      news: Newstore.getNews(),
-      sources: Newstore.getSources(),
+      name: '',
+      sort: [],
+      id: '',
+      news: [],
+      sources: [],
+      sortedNews: [],
     };
   }
 
@@ -18,22 +22,34 @@ class Home extends React.Component {
     Newstore.on('change', this.getAll);
   }
 
-  componentWillUnMount() {
-    Newstore.removeListener('change', this.getAll);
+  displayHeadlines(id, sort, name) {
+    NewsActions.displayNews(id, sort, name);
   }
 
   getAll() {
     this.setState({
-      news: Newstore.getNews(),
+      news: Newstore.getNews().news,
+      sortedNews: Newstore.getSortedNews(),
+      id: Newstore.getNews().id,
+      sort: Newstore.getNews().sort,
+      name: Newstore.getNews().name,
       sources: Newstore.getSources(),
     });
   }
+
+  // getNews() {
+  //   this.setState({
+  //     news: Newstore.getNews().news,
+  //     id: Newstore.getNews().id,
+  //     name: Newstore.getNews().name,
+  //   });
+  // }
   
   render() {
     return (
       <div class="row">
-        <Sidebar sources={this.state.sources}/>
-        <MainScreen news={this.state.news}/>
+        <Sidebar sources={this.state.sources} headlines={this.displayHeadlines.bind(this)}/>
+        <MainScreen news={this.state.news} sortedNews={this.state.sortedNews} id={this.state.id} sort={this.state.sort} name={this.state.name} headlines={this.displayHeadlines.bind(this)}/>
       </div>
     );
   }
