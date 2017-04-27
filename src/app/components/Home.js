@@ -31,9 +31,11 @@ class Home extends React.Component {
   
   render() {
     return (
-      <div class="row">
-        <Sidebar sources={this.state.sources}/>
-        <MainScreen news={this.state.news}/>
+      <div class="container-fluid">
+        <div class="row">
+          <Sidebar sources={this.state.sources}/>
+          <MainScreen news={this.state.news}/>
+        </div>
       </div>
     );
   }

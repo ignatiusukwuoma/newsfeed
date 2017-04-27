@@ -31,7 +31,7 @@ export default class Nav extends React.Component {
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="javascript:void(0)">HotNews</a>
+            <a class="navbar-brand" href="/">HotNews</a>
           </div>
           <div class={"navbar-collapse navbar-inverse-collapse " + navClass}>
             <ul class="nav navbar-nav navbar-right">
@@ -47,9 +47,9 @@ export default class Nav extends React.Component {
                 <ul class="dropdown-menu">
                   <li><a href="javascript:void(0)">Action</a></li>
                   <li><a href="javascript:void(0)">Another action</a></li>
-                  <li><a href="javascript:void(0)">Something else here</a></li>
+                  <li><a href="/auth/google">Login</a></li>
                   <li class="divider"></li>
-                  <li><a href="javascript:void(0)">Logout</a></li>
+                  <li><a href="/logout">Sign out</a></li>
                 </ul>
               </li>
             </ul>
