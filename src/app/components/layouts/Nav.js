@@ -53,7 +53,7 @@ export default class Nav extends React.Component {
                 </ul>
               </li>
             </ul>
-            <SearchSources />
+            <SearchSources sources={this.props.sources} headlines={this.props.headlines} />
           </div>
         </div>
       </div>

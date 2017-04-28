@@ -5,35 +5,49 @@ import MainScreen from './layouts/MainScreen';
 import * as NewsActions from '../actions/NewsActions';
 
 class Home extends React.Component {
-  constructor() {
-    super();
-    this.getAll = this.getAll.bind(this);
-    this.state = {
-      news: Newstore.getNews(),
-      sources: Newstore.getSources(),
-    };
-  }
+  // constructor(props) {
+  //   super(props);
+  //   this.getAll = this.getAll.bind(this);
+  //   this.state = {
+  //     name: '',
+  //     sort: [],
+  //     id: '',
+  //     news: [],
+  //     sources: [],
+  //     sortedNews: [],
+  //     sortLookout: false,
+  //   };
+  // }
 
-  componentDidMount() {
-    Newstore.on('change', this.getAll);
-  }
+  // componentDidMount() {
+  //   Newstore.on('change', this.getAll);
+  // }
 
-  componentWillUnMount() {
-    Newstore.removeListener('change', this.getAll);
-  }
+  // componentWillMount() {
+  //   this.props.collectSources(this.state.sources);
+  // }
 
-  getAll() {
-    this.setState({
-      news: Newstore.getNews(),
-      sources: Newstore.getSources(),
-    });
-  }
+  // displayHeadlines(id, sort, name) {
+  //   NewsActions.displayNews(id, sort, name);
+  // }
+
+  // getAll() {
+  //   this.setState({
+  //     news: Newstore.getNews().news,
+  //     sortedNews: Newstore.getSortedNews(),
+  //     id: Newstore.getNews().id,
+  //     sort: Newstore.getNews().sort,
+  //     name: Newstore.getNews().name,
+  //     sources: Newstore.getSources(),
+  //     sortLookout: true,
+  //   });
+  // }
   
   render() {
     return (
       <div class="row">
-        <Sidebar sources={this.state.sources}/>
-        <MainScreen news={this.state.news}/>
+        <Sidebar sources={this.props.sources} headlines={this.props.headlines} />
+        <MainScreen {...this.props} />
       </div>
     );
   }
