@@ -22,6 +22,8 @@ class Newstore extends EventEmitter {
   }
 
   displayNews(articlesArr, id, sort, name) {
+    this.news.news = [];
+    this.sortedNews = [];
     articlesArr.forEach((article) => {
       this.news.news.push({
         author: article.author,
@@ -39,6 +41,8 @@ class Newstore extends EventEmitter {
   }
 
   getWithSort(articlesArr) {
+    this.news.news = [];
+    this.sortedNews = [];
     articlesArr.forEach((article) => {
       this.sortedNews.push({
         author: article.author,

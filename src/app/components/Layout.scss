@@ -6,18 +6,25 @@ html, body {
   height: 100%;
 }
 .mainscreen-main {
-  max-height: 673px;
+  max-height: 100vh;
   overflow-y: scroll;
   h2 {
     color: $secondary-color;
     font-weight: 500;
-
+  }
+  .main-headers {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  select {
+    font-size: 1.5em;
   }
 }
 
 .sidebar-main {
   background-color: #DDD;
-  max-height: 673px;
+  max-height: 100vh;
   overflow-y: scroll;
   top: 0;
   bottom: 0;
@@ -58,3 +65,17 @@ html, body {
     font-size: 0.8em;
   }
 }
+
+.searched-sources {
+  position: absolute;
+  background-color: transparent;
+  top: 100%;
+  left: 61%;
+  z-index: 9999999;
+  .sources {
+    display: block;
+    padding: 2px 20px 2px 20px;
+    background-color: silver;
+  }
+}
+

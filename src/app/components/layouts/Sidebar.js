@@ -19,7 +19,7 @@ export default class Sidebar extends React.Component {
     const { sources } = this.props;
     const entertainmentSources = sources.map((source, i) => {
       if (source.category === 'entertainment') {
-        return (<Source key={i} source={source} headlines={this.props.headlines} />);
+        return (<Source key={source.id} source={source} headlines={this.props.headlines} />);
       }
     });
     const businessSources = sources.map((source, i) => {

@@ -5,51 +5,49 @@ import MainScreen from './layouts/MainScreen';
 import * as NewsActions from '../actions/NewsActions';
 
 class Home extends React.Component {
-  constructor() {
-    super();
-    this.getAll = this.getAll.bind(this);
-    this.state = {
-      name: '',
-      sort: [],
-      id: '',
-      news: [],
-      sources: [],
-      sortedNews: [],
-    };
-  }
+  // constructor(props) {
+  //   super(props);
+  //   this.getAll = this.getAll.bind(this);
+  //   this.state = {
+  //     name: '',
+  //     sort: [],
+  //     id: '',
+  //     news: [],
+  //     sources: [],
+  //     sortedNews: [],
+  //     sortLookout: false,
+  //   };
+  // }
 
-  componentDidMount() {
-    Newstore.on('change', this.getAll);
-  }
+  // componentDidMount() {
+  //   Newstore.on('change', this.getAll);
+  // }
 
-  displayHeadlines(id, sort, name) {
-    NewsActions.displayNews(id, sort, name);
-  }
+  // componentWillMount() {
+  //   this.props.collectSources(this.state.sources);
+  // }
 
-  getAll() {
-    this.setState({
-      news: Newstore.getNews().news,
-      sortedNews: Newstore.getSortedNews(),
-      id: Newstore.getNews().id,
-      sort: Newstore.getNews().sort,
-      name: Newstore.getNews().name,
-      sources: Newstore.getSources(),
-    });
-  }
+  // displayHeadlines(id, sort, name) {
+  //   NewsActions.displayNews(id, sort, name);
+  // }
 
-  // getNews() {
+  // getAll() {
   //   this.setState({
   //     news: Newstore.getNews().news,
+  //     sortedNews: Newstore.getSortedNews(),
   //     id: Newstore.getNews().id,
+  //     sort: Newstore.getNews().sort,
   //     name: Newstore.getNews().name,
+  //     sources: Newstore.getSources(),
+  //     sortLookout: true,
   //   });
   // }
   
   render() {
     return (
       <div class="row">
-        <Sidebar sources={this.state.sources} headlines={this.displayHeadlines.bind(this)}/>
-        <MainScreen news={this.state.news} sortedNews={this.state.sortedNews} id={this.state.id} sort={this.state.sort} name={this.state.name} headlines={this.displayHeadlines.bind(this)}/>
+        <Sidebar sources={this.props.sources} headlines={this.props.headlines} />
+        <MainScreen {...this.props} />
       </div>
     );
   }
