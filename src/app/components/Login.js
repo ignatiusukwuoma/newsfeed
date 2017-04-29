@@ -4,6 +4,12 @@ import * as NewsActions from '../actions/NewsActions';
 
 export default class Login extends React.Component {
 
+  // storeUserProfile(user) {
+  //   window.localStorage.setItem('uid', user.uid);
+  //   window.localStorage.setItem('email', user.email);
+  //   window.localStorage.setItem('name', user.displayName);
+  // }
+
   componentDidMount() {
      // FirebaseUI config.
      const uiConfig = {
@@ -14,8 +20,11 @@ export default class Login extends React.Component {
 		],
 		'tosUrl': 'https://www.google.com',
 		'callbacks': {
-			'signInSuccess': function (user, credential, redirectUrl) {
-        
+			'signInSuccess': (user, credential, redirectUrl) => {
+        console.log('User just signed in');
+        window.localStorage.setItem('uid', user.uid);
+        window.localStorage.setItem('email', user.email);
+        window.localStorage.setItem('name', user.displayName);
         return true;
 			}
 		}
