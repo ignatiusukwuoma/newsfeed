@@ -8,6 +8,7 @@ class Newstore extends EventEmitter {
     this.sourceNames = [];
     this.sortedNews = [];
   }
+
   displaySources(sourceArr) {
     sourceArr.forEach((source) => {
       this.sourceNames.push({
@@ -66,6 +67,10 @@ class Newstore extends EventEmitter {
 
   getSortedNews() {
     return this.sortedNews;
+  }
+
+  getProfile() {
+    return this.user;
   }
 
   handleActions(action) {

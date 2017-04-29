@@ -47,9 +47,9 @@ export default class Nav extends React.Component {
                 <ul class="dropdown-menu">
                   <li><a href="javascript:void(0)">Action</a></li>
                   <li><a href="javascript:void(0)">Another action</a></li>
-                  <li><a href="javascript:void(0)">Something else here</a></li>
+                  <li><Link to="login">Login</Link></li>
                   <li class="divider"></li>
-                  <li><a href="javascript:void(0)">Logout</a></li>
+                  <li><Link onClick={this.props.signOut}>Logout</Link></li>
                 </ul>
               </li>
             </ul>

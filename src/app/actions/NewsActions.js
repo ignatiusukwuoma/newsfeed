@@ -9,8 +9,6 @@ export const displayNews = (id, sort, name) => {
     .end((err, response) => {
       if (err) {
         console.log('Error', err);
-      } else {
-        console.log('Received a response from articles');
       }
       dispatcher.dispatch({
         type: 'DISPLAY_NEWS',
@@ -32,8 +30,6 @@ export const getWithSort = (id, sort) => {
     .end((err, response) => {
       if (err) {
         console.log('Error', err);
-      } else {
-        console.log('Received a response from articles by sort');
       }
       dispatcher.dispatch({
         type: 'DISPLAY_WITH_SORT',
@@ -47,8 +43,6 @@ export const displaySources = () => {
   Request.get(url).end((err, response) => {
     if (err) {
       console.log('Error', err);
-    } else {
-      console.log('Received a response from sources');
     }
     dispatcher.dispatch({
       type: 'DISPLAY_SOURCES',
@@ -56,4 +50,3 @@ export const displaySources = () => {
     });
   });
 };
-
