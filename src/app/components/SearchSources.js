@@ -19,8 +19,6 @@ export default class SearchSources extends React.Component {
     let filteredList = filteredSources.map((source) => {
       return <Source key={source.id} source={source} headlines={this.props.headlines} />;
     });
-    
-    console.log('filteredList', filteredList);
     return (
       <div>
         <form class="navbar-form navbar-right"> 

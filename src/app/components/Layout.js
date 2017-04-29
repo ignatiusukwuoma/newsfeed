@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
+import firebase from "../firebaseConfig";
 import Nav from './layouts/Nav';
 import Home from './Home';
 import Newstore from '../stores/Newstore';
@@ -18,7 +19,26 @@ class Layout extends React.Component {
       sources: [],
       sortedNews: [],
       sortLookout: false,
+      user: {},
     };
+  }
+
+  componentWillMount() {
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        const displayName = user.displayName;
+        const email = user.email;
+        const photoURL = user.photoURL;
+        const uid = user.uid;
+        user.getToken().then((accessToken) => {
+          console.log('Layout', user)
+        });
+      } else {
+        console.log('User is signed out');
+      }
+    }, (error) => {
+      console.log(error);
+    });
   }
 
   componentDidMount() {
@@ -43,6 +63,7 @@ class Layout extends React.Component {
 
   render() {
     const { location } = this.props;
+    console.log('User in Layout', this.state.user);
     return (
       <div>
         <Nav sources={this.state.sources} headlines={this.displayHeadlines.bind(this)} location={location} />
