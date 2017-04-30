@@ -12,6 +12,7 @@ export default class MainScreen extends React.Component {
       sourceName: '',
       sourceId: '',
       sourceSort: [],
+      defaultSort: 'sortby',
     };
   }
 
@@ -37,7 +38,7 @@ export default class MainScreen extends React.Component {
       <div class="col-sm-10 mainscreen-main">
         <div class="main-headers">
         <h2>HeadLines from {name}</h2>
-        <select class="styled-select" onChange={this.getWithSort}>
+        <select class="styled-select" onChange={this.getWithSort} value={this.state.defaultSort}>
           <option value="sortby">Sort By</option>
           {sortComponent}
         </select>
