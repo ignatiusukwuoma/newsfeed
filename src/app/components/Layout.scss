@@ -1,15 +1,20 @@
 @import '../../public/stylesheets/style';
-$primary-color: darkblue;
-$secondary-color: #009688;
+$primary-color: #0b1e5e;
+$secondary-color: #4583c2;
 
 html, body {
   height: 100%;
 }
+
+a, a:hover, a:active, a:visited, a:focus {
+  text-decoration:none;
+}
+
 .mainscreen-main {
   max-height: 100vh;
   overflow-y: scroll;
   h2 {
-    color: $secondary-color;
+    color: $primary-color;
     font-weight: 500;
   }
   .main-headers {
@@ -42,7 +47,11 @@ html, body {
     color: $primary-color;
     cursor: pointer;
     font-weight: bold;
-  } 
+  }
+  .sourcesLink:hover, .sourcesLink:focus {
+    color: $secondary-color;
+    margin-left: 5px;
+  }
 }
 
 .sourceGroup {
@@ -56,13 +65,26 @@ html, body {
   margin-bottom: 0;
 }
 
-.article {
-  margin-top: 25px;
+article.article {
+  margin-top: 20px;
+  padding: 10px;
   h4 {
     font-weight: 500;
+    color: $primary-color;
+    text-transform: uppercase;
   }
-  p a {
-    font-size: 0.8em;
+  p {
+    color: black;
+  }
+}
+
+article.article:hover {
+  background-color: $primary-color;
+  h4 {
+    color: white;
+  }
+  p {
+    color: white;
   }
 }
 
@@ -75,7 +97,7 @@ html, body {
   .sources {
     display: block;
     padding: 2px 20px 2px 20px;
-    background-color: silver;
+    background-color: #DDD;
   }
 }
 

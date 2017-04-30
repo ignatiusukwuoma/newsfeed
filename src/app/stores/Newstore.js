@@ -69,10 +69,6 @@ class Newstore extends EventEmitter {
     return this.sortedNews;
   }
 
-  getProfile() {
-    return this.user;
-  }
-
   handleActions(action) {
     switch (action.type) {
       case 'DISPLAY_NEWS':

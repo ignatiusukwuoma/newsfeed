@@ -46,8 +46,10 @@ export default class MainScreen extends React.Component {
           {sortComponent}
         </select>
         </div>
-        {articleComponent}
-        {sortedNewsComponent}
+        <div class="row">
+          {articleComponent}
+          {sortedNewsComponent}
+        </div>
       </div>
     );
   }
