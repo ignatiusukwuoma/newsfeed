@@ -19,7 +19,6 @@ class Layout extends React.Component {
       news: [],
       sources: [],
       sortedNews: [],
-      sortLookout: false,
       user: {},
     };
   }
@@ -43,12 +42,6 @@ class Layout extends React.Component {
     });
   }
 
-  // removeUserInfo() {
-  //   localStorage.removeItem('user');
-  //   localStorage.removeItem('email');
-  //   localStorage.removeItem('username');
-  // }
-
   signOut() {
     firebase.auth().signOut().then(function() {
       localStorage.removeItem('user');
@@ -65,7 +58,7 @@ class Layout extends React.Component {
     Newstore.on('change', this.getAll);
   }
 
-   displayHeadlines(id, sort, name) {
+  displayHeadlines(id, sort, name) {
     NewsActions.displayNews(id, sort, name);
   }
 
@@ -77,7 +70,6 @@ class Layout extends React.Component {
       sort: Newstore.getNews().sort,
       name: Newstore.getNews().name,
       sources: Newstore.getSources(),
-      sortLookout: true,
     });
   }
 

@@ -16,19 +16,15 @@ export default class MainScreen extends React.Component {
   }
 
   getWithSort(event) {
-    if (event.target.value === 'top' || event.target.value === 'latest' ) {
+    if (event.target.value === 'top' || event.target.value === 'latest' || event.target.value === 'popular') {
       NewsActions.getWithSort(this.props.id, event.target.value);
     }
   }
 
   render() {
     const { news, id, name, sort, sortedNews, sortLookout } = this.props;
-    // let sort = this.props.sort;
-    // sort = (sort instanceof Array) ? sort : [sort];
     const sortComponent = sort.map((sorter, i) => {
-      if (sortLookout) {
-        return (<Sort sort={sorter} key={i} />);
-      }
+      return (<Sort sort={sorter} key={i} />);
     });
     const sortedNewsComponent = sortedNews.map((article, i) => {
       return (<Article key={i} article={article} />);
@@ -41,7 +37,7 @@ export default class MainScreen extends React.Component {
       <div class="col-sm-10 mainscreen-main">
         <div class="main-headers">
         <h2>HeadLines from {name}</h2>
-        <select class="styled-select" onChange={this.getWithSort} defaultValue="sortby">
+        <select class="styled-select" onChange={this.getWithSort}>
           <option value="sortby">Sort By</option>
           {sortComponent}
         </select>

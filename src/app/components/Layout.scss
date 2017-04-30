@@ -21,6 +21,7 @@ a, a:hover, a:active, a:visited, a:focus {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin: 0 15px;
   }
   select {
     font-size: 1.5em;
@@ -50,7 +51,7 @@ a, a:hover, a:active, a:visited, a:focus {
   }
   .sourcesLink:hover, .sourcesLink:focus {
     color: $secondary-color;
-    margin-left: 5px;
+    margin-left: 2px;
   }
 }
 
@@ -63,11 +64,16 @@ a, a:hover, a:active, a:visited, a:focus {
 
 .navbar {
   margin-bottom: 0;
+  .navbar-form {
+    margin-right: 5px;
+  }
 }
+
 
 article.article {
   margin-top: 20px;
   padding: 10px;
+  height: 450px;
   h4 {
     font-weight: 500;
     color: $primary-color;
@@ -89,15 +95,15 @@ article.article:hover {
 }
 
 .searched-sources {
-  position: absolute;
-  background-color: transparent;
-  top: 100%;
-  left: 61%;
-  z-index: 9999999;
+    position: absolute;
+    top: 100%;
+    left: 61%;
+    z-index: 9999999;
   .sources {
     display: block;
     padding: 2px 20px 2px 20px;
     background-color: #DDD;
+    width: 200px;
   }
 }
 

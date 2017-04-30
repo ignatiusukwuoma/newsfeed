@@ -5,10 +5,16 @@ import * as NewsActions from '../../actions/NewsActions';
 
 export default class Sidebar extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
+    this.state = {
+      defaultId: 'techcrunch',
+      defaultSortBy: ['top', 'latest'],
+      defaultName: 'TechCrunch',
+    };
   }
   componentDidMount() {
     this.showSources();
+    this.props.headlines(this.state.defaultId, this.state.defaultSortBy, this.state.defaultName);
   }
 
   showSources() {  
