@@ -1,9 +1,12 @@
-import JSDom from 'jsdom';
-const jsdom = JSDom.jsdom;
+require('babel-register')();
+
+const jsdom = require('jsdom').jsdom;
+
+// import JSDom from 'jsdom';
+// const jsdom = JSDom.jsdom;
 
 const exposedProperties = ['document', 'window', 'navigator'];
-console.log('JSDOM', jsdom)
-global.document = jsdom();
+global.document = jsdom('');
 global.window = document.defaultView;
 Object.keys(document.defaultView).forEach((key) => {
   if (typeof global[key] === 'undefined') {
@@ -15,3 +18,5 @@ Object.keys(document.defaultView).forEach((key) => {
 global.navigator = {
   userAgent: 'node.js'
 };
+
+documentRef = document;

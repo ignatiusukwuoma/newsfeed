@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import Home from '../Home';
 import Article from '../Article';
 import Sort from '../Sort';
@@ -9,9 +9,6 @@ export default class MainScreen extends React.Component {
     super(props);
     this.getWithSort = this.getWithSort.bind(this);
     this.state = {
-      sourceName: '',
-      sourceId: '',
-      sourceSort: [],
       defaultSort: 'sortby',
     };
   }
@@ -23,25 +20,20 @@ export default class MainScreen extends React.Component {
   }
 
   render() {
-    const { news, id, name, sort, sortedNews, sortLookout } = this.props;
-    const sortComponent = sort.map((sorter, i) => {
-      return (<Sort sort={sorter} key={i} />);
-    });
-    const sortedNewsComponent = sortedNews.map((article, i) => {
-      return (<Article key={i} article={article} />);
-    });
-    const articleComponent = news.map((article, i) => {
-      return (<Article key={i} article={article} />);
-    });
-    
+    const { news, id, name, sort, sortedNews } = this.props;
+    const sortComponent = sort.map((sorter, i) => (<Sort sort={sorter} key={i} />));
+    const articleComponent = news.map((article, i) => (<Article key={i} article={article} />));
+    const sortedNewsComponent = sortedNews.map((article, i) =>
+    (<Article key={i} article={article} />));
+
     return (
       <div class="col-sm-10 mainscreen-main">
         <div class="main-headers">
-        <h2>HeadLines from {name}</h2>
-        <select class="styled-select" onChange={this.getWithSort} value={this.state.defaultSort}>
-          <option value="sortby">Sort By</option>
-          {sortComponent}
-        </select>
+          <h2>HeadLines from {name}</h2>
+          <select class="styled-select" onChange={this.getWithSort} value={this.state.defaultSort}>
+            <option value="sortby">Sort By</option>
+            {sortComponent}
+          </select>
         </div>
         <div class="row">
           {articleComponent}

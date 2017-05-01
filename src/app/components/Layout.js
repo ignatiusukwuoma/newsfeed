@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
-import firebase from "../firebaseConfig";
+import firebase from '../firebaseConfig';
 import Nav from './layouts/Nav';
 import Home from './Home';
 import Newstore from '../stores/Newstore';

@@ -11,8 +11,11 @@
     "es6": true,
     "jasmine": true
   },
-  "ecmaFeatures": {
-    "jsx": true
+  "parserOptions": {
+    "ecmaFeatures": {
+        "jsx": true,
+        "modules": true
+    }
   },
   "globals": {
     "amd": true,
