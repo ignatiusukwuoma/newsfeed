@@ -35,8 +35,8 @@ describe('After rendering, the mainscreen component', () => {
     expect(wrapper.find('select')).to.match('.styled-select');
   });
 
-  it('should contain the text `from` in the h2 tag', () => {
-    expect(wrapper.find('h2')).to.contain.text('from');
+  it('should contain the text `News` in the h2 tag', () => {
+    expect(wrapper.find('h2')).to.contain.text('News');
   });
 
   it('should have the value `sortby` as the default value of the select tag', () => {
