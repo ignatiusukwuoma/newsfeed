@@ -4,7 +4,7 @@ import dispatcher from '../dispatcher';
 class Newstore extends EventEmitter {
   constructor() {
     super();
-    this.news = { news: [], id: '', sort: [], name: '' };
+    this.news = { news: [], sortBy: '', id: '', sortArr: [], name: '' };
     this.sourceNames = [];
     this.sortedNews = [];
   }
@@ -22,7 +22,7 @@ class Newstore extends EventEmitter {
     this.emit('change');
   }
 
-  displayNews(articlesArr, id, sort, name) {
+  displayNews(articlesArr, sortBy, id, sortArr, name) {
     this.news.news = [];
     this.sortedNews = [];
     articlesArr.forEach((article) => {
@@ -35,8 +35,9 @@ class Newstore extends EventEmitter {
         date: article.publishedAt,
       });
     });
+    this.news.sortBy = sortBy;
     this.news.id = id;
-    this.news.sort = sort;
+    this.news.sortArr = sortArr;
     this.news.name = name;
     this.emit('change');
   }
@@ -44,6 +45,7 @@ class Newstore extends EventEmitter {
   getWithSort(articlesArr) {
     this.news.news = [];
     this.sortedNews = [];
+    this.news.sortBy = '';
     articlesArr.forEach((article) => {
       this.sortedNews.push({
         author: article.author,
@@ -72,7 +74,7 @@ class Newstore extends EventEmitter {
   handleActions(action) {
     switch (action.type) {
       case 'DISPLAY_NEWS':
-        this.displayNews(action.news.article, action.news.id, action.news.sort, action.news.name);
+        this.displayNews(action.news.article, action.news.sortBy, action.news.id, action.news.sortArr, action.news.name);
         break;
       case 'DISPLAY_WITH_SORT':
         this.getWithSort(action.news);
