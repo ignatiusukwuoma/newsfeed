@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import Home from '../Home';
 import Source from '../Source';
 import * as NewsActions from '../../actions/NewsActions';
@@ -12,13 +12,14 @@ export default class Sidebar extends React.Component {
       defaultName: 'TechCrunch',
     };
   }
+
+  showSources() {
+    NewsActions.displaySources();
+  }
+
   componentDidMount() {
     this.showSources();
     this.props.headlines(this.state.defaultId, this.state.defaultSortBy, this.state.defaultName);
-  }
-
-  showSources() {  
-    NewsActions.displaySources();
   }
 
   render() {
@@ -30,42 +31,42 @@ export default class Sidebar extends React.Component {
     });
     const businessSources = sources.map((source, i) => {
       if (source.category === 'business') {
-        return (<Source key={i} source={source} headlines={this.props.headlines} />);
+        return (<Source key={source.id} source={source} headlines={this.props.headlines} />);
       }
     });
     const technologySources = sources.map((source, i) => {
       if (source.category === 'technology') {
-        return (<Source key={i} source={source} headlines={this.props.headlines} />);
+        return (<Source key={source.id} source={source} headlines={this.props.headlines} />);
       }
     });
     const sportSources = sources.map((source, i) => {
       if (source.category === 'sport') {
-        return (<Source key={i} source={source} headlines={this.props.headlines} />);
+        return (<Source key={source.id} source={source} headlines={this.props.headlines} />);
       }
     });
     const musicSources = sources.map((source, i) => {
       if (source.category === 'music') {
-        return (<Source key={i} source={source} headlines={this.props.headlines} />);
+        return (<Source key={source.id} source={source} headlines={this.props.headlines} />);
       }
     });
     const politicsSources = sources.map((source, i) => {
       if (source.category === 'politics') {
-        return (<Source key={i} source={source} headlines={this.props.headlines} />);
+        return (<Source key={source.id} source={source} headlines={this.props.headlines} />);
       }
     });
     const generalSources = sources.map((source, i) => {
       if (source.category === 'general') {
-        return (<Source key={i} source={source} headlines={this.props.headlines} />);
+        return (<Source key={source.id} source={source} headlines={this.props.headlines} />);
       }
     });
     const gamingSources = sources.map((source, i) => {
       if (source.category === 'gaming') {
-        return (<Source key={i} source={source} headlines={this.props.headlines} />);
+        return (<Source key={source.id} source={source} headlines={this.props.headlines} />);
       }
     });
     const sciencenatureSources = sources.map((source, i) => {
       if (source.category === 'science-and-nature') {
-        return (<Source key={i} source={source} headlines={this.props.headlines} />);
+        return (<Source key={source.id} source={source} headlines={this.props.headlines} />);
       }
     });
 

@@ -32,4 +32,24 @@ export const name = 'Techcrunch',
     url: 'https://foo.hotnews.com',
     urlImage: 'https://bar.hotnews.com/image.png',
     date: '2017-05-21T14:40:57Z'
+  }],
+  sources = [{
+    id: 'ars-technica',
+    name: 'Ars Technica',
+    description: 'The PC enthusiast\'s resource. Power users and the tools they love, without computing religion.',
+    category: 'technology',
+    sortBy: [
+      'top',
+      'latest'
+    ]
+  },
+  {
+    id: 'techcrunch',
+    name: 'TechCrunch',
+    description: 'Anything Technology',
+    category: 'technology',
+    sortBy: [
+      'top',
+      'latest'
+    ]
   }];
