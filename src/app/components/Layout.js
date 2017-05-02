@@ -14,8 +14,9 @@ class Layout extends React.Component {
     this.signOut = this.signOut.bind(this);
     this.state = {
       name: '',
-      sort: [],
+      sortArr: [],
       id: '',
+      sortBy: '',
       news: [],
       sources: [],
       sortedNews: [],
@@ -60,16 +61,17 @@ class Layout extends React.Component {
     });
   }
 
-  displayHeadlines(id, sort, name) {
-    NewsActions.displayNews(id, sort, name);
+  displayHeadlines(id, sortArr, name) {
+    NewsActions.displayNews(id, sortArr, name);
   }
 
   getAll() {
     this.setState({
       news: Newstore.getNews().news,
+      sortBy: Newstore.getNews().sortBy,
       sortedNews: Newstore.getSortedNews(),
       id: Newstore.getNews().id,
-      sort: Newstore.getNews().sort,
+      sortArr: Newstore.getNews().sortArr,
       name: Newstore.getNews().name,
       sources: Newstore.getSources(),
     });

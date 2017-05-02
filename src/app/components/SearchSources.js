@@ -9,28 +9,27 @@ export default class SearchSources extends React.Component {
 
   updateSearch(event) {
     if (!/\d/.test(event.target.value)) {
-      this.setState({search: event.target.value.substr(0, 10)});
+      this.setState({ search: event.target.value.substr(0, 10) });
     }
   }
 
   render() {
-    let filteredSources = this.props.sources.filter((source) => {
-      return source.name.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1;  
-    });
-    
-    let filteredList = filteredSources.map((source) => {
-      return <Source key={source.id} source={source} headlines={this.props.headlines} />;
-    });
+    const filteredSources = this.props.sources.filter(source =>
+    source.name.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1);
+
+    const filteredList = filteredSources.map(source =>
+    <Source key={source.id} source={source} headlines={this.props.headlines} />);
     return (
       <div>
-        <form class="navbar-form navbar-right"> 
+        <form class="navbar-form navbar-right">
           <div class="form-group">
-            <input type="text" class="form-control" value={this.state.search} onChange={this.updateSearch.bind(this) } placeholder="Search sources..." />
+            <input type="text" class="form-control" value={this.state.search}
+            onChange={this.updateSearch.bind(this) } placeholder="Search sources..." />
           </div>
         </form>
         <div class="searched-sources">
           <ul>
-            { this.state.search.length > 0 ? filteredList.slice(0, 5): [] } 
+            { this.state.search.length > 0 ? filteredList.slice(0, 5) : [] }
           </ul>
         </div>
       </div>

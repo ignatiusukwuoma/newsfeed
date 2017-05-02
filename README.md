@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/andela-iukwuoma/newsfeed.svg?branch=master)](https://travis-ci.org/andela-iukwuoma/newsfeed)
 [![Coverage Status](https://coveralls.io/repos/github/andela-iukwuoma/newsfeed/badge.svg?branch=ft-write-unit-tests-144580237)](https://coveralls.io/github/andela-iukwuoma/newsfeed?branch=ft-write-unit-tests-144580237)
 
 # Welcome
