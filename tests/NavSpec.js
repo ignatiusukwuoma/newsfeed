@@ -4,6 +4,7 @@ import chaiEnzyme from 'chai-enzyme';
 import { mount, render, shallow } from 'enzyme';
 import Nav from '../src/app/components/layouts/Nav';
 import SearchSources from '../src/app/components/SearchSources';
+import * as data from './testData';
 
 chai.use(chaiEnzyme());
 const expect = chai.expect;
@@ -14,7 +15,7 @@ describe('Nav component', () => {
   });
 });
 
-const wrapper = shallow(<Nav location={global.window.location}/>);
+const wrapper = shallow(<Nav {...data} location={global.window.location}/>);
 
 describe('The Nav component', () => {
   const child = wrapper.children();

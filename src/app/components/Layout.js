@@ -20,7 +20,7 @@ class Layout extends React.Component {
       sources: [],
       sortedNews: [],
       user: {
-        name: localStorage.getItem('name'),
+        name: window.localStorage.getItem('name'),
         email: localStorage.getItem('email'),
         uid: localStorage.getItem('uid'),
         photo: localStorage.getItem('photo'),

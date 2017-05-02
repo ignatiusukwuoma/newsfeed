@@ -46,10 +46,7 @@ export default class Nav extends React.Component {
               <li class="dropdown">
                 <a href="bootstrap-elements.html" data-target="#"
                 class="dropdown-toggle" data-toggle="dropdown">
-                <span>
-                {name}
-                <img class="user-image" src={photo} />
-                </span>
+                <span> {name} <img class="user-image" src={photo} /> </span>
                   <b class="caret"></b></a>
                 <ul class="dropdown-menu">
                   <li><Link to="login">Login</Link></li>

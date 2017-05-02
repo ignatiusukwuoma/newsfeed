@@ -52,4 +52,10 @@ export const name = 'Techcrunch',
       'top',
       'latest'
     ]
-  }];
+  }],
+  user = {
+    name: 'Ignatius',
+    email: 'ignatius.ukwuoma@andela.com',
+    uid: '8575894',
+    photo: 'http://andela.com',
+  };
