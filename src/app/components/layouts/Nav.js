@@ -16,6 +16,7 @@ export default class Nav extends React.Component {
   }
 
   render() {
+    const { name, photo, email } = this.props.user;
     const { location } = this.props;
     const { collapsed } = this.state;
     const homeClass = location.pathname === '/' ? 'active' : '';
@@ -44,11 +45,13 @@ export default class Nav extends React.Component {
               </li>
               <li class="dropdown">
                 <a href="bootstrap-elements.html" data-target="#"
-                class="dropdown-toggle" data-toggle="dropdown">User
+                class="dropdown-toggle" data-toggle="dropdown">
+                <span>
+                {name}
+                <img class="user-image" src={photo} />
+                </span>
                   <b class="caret"></b></a>
                 <ul class="dropdown-menu">
-                  <li><a href="/">Action</a></li>
-                  <li><a href="/">Another action</a></li>
                   <li><Link to="login">Login</Link></li>
                   <li class="divider"></li>
                   <li><Link onClick={this.props.signOut}>Logout</Link></li>

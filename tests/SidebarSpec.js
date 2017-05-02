@@ -59,5 +59,4 @@ describe('The component', () => {
   it('should have a second child with a class of `sourceGroup`', () => {
     expect(children.at(1)).to.have.className('sourceGroup');
   });
-
 });

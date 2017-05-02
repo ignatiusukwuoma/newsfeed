@@ -25,6 +25,7 @@ export default class Login extends React.Component {
         window.localStorage.setItem('uid', user.uid);
         window.localStorage.setItem('email', user.email);
         window.localStorage.setItem('name', user.displayName);
+        window.localStorage.setItem('photo', user.photoURL);
         return true;
 			}
 		}

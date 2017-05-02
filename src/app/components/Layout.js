@@ -19,43 +19,45 @@ class Layout extends React.Component {
       news: [],
       sources: [],
       sortedNews: [],
-      user: {},
+      user: {
+        name: localStorage.getItem('name'),
+        email: localStorage.getItem('email'),
+        uid: localStorage.getItem('uid'),
+        photo: localStorage.getItem('photo'),
+      },
     };
-  }
-
-  componentWillMount() {
-    firebase.auth().onAuthStateChanged((user) => {
-      if (user) {
-        console.log('User is signed in');
-        const displayName = user.displayName;
-        const email = user.email;
-        const photoURL = user.photoURL;
-        const uid = user.uid;
-        user.getToken().then((accessToken) => {
-          console.log('Layout User', user)
-        });
-      } else {
-        console.log('User is signed out');
-      }
-    }, (error) => {
-      console.log(error);
-    });
-  }
-
-  signOut() {
-    firebase.auth().signOut().then(function() {
-      localStorage.removeItem('user');
-      localStorage.removeItem('email');
-      localStorage.removeItem('username');
-			console.log('Signed Out');      
-			window.location = "/login";
-		}, function(error) {
-			console.error('Sign Out Error', error);
-		});
   }
 
   componentDidMount() {
     Newstore.on('change', this.getAll);
+    // firebase.auth().onAuthStateChanged((user) => {
+    //   if (user) {
+    //     console.log('User is signed in');
+    //     const displayName = user.displayName;
+    //     const email = user.email;
+    //     const photoURL = user.photoURL;
+    //     const uid = user.uid;
+    //     user.getToken().then((accessToken) => {
+    //     });
+    //   } else {
+    //     console.log('User is signed out');
+    //   }
+    // }, (error) => {
+    //   console.log(error);
+    // });
+  }
+
+  signOut() {
+    firebase.auth().signOut().then(() => {
+      localStorage.removeItem('uid');
+      localStorage.removeItem('email');
+      localStorage.removeItem('name');
+      localStorage.removeItem('photo');
+      console.log('Signed Out');
+      window.location = '/login';
+    }, (error) => {
+      console.error('Sign Out Error', error);
+    });
   }
 
   displayHeadlines(id, sort, name) {
@@ -77,7 +79,8 @@ class Layout extends React.Component {
     const { location } = this.props;
     return (
       <div>
-        <Nav sources={this.state.sources} headlines={this.displayHeadlines.bind(this)} location={location} signOut={this.signOut}/>
+        <Nav sources={this.state.sources} user={this.state.user}
+        headlines={this.displayHeadlines.bind(this)} location={location} signOut={this.signOut}/>
         <div class="container-fluid">
           <Home {...this.state} headlines={this.displayHeadlines.bind(this)}/>
         </div>

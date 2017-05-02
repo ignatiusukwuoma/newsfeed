@@ -4,6 +4,7 @@
   "description": "An application that allows users to view all headlines from different news sources and link to the original news on those sources.",
   "main": "src/app/app.js",
   "scripts": {
+    "coverage": "./node_modules/.bin/nyc report --reporter=text-lcov | ./node_modules/.bin/coveralls",
     "dev": "webpack-dev-server --content-base src  --output-public-path=/public/ --history-api-fallback",
     "test": "mocha tests/.setup.js tests/**/*[sS]pec.js"
   },
