@@ -5,9 +5,10 @@
   "main": "src/app/app.js",
   "scripts": {
     "coveralls": "cat ./coverage/lcov.info | ./node_modules/.bin/coveralls",
-    "coverage": "nyc report --reporter=text-lcov | ./node_modules/.bin/coveralls",
+    "coverage": "./node_modules/.bin/nyc report --reporter=text-lcov | ./node_modules/.bin/coveralls",
     "dev": "webpack-dev-server --content-base src  --output-public-path=/public/ --history-api-fallback",
-    "test": "mocha --require ignore-styles tests/.setup.js tests/**/*[sS]pec.js"
+    "test": "mocha --require ignore-styles tests/.setup.js tests/**/*[sS]pec.js",
+    "test:nyc": "./node_modules/.bin/nyc --reporter=html --reporter=text mocha tests/.setup.js tests/*[sS]pec.js"
   },
   "repository": {
     "type": "git",
@@ -54,6 +55,7 @@
     "chai": "^3.5.0",
     "chai-enzyme": "^0.6.1",
     "cheerio": "^0.22.0",
+    "cover": "^0.2.9",
     "coveralls": "^2.13.1",
     "css-loader": "^0.28.0",
     "enzyme": "^2.8.2",

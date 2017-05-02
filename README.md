@@ -1,3 +1,5 @@
+[![Coverage Status](https://coveralls.io/repos/github/andela-iukwuoma/newsfeed/badge.svg?branch=ft-write-unit-tests-144580237)](https://coveralls.io/github/andela-iukwuoma/newsfeed?branch=ft-write-unit-tests-144580237)
+
 # Welcome
 
 Welcome to Hot News! Get the most popular and latest news headlines from 70 of the highest rated news sites in the world. HotNews provides you with a simple interface to view the headlines and be redirected to the full article in one click. News sources are arranged in categories and you can search for your favourites in the search box.
