@@ -5,7 +5,7 @@ import MainScreen from './layouts/MainScreen';
 import * as NewsActions from '../actions/NewsActions';
 
 class Home extends React.Component {
-  
+
   render() {
     return (
       <div class="row">
