@@ -74,7 +74,8 @@ class Newstore extends EventEmitter {
   handleActions(action) {
     switch (action.type) {
       case 'DISPLAY_NEWS':
-        this.displayNews(action.news.article, action.news.sortBy, action.news.id, action.news.sortArr, action.news.name);
+        this.displayNews(action.news.article, action.news.sortBy,
+        action.news.id, action.news.sortArr, action.news.name);
         break;
       case 'DISPLAY_WITH_SORT':
         this.getWithSort(action.news);
