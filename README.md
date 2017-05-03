@@ -9,6 +9,7 @@ Welcome to Hot News! Get the most popular and latest news headlines from 70 of t
 
   1. [Tech stack](#tech-stack)
   1. [Installation and setup](#installation-and-setup).
+  1. [FAQ](#faq)
 
 ## Tech stack
 
@@ -65,7 +66,23 @@ into that directory/folder and rename the file `firebaseAdminServiceAccount.json
 terminal/command prompt, enter the following command:
 
 ```bash
-npm run dev
+npm start
 ```
 
-- **Open a web browser of your choice and visit `http://localhost:8080`. 
+- **Open a web browser of your choice and visit `http://localhost:7000`. 
+
+## FAQ
+
+- **What if I want to use another port?**
+
+That's easy. In the root of the project. create a file named `.env` and add the following line to it:
+
+```bash
+PORT=<your_desired_port>
+```
+
+where <your\_desired\_port> is the port you want to use. So, if you want to use port `9000`, you will write:
+
+```bash
+PORT=9000
+```

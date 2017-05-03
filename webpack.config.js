@@ -1,5 +1,10 @@
 const webpack = require('webpack');
 const path = require('path');
+const DotEnvPlugin = require('dotenv-webpack');
+
+const dotenvPlugin = new DotEnvPlugin({
+  path: '.env'
+});
 
 const BUILD_DIR = path.resolve(__dirname, 'src/public');
 const APP_DIR = path.resolve(__dirname, 'src/app');
@@ -26,5 +31,11 @@ const config = {
       },
     ],
   },
+  plugins: [
+    dotenvPlugin
+  ],
+  node: {
+    fs: 'empty'
+  }
 };
 module.exports = config;

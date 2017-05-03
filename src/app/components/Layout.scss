@@ -11,7 +11,7 @@ a, a:hover, a:active, a:visited, a:focus {
 }
 
 .mainscreen-main {
-  max-height: 100vh;
+  max-height: calc(100vh - 61px);
   overflow-y: scroll;
   h2 {
     color: $primary-color;
@@ -31,7 +31,7 @@ a, a:hover, a:active, a:visited, a:focus {
 
 .sidebar-main {
   background-color: #DDD;
-  max-height: 100vh;
+  max-height: calc(100vh - 61px);
   overflow-y: scroll;
   top: 0;
   bottom: 0;
@@ -44,7 +44,7 @@ a, a:hover, a:active, a:visited, a:focus {
 
 .sources {
   list-style-type: none;
-  margin-left: -35px;
+  margin-left: -25px;
   .sourcesLink {
     color: $primary-color;
     cursor: pointer;
@@ -80,6 +80,9 @@ a, a:hover, a:active, a:visited, a:focus {
   .dropdown-toggle {
     margin: -6px;
   }
+  .nav-form-div {
+    float: right;
+  }
 }
 
 
@@ -110,13 +113,31 @@ article.article:hover {
 .searched-sources {
     position: absolute;
     top: 100%;
-    left: 61%;
     z-index: 9999999;
   .sources {
     display: block;
     padding: 2px 20px 2px 20px;
     background-color: #DDD;
-    width: 200px;
+    width: 166px;
+  }
+}
+
+.login-page {
+  background: $secondary-color;
+  color: white;
+  height: 100vh;
+  .brand {
+    font-family: 'Averia Sans Libre', cursive;
+  }
+  .content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    .headline {
+      font-family: 'Raleway,Helvetica Neue,Helvetica,Arial', sans-serif;
+      line-height: 1.5em;
+    }
   }
 }
 

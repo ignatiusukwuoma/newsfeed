@@ -1,5 +1,8 @@
 import Request from 'superagent';
+import dotenv from 'dotenv';
 import dispatcher from '../dispatcher';
+
+dotenv.config();
 
 export const displayNews = (id, sortArr, name) => {
   const url = `https://newsapi.org/v1/articles?apiKey=${process.env.NEWS_API_KEY}`;

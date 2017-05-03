@@ -20,7 +20,6 @@ export default class Nav extends React.Component {
     const { location } = this.props;
     const { collapsed } = this.state;
     const homeClass = location.pathname === '/' ? 'active' : '';
-    const articleClass = location.pathname.match(/^\/news/) ? 'active' : '';
     const navClass = collapsed ? 'collapse' : '';
 
     return (
@@ -33,15 +32,12 @@ export default class Nav extends React.Component {
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/">HotNews</a>
+            <a class="navbar-brand" href="/">HottestNews</a>
           </div>
           <div class={`navbar-collapse navbar-inverse-collapse ${navClass}`}>
             <ul class="nav navbar-nav navbar-right">
               <li class={homeClass}>
                 <IndexLink to="/" onClick={this.toggleCollapse.bind(this)}>Home</IndexLink>
-              </li>
-              <li class={articleClass}>
-                <Link to="news" onClick={this.toggleCollapse.bind(this)}>Article</Link>
               </li>
               <li class="dropdown">
                 <a href="bootstrap-elements.html" data-target="#"
@@ -49,8 +45,6 @@ export default class Nav extends React.Component {
                 <span> {name} <img class="user-image" src={photo} /> </span>
                   <b class="caret"></b></a>
                 <ul class="dropdown-menu">
-                  <li><Link to="login">Login</Link></li>
-                  <li class="divider"></li>
                   <li><Link onClick={this.props.signOut}>Logout</Link></li>
                 </ul>
               </li>

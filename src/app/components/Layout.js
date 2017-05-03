@@ -31,21 +31,6 @@ class Layout extends React.Component {
 
   componentDidMount() {
     Newstore.on('change', this.getAll);
-    // firebase.auth().onAuthStateChanged((user) => {
-    //   if (user) {
-    //     console.log('User is signed in');
-    //     const displayName = user.displayName;
-    //     const email = user.email;
-    //     const photoURL = user.photoURL;
-    //     const uid = user.uid;
-    //     user.getToken().then((accessToken) => {
-    //     });
-    //   } else {
-    //     console.log('User is signed out');
-    //   }
-    // }, (error) => {
-    //   console.log(error);
-    // });
   }
 
   signOut() {
@@ -54,7 +39,6 @@ class Layout extends React.Component {
       localStorage.removeItem('email');
       localStorage.removeItem('name');
       localStorage.removeItem('photo');
-      console.log('Signed Out');
       window.location = '/login';
     }, (error) => {
       console.error('Sign Out Error', error);
