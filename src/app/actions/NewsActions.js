@@ -2,7 +2,7 @@ import Request from 'superagent';
 import dispatcher from '../dispatcher';
 
 export const displayNews = (id, sortArr, name) => {
-  const url = 'https://newsapi.org/v1/articles?apiKey=213327409d384371851777e7c7f78dfe';
+  const url = `https://newsapi.org/v1/articles?apiKey=${process.env.NEWS_API_KEY}`;
   Request.get(url)
     .query({ source: id })
     .query({ sortBy: sortArr })
@@ -24,7 +24,7 @@ export const displayNews = (id, sortArr, name) => {
 };
 
 export const getWithSort = (id, sort) => {
-  const url = 'https://newsapi.org/v1/articles?apiKey=213327409d384371851777e7c7f78dfe';
+  const url = `https://newsapi.org/v1/articles?apiKey=${process.env.NEWS_API_KEY}`;
   Request.get(url)
     .query({ source: id })
     .query({ sortBy: sort })
