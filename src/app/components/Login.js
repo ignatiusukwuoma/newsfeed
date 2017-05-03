@@ -15,7 +15,6 @@ export default class Login extends React.Component {
       tosUrl: 'https://www.google.com',
       callbacks: {
         signInSuccess: (user, credential, redirectUrl) => {
-          console.log('User just signed in');
           window.localStorage.setItem('uid', user.uid);
           window.localStorage.setItem('email', user.email);
           window.localStorage.setItem('name', user.displayName);
@@ -32,9 +31,13 @@ export default class Login extends React.Component {
 
   render() {
     return (
-      <div>
-        <h1 class="text-center">Sign In With Google</h1>
-        <div id="firebaseui-container"></div>
+      <div class="container-fluid login-page">
+        <h1 class="brand">HOTTEST NEWS</h1>
+        <div class="content">
+          <h2 class="text-center headline">Get Live Headlines From The
+            Most Popular News Sources Around the World</h2>
+          <div id="firebaseui-container"></div>
+        </div>
       </div>
     );
   }

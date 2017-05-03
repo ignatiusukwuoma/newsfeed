@@ -20,7 +20,7 @@ export default class SearchSources extends React.Component {
     const filteredList = filteredSources.map(source =>
     <Source key={source.id} source={source} headlines={this.props.headlines} />);
     return (
-      <div>
+      <div class="nav-form-div">
         <form class="navbar-form navbar-right">
           <div class="form-group">
             <input type="text" class="form-control" value={this.state.search}
