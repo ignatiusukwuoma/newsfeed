@@ -4,11 +4,10 @@ import dispatcher from '../dispatcher';
 
 dotenv.config();
 
-export const displayNews = (id, sortArr, name) => {
+export const displayNews = (id, sortParams, name) => {
   const url = `https://newsapi.org/v1/articles?apiKey=${process.env.NEWS_API_KEY}`;
   Request.get(url)
-    .query({ source: id })
-    .query({ sortBy: sortArr })
+    .query({ source: id, sortBy: 'top' })
     .end((err, response) => {
       if (err) {
         console.log('Error', err);
@@ -19,7 +18,7 @@ export const displayNews = (id, sortArr, name) => {
           article: response.body.articles,
           sortBy: response.body.sortBy,
           id: response.body.source,
-          sortArr,
+          sortParams,
           name,
         }
       });
@@ -29,8 +28,7 @@ export const displayNews = (id, sortArr, name) => {
 export const getWithSort = (id, sort) => {
   const url = `https://newsapi.org/v1/articles?apiKey=${process.env.NEWS_API_KEY}`;
   Request.get(url)
-    .query({ source: id })
-    .query({ sortBy: sort })
+    .query({ source: id, sortBy: sort })
     .end((err, response) => {
       if (err) {
         console.log('Error', err);

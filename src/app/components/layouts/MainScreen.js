@@ -23,8 +23,8 @@ export default class MainScreen extends React.Component {
   }
 
   render() {
-    const { news, sortBy, id, name, sortArr, sortedNews } = this.props;
-    const sortComponent = sortArr.map((sort, i) => (<Sort sort={sort} key={i} />));
+    const { news, sortBy, id, name, sortParams, sortedNews } = this.props;
+    const sortComponent = sortParams.map((sort, i) => (<Sort sort={sort} key={i} />));
     const articleComponent = news.map((article, i) => (<Article key={i} article={article} />));
     const sortedNewsComponent = sortedNews.map((article, i) =>
     (<Article key={i} article={article} />));

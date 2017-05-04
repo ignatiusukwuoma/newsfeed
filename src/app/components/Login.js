@@ -15,10 +15,14 @@ export default class Login extends React.Component {
       tosUrl: 'https://www.google.com',
       callbacks: {
         signInSuccess: (user, credential, redirectUrl) => {
-          window.localStorage.setItem('uid', user.uid);
-          window.localStorage.setItem('email', user.email);
-          window.localStorage.setItem('name', user.displayName);
-          window.localStorage.setItem('photo', user.photoURL);
+          const userDetails = JSON.stringify(
+            {
+              uid: user.uid,
+              name: user.displayName,
+              photo: user.photoURL,
+            }
+          );
+          localStorage.setItem('hottestnews', userDetails);
           return true;
         }
       }

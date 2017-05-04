@@ -3743,9 +3743,9 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 _dotenv2.default.config();
 
-var displayNews = exports.displayNews = function displayNews(id, sortArr, name) {
+var displayNews = exports.displayNews = function displayNews(id, sortParams, name) {
   var url = 'https://newsapi.org/v1/articles?apiKey=' + "213327409d384371851777e7c7f78dfe";
-  _superagent2.default.get(url).query({ source: id }).query({ sortBy: sortArr }).end(function (err, response) {
+  _superagent2.default.get(url).query({ source: id, sortBy: 'top' }).end(function (err, response) {
     if (err) {
       console.log('Error', err);
     }
@@ -3755,7 +3755,7 @@ var displayNews = exports.displayNews = function displayNews(id, sortArr, name) 
         article: response.body.articles,
         sortBy: response.body.sortBy,
         id: response.body.source,
-        sortArr: sortArr,
+        sortParams: sortParams,
         name: name
       }
     });
@@ -3764,7 +3764,7 @@ var displayNews = exports.displayNews = function displayNews(id, sortArr, name) 
 
 var getWithSort = exports.getWithSort = function getWithSort(id, sort) {
   var url = 'https://newsapi.org/v1/articles?apiKey=' + "213327409d384371851777e7c7f78dfe";
-  _superagent2.default.get(url).query({ source: id }).query({ sortBy: sort }).end(function (err, response) {
+  _superagent2.default.get(url).query({ source: id, sortBy: sort }).end(function (err, response) {
     if (err) {
       console.log('Error', err);
     }
@@ -8755,7 +8755,7 @@ var Newstore = function (_EventEmitter) {
 
     var _this = _possibleConstructorReturn(this, (Newstore.__proto__ || Object.getPrototypeOf(Newstore)).call(this));
 
-    _this.news = { news: [], sortBy: '', id: '', sortArr: [], name: '' };
+    _this.news = { news: [], sortBy: '', id: '', sortParams: [], name: '' };
     _this.sourceNames = [];
     _this.sortedNews = [];
     return _this;
@@ -8779,7 +8779,7 @@ var Newstore = function (_EventEmitter) {
     }
   }, {
     key: 'displayNews',
-    value: function displayNews(articlesArr, sortBy, id, sortArr, name) {
+    value: function displayNews(articlesArr, sortBy, id, sortParams, name) {
       var _this3 = this;
 
       this.news.news = [];
@@ -8796,7 +8796,7 @@ var Newstore = function (_EventEmitter) {
       });
       this.news.sortBy = sortBy;
       this.news.id = id;
-      this.news.sortArr = sortArr;
+      this.news.sortParams = sortParams;
       this.news.name = name;
       this.emit('change');
     }
@@ -8840,7 +8840,7 @@ var Newstore = function (_EventEmitter) {
     value: function handleActions(action) {
       switch (action.type) {
         case 'DISPLAY_NEWS':
-          this.displayNews(action.news.article, action.news.sortBy, action.news.id, action.news.sortArr, action.news.name);
+          this.displayNews(action.news.article, action.news.sortBy, action.news.id, action.news.sortParams, action.news.name);
           break;
         case 'DISPLAY_WITH_SORT':
           this.getWithSort(action.news);
@@ -13264,19 +13264,17 @@ var Layout = function (_React$Component) {
 
     _this.getAll = _this.getAll.bind(_this);
     _this.signOut = _this.signOut.bind(_this);
+    var userProfile = JSON.parse(localStorage.getItem('hottestnews'));
     _this.state = {
       name: '',
-      sortArr: [],
+      sortParams: [],
       id: '',
       sortBy: '',
       news: [],
       sources: [],
       sortedNews: [],
       user: {
-        name: window.localStorage.getItem('name'),
-        email: localStorage.getItem('email'),
-        uid: localStorage.getItem('uid'),
-        photo: localStorage.getItem('photo')
+        hottestnews: userProfile
       }
     };
     return _this;
@@ -13291,10 +13289,7 @@ var Layout = function (_React$Component) {
     key: 'signOut',
     value: function signOut() {
       _firebaseConfig2.default.auth().signOut().then(function () {
-        localStorage.removeItem('uid');
-        localStorage.removeItem('email');
-        localStorage.removeItem('name');
-        localStorage.removeItem('photo');
+        localStorage.removeItem('hottestnews');
         window.location = '/login';
       }, function (error) {
         console.error('Sign Out Error', error);
@@ -13302,8 +13297,8 @@ var Layout = function (_React$Component) {
     }
   }, {
     key: 'displayHeadlines',
-    value: function displayHeadlines(id, sortArr, name) {
-      NewsActions.displayNews(id, sortArr, name);
+    value: function displayHeadlines(id, sortParams, name) {
+      NewsActions.displayNews(id, sortParams, name);
     }
   }, {
     key: 'getAll',
@@ -13313,7 +13308,7 @@ var Layout = function (_React$Component) {
         sortBy: _Newstore2.default.getNews().sortBy,
         sortedNews: _Newstore2.default.getSortedNews(),
         id: _Newstore2.default.getNews().id,
-        sortArr: _Newstore2.default.getNews().sortArr,
+        sortParams: _Newstore2.default.getNews().sortParams,
         name: _Newstore2.default.getNews().name,
         sources: _Newstore2.default.getSources()
       });
@@ -13326,7 +13321,7 @@ var Layout = function (_React$Component) {
       return _react2.default.createElement(
         'div',
         null,
-        _react2.default.createElement(_Nav2.default, { sources: this.state.sources, user: this.state.user,
+        _react2.default.createElement(_Nav2.default, { sources: this.state.sources, user: this.state.user.hottestnews,
           headlines: this.displayHeadlines.bind(this), location: location, signOut: this.signOut }),
         _react2.default.createElement(
           'div',
@@ -13398,10 +13393,12 @@ var Login = function (_React$Component) {
         tosUrl: 'https://www.google.com',
         callbacks: {
           signInSuccess: function signInSuccess(user, credential, redirectUrl) {
-            window.localStorage.setItem('uid', user.uid);
-            window.localStorage.setItem('email', user.email);
-            window.localStorage.setItem('name', user.displayName);
-            window.localStorage.setItem('photo', user.photoURL);
+            var userDetails = JSON.stringify({
+              uid: user.uid,
+              name: user.displayName,
+              photo: user.photoURL
+            });
+            localStorage.setItem('hottestnews', userDetails);
             return true;
           }
         }
@@ -13719,10 +13716,10 @@ var MainScreen = function (_React$Component) {
           sortBy = _props.sortBy,
           id = _props.id,
           name = _props.name,
-          sortArr = _props.sortArr,
+          sortParams = _props.sortParams,
           sortedNews = _props.sortedNews;
 
-      var sortComponent = sortArr.map(function (sort, i) {
+      var sortComponent = sortParams.map(function (sort, i) {
         return _react2.default.createElement(_Sort2.default, { sort: sort, key: i });
       });
       var articleComponent = news.map(function (article, i) {
@@ -13857,7 +13854,7 @@ var Nav = function (_React$Component) {
             _react2.default.createElement(
               'a',
               { className: 'navbar-brand', href: '/' },
-              'HottestNews'
+              'Hottest News'
             )
           ),
           _react2.default.createElement(
@@ -16975,7 +16972,7 @@ exports = module.exports = __webpack_require__(140)(undefined);
 
 
 // module
-exports.push([module.i, "html, body {\n  height: 100%; }\n\na, a:hover, a:active, a:visited, a:focus {\n  text-decoration: none; }\n\n.mainscreen-main {\n  max-height: calc(100vh - 61px);\n  overflow-y: scroll; }\n  .mainscreen-main h2 {\n    color: #0b1e5e;\n    font-weight: 500; }\n  .mainscreen-main .main-headers {\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n    margin: 0 15px;\n    text-transform: uppercase; }\n  .mainscreen-main select {\n    font-size: 1.5em; }\n\n.sidebar-main {\n  background-color: #DDD;\n  max-height: calc(100vh - 61px);\n  overflow-y: scroll;\n  top: 0;\n  bottom: 0;\n  border-right: 1px solid silver; }\n  .sidebar-main h4 {\n    text-transform: uppercase;\n    margin-top: 28px; }\n\n.sources {\n  list-style-type: none;\n  margin-left: -25px; }\n  .sources .sourcesLink {\n    color: #0b1e5e;\n    cursor: pointer;\n    font-weight: bold; }\n  .sources .sourcesLink:hover, .sources .sourcesLink:focus {\n    color: #4583c2;\n    margin-left: 2px; }\n\n.sourceGroup {\n  text-transform: uppercase;\n  font-weight: bold;\n  margin-top: 20px;\n  margin-bottom: 5px; }\n\n.navbar {\n  margin-bottom: 0; }\n  .navbar .navbar-form {\n    margin-right: 5px; }\n  .navbar .nav.navbar-right {\n    margin-bottom: -2px; }\n  .navbar .user-image {\n    height: 35px;\n    width: 35px;\n    border-radius: 50%;\n    margin: 0 7px; }\n  .navbar .dropdown-toggle {\n    margin: -6px; }\n  .navbar .nav-form-div {\n    float: right; }\n\narticle.article {\n  margin-top: 20px;\n  padding: 10px;\n  height: 450px; }\n  article.article h4 {\n    font-weight: 500;\n    color: #0b1e5e;\n    text-transform: uppercase; }\n  article.article p {\n    color: black; }\n\narticle.article:hover {\n  background-color: #0b1e5e; }\n  article.article:hover h4 {\n    color: white; }\n  article.article:hover p {\n    color: white; }\n\n.searched-sources {\n  position: absolute;\n  top: 100%;\n  z-index: 9999999; }\n  .searched-sources .sources {\n    display: block;\n    padding: 2px 20px 2px 20px;\n    background-color: #DDD;\n    width: 166px; }\n\n.login-page {\n  background: #4583c2;\n  color: white;\n  height: 100vh; }\n  .login-page .brand {\n    font-family: 'Averia Sans Libre', cursive; }\n  .login-page .content {\n    position: absolute;\n    top: 50%;\n    left: 50%;\n    transform: translate(-50%, -50%); }\n    .login-page .content .headline {\n      font-family: 'Raleway,Helvetica Neue,Helvetica,Arial', sans-serif;\n      line-height: 1.5em; }\n", ""]);
+exports.push([module.i, "html, body {\n  height: 100%; }\n\na, a:hover, a:active, a:visited, a:focus {\n  text-decoration: none; }\n\n.mainscreen-main {\n  max-height: calc(100vh - 61px);\n  overflow-y: scroll; }\n  .mainscreen-main h2 {\n    color: #0b1e5e;\n    font-weight: 500; }\n  .mainscreen-main .main-headers {\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n    margin: 0 15px;\n    text-transform: uppercase; }\n  .mainscreen-main select {\n    font-size: 1.5em; }\n\n.sidebar-main {\n  background-color: #DDD;\n  max-height: calc(100vh - 61px);\n  overflow-y: scroll;\n  top: 0;\n  bottom: 0;\n  border-right: 1px solid silver; }\n  .sidebar-main h4 {\n    text-transform: uppercase;\n    margin-top: 28px; }\n\n.sources {\n  list-style-type: none;\n  margin-left: -25px; }\n  .sources .sourcesLink {\n    color: #0b1e5e;\n    cursor: pointer;\n    font-weight: bold; }\n  .sources .sourcesLink:hover, .sources .sourcesLink:focus {\n    color: #4583c2;\n    margin-left: 2px; }\n\n.sourceGroup {\n  text-transform: uppercase;\n  font-weight: bold;\n  margin-top: 20px;\n  margin-bottom: 5px; }\n\n.navbar {\n  margin-bottom: 0; }\n  .navbar .navbar-form {\n    margin-right: 5px; }\n  .navbar .nav.navbar-right {\n    margin-bottom: -2px; }\n  .navbar .user-image {\n    height: 35px;\n    width: 35px;\n    border-radius: 50%;\n    margin: 0 7px; }\n  .navbar .dropdown-toggle {\n    margin: -6px; }\n  .navbar .nav-form-div {\n    float: right; }\n\narticle.article {\n  margin-top: 20px;\n  padding: 10px;\n  height: 450px; }\n  article.article h4 {\n    font-weight: 500;\n    color: #0b1e5e;\n    text-transform: uppercase; }\n  article.article p {\n    color: black; }\n\narticle.article:hover {\n  background-color: #0b1e5e; }\n  article.article:hover h4 {\n    color: white; }\n  article.article:hover p {\n    color: white; }\n\n.searched-sources {\n  position: absolute;\n  top: 100%;\n  z-index: 9999999; }\n  .searched-sources .sources {\n    display: block;\n    padding: 2px 20px 2px 20px;\n    background-color: #DDD;\n    width: 166px; }\n\n.login-page {\n  background: #4583c2;\n  color: white;\n  height: 100vh; }\n  .login-page .brand {\n    font-family: 'Averia Sans Libre', cursive; }\n  .login-page .content {\n    margin: 15% auto;\n    width: 70%; }\n    .login-page .content .headline {\n      font-family: 'Raleway,Helvetica Neue,Helvetica,Arial', sans-serif;\n      line-height: 1.5em; }\n", ""]);
 
 // exports
 

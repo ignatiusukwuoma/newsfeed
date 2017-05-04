@@ -32,7 +32,7 @@ export default class Nav extends React.Component {
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/">HottestNews</a>
+            <a class="navbar-brand" href="/">Hottest News</a>
           </div>
           <div class={`navbar-collapse navbar-inverse-collapse ${navClass}`}>
             <ul class="nav navbar-nav navbar-right">

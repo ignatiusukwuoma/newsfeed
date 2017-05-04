@@ -35,7 +35,7 @@ describe('When rendered, Nav component', () => {
   });
 
   it('should have the name and logo of the application in the right place', () => {
-    expect(wrapper.find('.navbar-brand')).to.have.html('<a class="navbar-brand" href="/">HottestNews</a>');
+    expect(wrapper.find('.navbar-brand')).to.have.html('<a class="navbar-brand" href="/">Hottest News</a>');
   });
 
   it('should have a state with key `collapsed` and value `true`', () => {

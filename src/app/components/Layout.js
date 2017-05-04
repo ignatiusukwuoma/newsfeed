@@ -12,19 +12,17 @@ class Layout extends React.Component {
     super(props);
     this.getAll = this.getAll.bind(this);
     this.signOut = this.signOut.bind(this);
+    const userProfile = JSON.parse(localStorage.getItem('hottestnews'));
     this.state = {
       name: '',
-      sortArr: [],
+      sortParams: [],
       id: '',
       sortBy: '',
       news: [],
       sources: [],
       sortedNews: [],
       user: {
-        name: window.localStorage.getItem('name'),
-        email: localStorage.getItem('email'),
-        uid: localStorage.getItem('uid'),
-        photo: localStorage.getItem('photo'),
+        hottestnews: userProfile,
       },
     };
   }
@@ -35,18 +33,15 @@ class Layout extends React.Component {
 
   signOut() {
     firebase.auth().signOut().then(() => {
-      localStorage.removeItem('uid');
-      localStorage.removeItem('email');
-      localStorage.removeItem('name');
-      localStorage.removeItem('photo');
+      localStorage.removeItem('hottestnews');
       window.location = '/login';
     }, (error) => {
       console.error('Sign Out Error', error);
     });
   }
 
-  displayHeadlines(id, sortArr, name) {
-    NewsActions.displayNews(id, sortArr, name);
+  displayHeadlines(id, sortParams, name) {
+    NewsActions.displayNews(id, sortParams, name);
   }
 
   getAll() {
@@ -55,7 +50,7 @@ class Layout extends React.Component {
       sortBy: Newstore.getNews().sortBy,
       sortedNews: Newstore.getSortedNews(),
       id: Newstore.getNews().id,
-      sortArr: Newstore.getNews().sortArr,
+      sortParams: Newstore.getNews().sortParams,
       name: Newstore.getNews().name,
       sources: Newstore.getSources(),
     });
@@ -65,7 +60,7 @@ class Layout extends React.Component {
     const { location } = this.props;
     return (
       <div>
-        <Nav sources={this.state.sources} user={this.state.user}
+        <Nav sources={this.state.sources} user={this.state.user.hottestnews}
         headlines={this.displayHeadlines.bind(this)} location={location} signOut={this.signOut}/>
         <div class="container-fluid">
           <Home {...this.state} headlines={this.displayHeadlines.bind(this)}/>
