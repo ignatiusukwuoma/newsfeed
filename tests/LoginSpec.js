@@ -27,15 +27,19 @@ describe('After rendering, the login component', () => {
   it('should contain the text `Hottest News` in the h1 tag', () => {
     expect(wrapper.find('h1')).to.contain.text('HOTTEST NEWS');
   });
+
+  it('should contain the firebase UI container', () => {
+    expect(wrapper.find('#firebaseui-container')).be.present();
+  });
 });
 
-describe('The component', () => {
+describe('The child element', () => {
   const children = wrapper.children();
-  it('should have two direct children of the top most div', () => {
+  it('should have two direct children', () => {
     expect(children).to.have.length(2);
   });
 
-  it('should have a first child with an class of `brand`', () => {
+  it('should have a first child with an class name of `brand`', () => {
     expect(children.at(0)).to.have.className('brand');
   });
 

@@ -89,7 +89,11 @@ a, a:hover, a:active, a:visited, a:focus {
 article.article {
   margin-top: 20px;
   padding: 10px;
-  height: 450px;
+  min-height: 400px;
+  .article-image {
+    max-height: 200px;
+    width: 100%;
+  }
   h4 {
     font-weight: 500;
     color: $primary-color;
@@ -130,10 +134,8 @@ article.article:hover {
     font-family: 'Averia Sans Libre', cursive;
   }
   .content {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    margin: 15% auto;
+    width: 70%;
     .headline {
       font-family: 'Raleway,Helvetica Neue,Helvetica,Arial', sans-serif;
       line-height: 1.5em;
