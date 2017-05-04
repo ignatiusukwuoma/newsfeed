@@ -3,6 +3,7 @@ import chai from 'chai';
 import chaiEnzyme from 'chai-enzyme';
 import { shallow } from 'enzyme';
 import Article from '../src/app/components/Article';
+import * as data from './testData';
 
 chai.use(chaiEnzyme());
 const expect = chai.expect;
@@ -13,15 +14,7 @@ describe('The Article component', () => {
   });
 });
 
-const article = {
-  title: 'Reasons to be cheerful',
-  description: 'There are many reasons to be cheerful. Number one, you are alive...',
-  url: 'https://foo.hotnews.com',
-  urlImage: 'https://bar.hotnews.com/image.png',
-  author: 'The Reporter',
-  date: '2017-05-21T14:40:57Z',
-};
-const wrapper = shallow(<Article article={article}/>);
+const wrapper = shallow(<Article article={data.news}/>);
 
 describe('The Article component', () => {
   it('should have the class name `article` in the article tag', () => {

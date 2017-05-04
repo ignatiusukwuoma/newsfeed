@@ -15,7 +15,8 @@ export default class MainScreen extends React.Component {
   }
 
   getWithSort(event) {
-    if (event.target.value === 'top' || event.target.value === 'latest' || event.target.value === 'popular') {
+    if (event.target.value === 'top' || event.target.value === 'latest'
+    || event.target.value === 'popular') {
       NewsActions.getWithSort(this.props.id, event.target.value);
       this.setState({ sortNow: event.target.value });
     }

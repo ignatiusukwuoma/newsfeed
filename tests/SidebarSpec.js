@@ -45,14 +45,14 @@ describe('After rendering, the sidebar component', () => {
 
 
 describe('The Source component, child of Sidebar,', () => {
-  it('should receives props named `source` from Sidebar', () => {
-    expect(wrapper.find(Source).first()).to.have.prop('source');
+  it('should receives the props `source` and `headlines` from Sidebar', () => {
+    expect(wrapper.find(Source).first()).to.have.props(['source', 'headlines']);
   });
 });
 
-describe('The component', () => {
+describe('Sidebar component\'s main child element', () => {
   const children = wrapper.children();
-  it('should have nineteen direct children of the top most div', () => {
+  it('should have nineteen children', () => {
     expect(children).to.have.length(19);
   });
 
