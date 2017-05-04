@@ -1,7 +1,7 @@
 import React from 'react';
 import chai from 'chai';
 import chaiEnzyme from 'chai-enzyme';
-import { mount, render, shallow } from 'enzyme';
+import { shallow } from 'enzyme';
 import Article from '../src/app/components/Article';
 
 chai.use(chaiEnzyme());

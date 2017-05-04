@@ -1,7 +1,7 @@
 import React from 'react';
 import chai from 'chai';
 import chaiEnzyme from 'chai-enzyme';
-import { mount, render, shallow } from 'enzyme';
+import { shallow } from 'enzyme';
 import MainScreen from '../src/app/components/layouts/MainScreen';
 import Article from '../src/app/components/Article';
 import Sort from '../src/app/components/Sort';
@@ -61,7 +61,7 @@ describe('The Article component, child of MainScreen,', () => {
 
 describe('The component', () => {
   const children = wrapper.children();
-  it('should have three direct children of the top most div', () => {
+  it('should have two direct children of the top most div', () => {
     expect(children).to.have.length(2);
   });
 

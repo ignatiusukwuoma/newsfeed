@@ -2,9 +2,6 @@ require('babel-register')();
 
 const jsdom = require('jsdom').jsdom;
 
-// import JSDom from 'jsdom';
-// const jsdom = JSDom.jsdom;
-
 const exposedProperties = ['document', 'window', 'navigator'];
 global.document = jsdom('');
 global.window = document.defaultView;
