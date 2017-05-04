@@ -15,8 +15,7 @@ export default class MainScreen extends React.Component {
   }
 
   getWithSort(event) {
-    if (event.target.value === 'top' || event.target.value === 'latest'
-    || event.target.value === 'popular') {
+    if (event.target.value !== 'sortby') {
       NewsActions.getWithSort(this.props.id, event.target.value);
       this.setState({ sortNow: event.target.value });
     }
@@ -25,8 +24,8 @@ export default class MainScreen extends React.Component {
   render() {
     const { news, sortBy, id, name, sortParams, sortedNews } = this.props;
     const sortComponent = sortParams.map((sort, i) => (<Sort sort={sort} key={i} />));
-    const articleComponent = news.map((article, i) => (<Article key={i} article={article} />));
-    const sortedNewsComponent = sortedNews.map((article, i) =>
+    const displayedNews = news.length > 1 ? news : sortedNews;
+    const articleComponent = displayedNews.map((article, i) =>
     (<Article key={i} article={article} />));
 
     return (
@@ -40,7 +39,6 @@ export default class MainScreen extends React.Component {
         </div>
         <div class="row">
           {articleComponent}
-          {sortedNewsComponent}
         </div>
       </div>
     );

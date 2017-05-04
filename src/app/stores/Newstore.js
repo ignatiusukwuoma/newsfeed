@@ -22,10 +22,10 @@ class Newstore extends EventEmitter {
     this.emit('change');
   }
 
-  displayNews(articlesArr, sortBy, id, sortParams, name) {
+  displayNews(articles, sortBy, id, sortParams, name) {
     this.news.news = [];
     this.sortedNews = [];
-    articlesArr.forEach((article) => {
+    articles.forEach((article) => {
       this.news.news.push({
         author: article.author,
         title: article.title,
@@ -42,11 +42,11 @@ class Newstore extends EventEmitter {
     this.emit('change');
   }
 
-  getWithSort(articlesArr) {
+  getWithSort(articles) {
     this.news.news = [];
     this.sortedNews = [];
     this.news.sortBy = '';
-    articlesArr.forEach((article) => {
+    articles.forEach((article) => {
       this.sortedNews.push({
         author: article.author,
         title: article.title,

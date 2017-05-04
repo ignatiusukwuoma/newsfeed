@@ -12,6 +12,7 @@ class Layout extends React.Component {
     super(props);
     this.getAll = this.getAll.bind(this);
     this.signOut = this.signOut.bind(this);
+    this.displayHeadlines = this.displayHeadlines.bind(this);
     const userProfile = JSON.parse(localStorage.getItem('hottestnews'));
     this.state = {
       name: '',
@@ -61,9 +62,9 @@ class Layout extends React.Component {
     return (
       <div>
         <Nav sources={this.state.sources} user={this.state.user.hottestnews}
-        headlines={this.displayHeadlines.bind(this)} location={location} signOut={this.signOut}/>
+        headlines={this.displayHeadlines} location={location} signOut={this.signOut}/>
         <div class="container-fluid">
-          <Home {...this.state} headlines={this.displayHeadlines.bind(this)}/>
+          <Home {...this.state} headlines={this.displayHeadlines}/>
         </div>
       </div>
     );

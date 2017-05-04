@@ -25,10 +25,6 @@ describe('The Article component', () => {
     expect(wrapper).to.have.descendants('.preview');
   });
 
-  it('should have only one image', () => {
-    expect(wrapper).to.have.exactly(1).descendants('.img-responsive');
-  });
-
   it('should have the h4 tag', () => {
     expect(wrapper.find('h4')).be.present();
   });

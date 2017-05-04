@@ -8779,12 +8779,12 @@ var Newstore = function (_EventEmitter) {
     }
   }, {
     key: 'displayNews',
-    value: function displayNews(articlesArr, sortBy, id, sortParams, name) {
+    value: function displayNews(articles, sortBy, id, sortParams, name) {
       var _this3 = this;
 
       this.news.news = [];
       this.sortedNews = [];
-      articlesArr.forEach(function (article) {
+      articles.forEach(function (article) {
         _this3.news.news.push({
           author: article.author,
           title: article.title,
@@ -8802,13 +8802,13 @@ var Newstore = function (_EventEmitter) {
     }
   }, {
     key: 'getWithSort',
-    value: function getWithSort(articlesArr) {
+    value: function getWithSort(articles) {
       var _this4 = this;
 
       this.news.news = [];
       this.sortedNews = [];
       this.news.sortBy = '';
-      articlesArr.forEach(function (article) {
+      articles.forEach(function (article) {
         _this4.sortedNews.push({
           author: article.author,
           title: article.title,
@@ -13264,6 +13264,7 @@ var Layout = function (_React$Component) {
 
     _this.getAll = _this.getAll.bind(_this);
     _this.signOut = _this.signOut.bind(_this);
+    _this.displayHeadlines = _this.displayHeadlines.bind(_this);
     var userProfile = JSON.parse(localStorage.getItem('hottestnews'));
     _this.state = {
       name: '',
@@ -13322,11 +13323,11 @@ var Layout = function (_React$Component) {
         'div',
         null,
         _react2.default.createElement(_Nav2.default, { sources: this.state.sources, user: this.state.user.hottestnews,
-          headlines: this.displayHeadlines.bind(this), location: location, signOut: this.signOut }),
+          headlines: this.displayHeadlines, location: location, signOut: this.signOut }),
         _react2.default.createElement(
           'div',
           { className: 'container-fluid' },
-          _react2.default.createElement(_Home2.default, _extends({}, this.state, { headlines: this.displayHeadlines.bind(this) }))
+          _react2.default.createElement(_Home2.default, _extends({}, this.state, { headlines: this.displayHeadlines }))
         )
       );
     }
@@ -13513,11 +13514,15 @@ var _propTypes2 = _interopRequireDefault(_propTypes);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 exports.default = function (_ref) {
+  var _React$createElement;
+
   var article = _ref.article;
   return _react2.default.createElement(
     'div',
-    { className: 'col-sm-6' },
+    { className: 'col-sm-4' },
     _react2.default.createElement(
       'article',
       { className: 'article' },
@@ -13530,7 +13535,7 @@ exports.default = function (_ref) {
           _react2.default.createElement(
             'div',
             { className: 'preview' },
-            _react2.default.createElement('img', { className: 'img-responsive', alt: '', src: article.urlImage })
+            _react2.default.createElement('img', (_React$createElement = { className: 'img-responsive' }, _defineProperty(_React$createElement, 'className', 'article-image'), _defineProperty(_React$createElement, 'alt', ''), _defineProperty(_React$createElement, 'src', article.urlImage), _React$createElement))
           ),
           _react2.default.createElement(
             'h4',
@@ -13586,6 +13591,7 @@ var SearchSources = function (_React$Component) {
 
     var _this = _possibleConstructorReturn(this, (SearchSources.__proto__ || Object.getPrototypeOf(SearchSources)).call(this));
 
+    _this.updateSearch = _this.updateSearch.bind(_this);
     _this.state = { search: '' };
     return _this;
   }
@@ -13619,7 +13625,7 @@ var SearchSources = function (_React$Component) {
             'div',
             { className: 'form-group' },
             _react2.default.createElement('input', { type: 'text', className: 'form-control', value: this.state.search,
-              onChange: this.updateSearch.bind(this), placeholder: 'Search sources...' })
+              onChange: this.updateSearch, placeholder: 'Search sources...' })
           )
         ),
         _react2.default.createElement(
@@ -13703,7 +13709,7 @@ var MainScreen = function (_React$Component) {
   _createClass(MainScreen, [{
     key: 'getWithSort',
     value: function getWithSort(event) {
-      if (event.target.value === 'top' || event.target.value === 'latest' || event.target.value === 'popular') {
+      if (event.target.value !== 'sortby') {
         NewsActions.getWithSort(this.props.id, event.target.value);
         this.setState({ sortNow: event.target.value });
       }
@@ -13722,10 +13728,8 @@ var MainScreen = function (_React$Component) {
       var sortComponent = sortParams.map(function (sort, i) {
         return _react2.default.createElement(_Sort2.default, { sort: sort, key: i });
       });
-      var articleComponent = news.map(function (article, i) {
-        return _react2.default.createElement(_Article2.default, { key: i, article: article });
-      });
-      var sortedNewsComponent = sortedNews.map(function (article, i) {
+      var displayedNews = news.length > 1 ? news : sortedNews;
+      var articleComponent = displayedNews.map(function (article, i) {
         return _react2.default.createElement(_Article2.default, { key: i, article: article });
       });
 
@@ -13757,8 +13761,7 @@ var MainScreen = function (_React$Component) {
         _react2.default.createElement(
           'div',
           { className: 'row' },
-          articleComponent,
-          sortedNewsComponent
+          articleComponent
         )
       );
     }
@@ -13809,6 +13812,7 @@ var Nav = function (_React$Component) {
 
     var _this = _possibleConstructorReturn(this, (Nav.__proto__ || Object.getPrototypeOf(Nav)).call(this));
 
+    _this.toggleCollapse = _this.toggleCollapse.bind(_this);
     _this.state = {
       collapsed: true
     };
@@ -13845,7 +13849,7 @@ var Nav = function (_React$Component) {
             { className: 'navbar-header' },
             _react2.default.createElement(
               'button',
-              { type: 'button', className: 'navbar-toggle', onClick: this.toggleCollapse.bind(this),
+              { type: 'button', className: 'navbar-toggle', onClick: this.toggleCollapse,
                 'data-target': '.navbar-inverse-collapse' },
               _react2.default.createElement('span', { className: 'icon-bar' }),
               _react2.default.createElement('span', { className: 'icon-bar' }),
@@ -13865,15 +13869,6 @@ var Nav = function (_React$Component) {
               { className: 'nav navbar-nav navbar-right' },
               _react2.default.createElement(
                 'li',
-                { className: homeClass },
-                _react2.default.createElement(
-                  _reactRouter.IndexLink,
-                  { to: '/', onClick: this.toggleCollapse.bind(this) },
-                  'Home'
-                )
-              ),
-              _react2.default.createElement(
-                'li',
                 { className: 'dropdown' },
                 _react2.default.createElement(
                   'a',
@@ -13882,7 +13877,7 @@ var Nav = function (_React$Component) {
                   _react2.default.createElement(
                     'span',
                     null,
-                    ' ',
+                    'Welcome, ',
                     name,
                     ' ',
                     _react2.default.createElement('img', { className: 'user-image', src: photo }),
@@ -16972,7 +16967,7 @@ exports = module.exports = __webpack_require__(140)(undefined);
 
 
 // module
-exports.push([module.i, "html, body {\n  height: 100%; }\n\na, a:hover, a:active, a:visited, a:focus {\n  text-decoration: none; }\n\n.mainscreen-main {\n  max-height: calc(100vh - 61px);\n  overflow-y: scroll; }\n  .mainscreen-main h2 {\n    color: #0b1e5e;\n    font-weight: 500; }\n  .mainscreen-main .main-headers {\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n    margin: 0 15px;\n    text-transform: uppercase; }\n  .mainscreen-main select {\n    font-size: 1.5em; }\n\n.sidebar-main {\n  background-color: #DDD;\n  max-height: calc(100vh - 61px);\n  overflow-y: scroll;\n  top: 0;\n  bottom: 0;\n  border-right: 1px solid silver; }\n  .sidebar-main h4 {\n    text-transform: uppercase;\n    margin-top: 28px; }\n\n.sources {\n  list-style-type: none;\n  margin-left: -25px; }\n  .sources .sourcesLink {\n    color: #0b1e5e;\n    cursor: pointer;\n    font-weight: bold; }\n  .sources .sourcesLink:hover, .sources .sourcesLink:focus {\n    color: #4583c2;\n    margin-left: 2px; }\n\n.sourceGroup {\n  text-transform: uppercase;\n  font-weight: bold;\n  margin-top: 20px;\n  margin-bottom: 5px; }\n\n.navbar {\n  margin-bottom: 0; }\n  .navbar .navbar-form {\n    margin-right: 5px; }\n  .navbar .nav.navbar-right {\n    margin-bottom: -2px; }\n  .navbar .user-image {\n    height: 35px;\n    width: 35px;\n    border-radius: 50%;\n    margin: 0 7px; }\n  .navbar .dropdown-toggle {\n    margin: -6px; }\n  .navbar .nav-form-div {\n    float: right; }\n\narticle.article {\n  margin-top: 20px;\n  padding: 10px;\n  height: 450px; }\n  article.article h4 {\n    font-weight: 500;\n    color: #0b1e5e;\n    text-transform: uppercase; }\n  article.article p {\n    color: black; }\n\narticle.article:hover {\n  background-color: #0b1e5e; }\n  article.article:hover h4 {\n    color: white; }\n  article.article:hover p {\n    color: white; }\n\n.searched-sources {\n  position: absolute;\n  top: 100%;\n  z-index: 9999999; }\n  .searched-sources .sources {\n    display: block;\n    padding: 2px 20px 2px 20px;\n    background-color: #DDD;\n    width: 166px; }\n\n.login-page {\n  background: #4583c2;\n  color: white;\n  height: 100vh; }\n  .login-page .brand {\n    font-family: 'Averia Sans Libre', cursive; }\n  .login-page .content {\n    margin: 15% auto;\n    width: 70%; }\n    .login-page .content .headline {\n      font-family: 'Raleway,Helvetica Neue,Helvetica,Arial', sans-serif;\n      line-height: 1.5em; }\n", ""]);
+exports.push([module.i, "html, body {\n  height: 100%; }\n\na, a:hover, a:active, a:visited, a:focus {\n  text-decoration: none; }\n\n.mainscreen-main {\n  max-height: calc(100vh - 61px);\n  overflow-y: scroll; }\n  .mainscreen-main h2 {\n    color: #0b1e5e;\n    font-weight: 500; }\n  .mainscreen-main .main-headers {\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n    margin: 0 15px;\n    text-transform: uppercase; }\n  .mainscreen-main select {\n    font-size: 1.5em; }\n\n.sidebar-main {\n  background-color: #DDD;\n  max-height: calc(100vh - 61px);\n  overflow-y: scroll;\n  top: 0;\n  bottom: 0;\n  border-right: 1px solid silver; }\n  .sidebar-main h4 {\n    text-transform: uppercase;\n    margin-top: 28px; }\n\n.sources {\n  list-style-type: none;\n  margin-left: -25px; }\n  .sources .sourcesLink {\n    color: #0b1e5e;\n    cursor: pointer;\n    font-weight: bold; }\n  .sources .sourcesLink:hover, .sources .sourcesLink:focus {\n    color: #4583c2;\n    margin-left: 2px; }\n\n.sourceGroup {\n  text-transform: uppercase;\n  font-weight: bold;\n  margin-top: 20px;\n  margin-bottom: 5px; }\n\n.navbar {\n  margin-bottom: 0; }\n  .navbar .navbar-form {\n    margin-right: 5px; }\n  .navbar .nav.navbar-right {\n    margin-bottom: -2px; }\n  .navbar .user-image {\n    height: 35px;\n    width: 35px;\n    border-radius: 50%;\n    margin: 0 7px; }\n  .navbar .dropdown-toggle {\n    margin: -6px; }\n  .navbar .nav-form-div {\n    float: right; }\n\narticle.article {\n  margin-top: 20px;\n  padding: 10px;\n  min-height: 400px; }\n  article.article .article-image {\n    max-height: 200px;\n    width: 100%; }\n  article.article h4 {\n    font-weight: 500;\n    color: #0b1e5e;\n    text-transform: uppercase; }\n  article.article p {\n    color: black; }\n\narticle.article:hover {\n  background-color: #0b1e5e; }\n  article.article:hover h4 {\n    color: white; }\n  article.article:hover p {\n    color: white; }\n\n.searched-sources {\n  position: absolute;\n  top: 100%;\n  z-index: 9999999; }\n  .searched-sources .sources {\n    display: block;\n    padding: 2px 20px 2px 20px;\n    background-color: #DDD;\n    width: 166px; }\n\n.login-page {\n  background: #4583c2;\n  color: white;\n  height: 100vh; }\n  .login-page .brand {\n    font-family: 'Averia Sans Libre', cursive; }\n  .login-page .content {\n    margin: 15% auto;\n    width: 70%; }\n    .login-page .content .headline {\n      font-family: 'Raleway,Helvetica Neue,Helvetica,Arial', sans-serif;\n      line-height: 1.5em; }\n", ""]);
 
 // exports
 

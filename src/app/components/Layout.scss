@@ -89,7 +89,11 @@ a, a:hover, a:active, a:visited, a:focus {
 article.article {
   margin-top: 20px;
   padding: 10px;
-  height: 450px;
+  min-height: 400px;
+  .article-image {
+    max-height: 200px;
+    width: 100%;
+  }
   h4 {
     font-weight: 500;
     color: $primary-color;

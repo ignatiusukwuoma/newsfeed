@@ -4,6 +4,7 @@ import Source from './Source';
 export default class SearchSources extends React.Component {
   constructor() {
     super();
+    this.updateSearch = this.updateSearch.bind(this);
     this.state = { search: '' };
   }
 
@@ -24,7 +25,7 @@ export default class SearchSources extends React.Component {
         <form class="navbar-form navbar-right">
           <div class="form-group">
             <input type="text" class="form-control" value={this.state.search}
-            onChange={this.updateSearch.bind(this) } placeholder="Search sources..." />
+            onChange={this.updateSearch} placeholder="Search sources..." />
           </div>
         </form>
         <div class="searched-sources">
