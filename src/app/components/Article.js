@@ -4,7 +4,7 @@ import defaultUrlImage from '../../public/images/newsimage.jpg';
 
 export default ({ article }) => (
     <div class="col-sm-4">
-      <article class="article">
+      <article class="article panel">
         <a class="read-more" href={article.url} target="_blank">
           <header>
             <div class="preview">
@@ -12,7 +12,7 @@ export default ({ article }) => (
             </div>
             <h4>{article.title}</h4>
           </header>
-          <p>{article.description}</p>
+          <p>{article.description.slice(0, 100)}..</p>
         </a>
       </article>
     </div>

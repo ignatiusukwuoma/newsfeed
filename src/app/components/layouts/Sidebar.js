@@ -72,40 +72,40 @@ export default class Sidebar extends React.Component {
 
     return (
       <div class="col-sm-2 sidebar-main">
-        <h4>News Sources</h4>
-        <h5 class="sourceGroup"> Entertainment </h5>
+        <h3>News Sources</h3>
+        <h4 class="sourceGroup"> Entertainment </h4>
         <ul>
           {entertainmentSources}
         </ul>
-        <h5 class="sourceGroup"> Business </h5>
+        <h4 class="sourceGroup"> Business </h4>
         <ul>
           {businessSources}
         </ul>
-        <h5 class="sourceGroup"> Technology </h5>
+        <h4 class="sourceGroup"> Technology </h4>
         <ul>
           {technologySources}
         </ul>
-        <h5 class="sourceGroup"> Sport </h5>
+        <h4 class="sourceGroup"> Sport </h4>
         <ul>
           {sportSources}
         </ul>
-        <h5 class="sourceGroup"> Music </h5>
+        <h4 class="sourceGroup"> Music </h4>
         <ul>
           {musicSources}
         </ul>
-        <h5 class="sourceGroup"> Politics </h5>
+        <h4 class="sourceGroup"> Politics </h4>
         <ul>
           {politicsSources}
         </ul>
-        <h5 class="sourceGroup"> General </h5>
+        <h4 class="sourceGroup"> General </h4>
         <ul>
           {generalSources}
         </ul>
-        <h5 class="sourceGroup"> Gaming </h5>
+        <h4 class="sourceGroup"> Gaming </h4>
         <ul>
           {gamingSources}
         </ul>
-        <h5 class="sourceGroup"> Science and Nature </h5>
+        <h4 class="sourceGroup"> Science and Nature </h4>
         <ul>
           {sciencenatureSources}
         </ul>

@@ -3,6 +3,7 @@ import { Link } from 'react-router';
 import firebase from '../firebaseConfig';
 import Nav from './layouts/Nav';
 import Home from './Home';
+import Footer from './layouts/Footer';
 import Newstore from '../stores/Newstore';
 import * as NewsActions from '../actions/NewsActions';
 import './Layout.scss';
@@ -66,6 +67,7 @@ class Layout extends React.Component {
         <div class="container-fluid">
           <Home {...this.state} headlines={this.displayHeadlines}/>
         </div>
+        <Footer />
       </div>
     );
   }

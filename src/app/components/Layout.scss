@@ -1,9 +1,12 @@
 @import '../../public/stylesheets/style';
 $primary-color: #0b1e5e;
 $secondary-color: #4583c2;
+$primary-font: 'Open Sans', sans-serif;
+$headers-font: 'Slabo 27px', serif;
 
 html, body {
   height: 100%;
+  font-family: $primary-font;
 }
 
 a, a:hover, a:active, a:visited, a:focus {
@@ -11,11 +14,12 @@ a, a:hover, a:active, a:visited, a:focus {
 }
 
 .mainscreen-main {
-  max-height: calc(100vh - 61px);
+  max-height: calc(100vh - 100px);
   overflow-y: scroll;
   h2 {
     color: $primary-color;
-    font-weight: 500;
+    font-weight: bold;
+    font-family: $headers-font;
   }
   .main-headers {
     display: flex;
@@ -31,14 +35,21 @@ a, a:hover, a:active, a:visited, a:focus {
 
 .sidebar-main {
   background-color: #DDD;
-  max-height: calc(100vh - 61px);
+  max-height: calc(100vh - 100px);
   overflow-y: scroll;
   top: 0;
   bottom: 0;
   border-right: 1px solid silver;
-  h4 {
+  h3 {
     text-transform: uppercase;
-    margin-top: 28px;
+    margin-top: 25px;
+    font-family: $headers-font;
+    font-weight: 800;
+  }
+  h4 {
+    font-family: $headers-font;
+    font-weight: 800;
+
   }
 }
 
@@ -88,24 +99,26 @@ a, a:hover, a:active, a:visited, a:focus {
 
 article.article {
   margin-top: 20px;
-  padding: 10px;
-  min-height: 400px;
-  .article-image {
-    max-height: 200px;
-    width: 100%;
+  min-height: 350px;
+  .preview {
+    height: 150px;
+    overflow: hidden;
+    margin: 0;
   }
   h4 {
     font-weight: 500;
     color: $primary-color;
     text-transform: uppercase;
+    margin: 10px;
   }
   p {
     color: black;
+    margin: 10px;
   }
 }
 
 article.article:hover {
-  background-color: $primary-color;
+  background-color: $secondary-color;
   h4 {
     color: white;
   }
@@ -137,9 +150,22 @@ article.article:hover {
     margin: 15% auto;
     width: 70%;
     .headline {
-      font-family: 'Raleway,Helvetica Neue,Helvetica,Arial', sans-serif;
+      font-family: $headers-font;
       line-height: 1.5em;
     }
+  }
+}
+
+footer {
+  background: #1a1a1a;
+  margin-bottom: 0;
+  height: 47px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  p {
+    text-align: center;
+    color: white;
   }
 }
 
