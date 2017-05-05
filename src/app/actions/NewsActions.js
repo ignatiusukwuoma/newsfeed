@@ -7,7 +7,7 @@ dotenv.config();
 export const displayNews = (id, sortParams, name) => {
   const url = `https://newsapi.org/v1/articles?apiKey=${process.env.NEWS_API_KEY}`;
   Request.get(url)
-    .query({ source: id, sortBy: 'top' })
+    .query({ source: id })
     .end((err, response) => {
       if (err) {
         console.log('Error', err);
