@@ -19,7 +19,8 @@ export default class Sidebar extends React.Component {
 
   componentDidMount() {
     this.showSources();
-    this.props.headlines(this.state.defaultId, this.state.defaultSortBy, this.state.defaultName);
+    this.props.headlines(this.state.defaultId, this.state.defaultSortBy,
+    this.state.defaultName);
   }
 
   render() {

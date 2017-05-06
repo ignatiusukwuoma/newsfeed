@@ -22,8 +22,9 @@ export default class MainScreen extends React.Component {
   }
 
   render() {
-    const { news, sortBy, id, name, sortParams, sortedNews } = this.props;
-    const sortComponent = sortParams.map((sort, i) => (<Sort sort={sort} key={i} />));
+    const { news, sortBy, id, name, sortParameters, sortedNews } = this.props;
+    const sortComponent = sortParameters.map((sort, i) =>
+    (<Sort sort={sort} key={i} />));
     const displayedNews = news.length > 1 ? news : sortedNews;
     const articleComponent = displayedNews.map((article, i) =>
     (<Article key={i} article={article} />));
@@ -32,7 +33,8 @@ export default class MainScreen extends React.Component {
       <div class="col-sm-10 mainscreen-main">
         <div class="main-headers">
           <h2>{name} - { sortBy || this.state.sortNow } News</h2>
-          <select class="styled-select" onChange={this.getWithSort} value={this.state.defaultSort}>
+          <select class="styled-select" onChange={this.getWithSort}
+          value={this.state.defaultSort}>
             <option value="sortby">Sort By</option>
             {sortComponent}
           </select>

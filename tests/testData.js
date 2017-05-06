@@ -1,5 +1,5 @@
 export const name = 'Techcrunch',
-  sortParams = ['top', 'latest'],
+  sortParameters = ['top', 'latest'],
   id = 'techcrunch',
   news = [{
     author: 'Reporter',

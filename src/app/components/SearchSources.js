@@ -19,7 +19,8 @@ export default class SearchSources extends React.Component {
     source.name.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1);
 
     const filteredList = filteredSources.map(source =>
-    <Source key={source.id} source={source} headlines={this.props.headlines} />);
+    <Source key={source.id} source={source}
+    headlines={this.props.headlines} />);
     return (
       <div class="nav-form-div">
         <form class="navbar-form navbar-right">

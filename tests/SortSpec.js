@@ -14,7 +14,7 @@ describe('The Sort component', () => {
   });
 });
 
-const wrapper = shallow(<Sort sort={data.sortParams} />);
+const wrapper = shallow(<Sort sort={data.sortParameters} />);
 
 describe('After rendering, the sort component', () => {
   it('should have an option tag as the onlychild', () => {

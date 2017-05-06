@@ -8,7 +8,8 @@ export default ({ article }) => (
         <a class="read-more" href={article.url} target="_blank">
           <header>
             <div class="preview">
-              <img class="img-responsive" alt="" src={article.urlImage || defaultUrlImage} />
+              <img class="img-responsive" alt="" src={article.urlImage
+              || defaultUrlImage} />
             </div>
             <h4>{article.title}</h4>
           </header>

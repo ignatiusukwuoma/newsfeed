@@ -14,7 +14,7 @@ a, a:hover, a:active, a:visited, a:focus {
 }
 
 .mainscreen-main {
-  max-height: calc(100vh - 100px);
+  max-height: calc(100vh - 90px);
   overflow-y: scroll;
   h2 {
     color: $primary-color;
@@ -35,7 +35,7 @@ a, a:hover, a:active, a:visited, a:focus {
 
 .sidebar-main {
   background-color: #DDD;
-  max-height: calc(100vh - 100px);
+  max-height: calc(100vh - 90px);
   overflow-y: scroll;
   top: 0;
   bottom: 0;
@@ -158,8 +158,7 @@ article.article:hover {
 
 footer {
   background: #1a1a1a;
-  margin-bottom: 0;
-  height: 47px;
+  height: 39px;
   display: flex;
   align-items: center;
   justify-content: center;

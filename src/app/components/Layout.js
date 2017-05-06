@@ -17,7 +17,7 @@ class Layout extends React.Component {
     const userProfile = JSON.parse(localStorage.getItem('hottestnews'));
     this.state = {
       name: '',
-      sortParams: [],
+      sortParameters: [],
       id: '',
       sortBy: '',
       news: [],
@@ -42,8 +42,8 @@ class Layout extends React.Component {
     });
   }
 
-  displayHeadlines(id, sortParams, name) {
-    NewsActions.displayNews(id, sortParams, name);
+  displayHeadlines(id, sortParameters, name) {
+    NewsActions.displayNews(id, sortParameters, name);
   }
 
   getAll() {
@@ -52,7 +52,7 @@ class Layout extends React.Component {
       sortBy: Newstore.getNews().sortBy,
       sortedNews: Newstore.getSortedNews(),
       id: Newstore.getNews().id,
-      sortParams: Newstore.getNews().sortParams,
+      sortParameters: Newstore.getNews().sortParameters,
       name: Newstore.getNews().name,
       sources: Newstore.getSources(),
     });
@@ -63,7 +63,8 @@ class Layout extends React.Component {
     return (
       <div>
         <Nav sources={this.state.sources} user={this.state.user.hottestnews}
-        headlines={this.displayHeadlines} location={location} signOut={this.signOut}/>
+        headlines={this.displayHeadlines} location={location}
+        signOut={this.signOut}/>
         <div class="container-fluid">
           <Home {...this.state} headlines={this.displayHeadlines}/>
         </div>

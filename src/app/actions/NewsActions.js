@@ -4,7 +4,7 @@ import dispatcher from '../dispatcher';
 
 dotenv.config();
 
-export const displayNews = (id, sortParams, name) => {
+export const displayNews = (id, sortParameters, name) => {
   const url = `https://newsapi.org/v1/articles?apiKey=${process.env.NEWS_API_KEY}`;
   Request.get(url)
     .query({ source: id })
@@ -18,7 +18,7 @@ export const displayNews = (id, sortParams, name) => {
           article: response.body.articles,
           sortBy: response.body.sortBy,
           id: response.body.source,
-          sortParams,
+          sortParameters,
           name,
         }
       });

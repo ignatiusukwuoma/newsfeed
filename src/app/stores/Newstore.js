@@ -4,13 +4,13 @@ import dispatcher from '../dispatcher';
 class Newstore extends EventEmitter {
   constructor() {
     super();
-    this.news = { news: [], sortBy: '', id: '', sortParams: [], name: '' };
+    this.news = { news: [], sortBy: '', id: '', sortParameters: [], name: '' };
     this.sourceNames = [];
     this.sortedNews = [];
   }
 
-  displaySources(sourceArr) {
-    sourceArr.forEach((source) => {
+  displaySources(sources) {
+    sources.forEach((source) => {
       this.sourceNames.push({
         id: source.id,
         name: source.name,
@@ -22,7 +22,7 @@ class Newstore extends EventEmitter {
     this.emit('change');
   }
 
-  displayNews(articles, sortBy, id, sortParams, name) {
+  displayNews(articles, sortBy, id, sortParameters, name) {
     this.news.news = [];
     this.sortedNews = [];
     articles.forEach((article) => {
@@ -37,7 +37,7 @@ class Newstore extends EventEmitter {
     });
     this.news.sortBy = sortBy;
     this.news.id = id;
-    this.news.sortParams = sortParams;
+    this.news.sortParameters = sortParameters;
     this.news.name = name;
     this.emit('change');
   }
@@ -75,7 +75,7 @@ class Newstore extends EventEmitter {
     switch (action.type) {
       case 'DISPLAY_NEWS':
         this.displayNews(action.news.article, action.news.sortBy,
-        action.news.id, action.news.sortParams, action.news.name);
+        action.news.id, action.news.sortParameters, action.news.name);
         break;
       case 'DISPLAY_WITH_SORT':
         this.getWithSort(action.news);
@@ -84,8 +84,7 @@ class Newstore extends EventEmitter {
         this.displaySources(action.sources);
         break;
       default:
-        console.log('Default action displayed');
-        break;
+        // No operation
     }
   }
 }

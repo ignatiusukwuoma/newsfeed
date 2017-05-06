@@ -27,7 +27,8 @@ export default class Nav extends React.Component {
       <div class="navbar navbar-inverse">
         <div class="container-fluid">
           <div class="navbar-header">
-            <button type="button" class="navbar-toggle" onClick={this.toggleCollapse}
+            <button type="button" class="navbar-toggle"
+            onClick={this.toggleCollapse}
             data-target=".navbar-inverse-collapse">
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
@@ -40,14 +41,16 @@ export default class Nav extends React.Component {
               <li class="dropdown">
                 <a href="bootstrap-elements.html" data-target="#"
                 class="dropdown-toggle" data-toggle="dropdown">
-                <span>Welcome, {name} <img class="user-image" src={photo} /> </span>
+                <span>Welcome, {name} <img class="user-image" src={photo} />
+                </span>
                   <b class="caret"></b></a>
                 <ul class="dropdown-menu">
                   <li><Link onClick={this.props.signOut}>Logout</Link></li>
                 </ul>
               </li>
             </ul>
-            <SearchSources sources={this.props.sources} headlines={this.props.headlines} />
+            <SearchSources sources={this.props.sources}
+            headlines={this.props.headlines} />
           </div>
         </div>
       </div>
