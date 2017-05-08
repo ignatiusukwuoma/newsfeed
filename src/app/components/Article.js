@@ -13,7 +13,9 @@ export default ({ article }) => (
             </div>
             <h4>{article.title}</h4>
           </header>
-          <p>{article.description.slice(0, 100)}..</p>
+          <p>{article.description ?
+            `${article.description.slice(0, 100)}...` : ''}
+          </p>
         </a>
       </article>
     </div>

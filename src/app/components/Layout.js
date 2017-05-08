@@ -29,6 +29,12 @@ class Layout extends React.Component {
     };
   }
 
+  componentWillMount() {
+    if (window.location.pathname === '/' && !window.localStorage.hottestnews) {
+      window.location.href = '/login';
+    }
+  }
+
   componentDidMount() {
     Newstore.on('change', this.getAll);
   }

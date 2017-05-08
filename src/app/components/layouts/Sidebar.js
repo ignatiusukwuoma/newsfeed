@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Home from '../Home';
 import Source from '../Source';
 import * as NewsActions from '../../actions/NewsActions';
@@ -23,94 +24,52 @@ export default class Sidebar extends React.Component {
     this.state.defaultName);
   }
 
-  render() {
+  getSourcesByCategory() {
     const { sources } = this.props;
-    const entertainmentSources = sources.map((source, i) => {
-      if (source.category === 'entertainment') {
-        return (<Source key={source.id} source={source} headlines={this.props.headlines} />);
+    const sourcesByCategory = {};
+    sources.forEach((source) => {
+      if (sourcesByCategory[source.category] !== undefined) {
+        sourcesByCategory[source.category].push(`${source.id}_${source.name}_${source.sortBy}`);
+      } else {
+        sourcesByCategory[source.category] = [];
+        sourcesByCategory[source.category].push(`${source.id}_${source.name}_${source.sortBy}`);
       }
     });
-    const businessSources = sources.map((source, i) => {
-      if (source.category === 'business') {
-        return (<Source key={source.id} source={source} headlines={this.props.headlines} />);
-      }
-    });
-    const technologySources = sources.map((source, i) => {
-      if (source.category === 'technology') {
-        return (<Source key={source.id} source={source} headlines={this.props.headlines} />);
-      }
-    });
-    const sportSources = sources.map((source, i) => {
-      if (source.category === 'sport') {
-        return (<Source key={source.id} source={source} headlines={this.props.headlines} />);
-      }
-    });
-    const musicSources = sources.map((source, i) => {
-      if (source.category === 'music') {
-        return (<Source key={source.id} source={source} headlines={this.props.headlines} />);
-      }
-    });
-    const politicsSources = sources.map((source, i) => {
-      if (source.category === 'politics') {
-        return (<Source key={source.id} source={source} headlines={this.props.headlines} />);
-      }
-    });
-    const generalSources = sources.map((source, i) => {
-      if (source.category === 'general') {
-        return (<Source key={source.id} source={source} headlines={this.props.headlines} />);
-      }
-    });
-    const gamingSources = sources.map((source, i) => {
-      if (source.category === 'gaming') {
-        return (<Source key={source.id} source={source} headlines={this.props.headlines} />);
-      }
-    });
-    const sciencenatureSources = sources.map((source, i) => {
-      if (source.category === 'science-and-nature') {
-        return (<Source key={source.id} source={source} headlines={this.props.headlines} />);
-      }
-    });
+    return sourcesByCategory;
+  }
 
+  render() {
+    const sources = this.getSourcesByCategory();
+    const categories = Object.keys(sources);
+    const sourcesByCategory = categories.map((category) => {
+      const sourcesList = sources[category].map((source) => {
+        const sourceSplit = source.split('_');
+        const sourceDetails = {};
+        for (let i = 0; i < sourceSplit.length - 1; i += 1) {
+          sourceDetails.id = sourceSplit[0];
+          sourceDetails.name = sourceSplit[1];
+          sourceDetails.sortBy = sourceSplit[2].split(',');
+        }
+
+        return (<Source key={sourceDetails.id}
+        source={sourceDetails} headlines={this.props.headlines} />);
+      });
+      return (
+        <div key={category}>
+          <h4 class="sourceGroup"> {category} </h4>
+          <ul> {sourcesList} </ul>
+        </div>
+      );
+    });
     return (
       <div class="col-sm-2 sidebar-main">
         <h3>News Sources</h3>
-        <h4 class="sourceGroup"> Entertainment </h4>
-        <ul>
-          {entertainmentSources}
-        </ul>
-        <h4 class="sourceGroup"> Business </h4>
-        <ul>
-          {businessSources}
-        </ul>
-        <h4 class="sourceGroup"> Technology </h4>
-        <ul>
-          {technologySources}
-        </ul>
-        <h4 class="sourceGroup"> Sport </h4>
-        <ul>
-          {sportSources}
-        </ul>
-        <h4 class="sourceGroup"> Music </h4>
-        <ul>
-          {musicSources}
-        </ul>
-        <h4 class="sourceGroup"> Politics </h4>
-        <ul>
-          {politicsSources}
-        </ul>
-        <h4 class="sourceGroup"> General </h4>
-        <ul>
-          {generalSources}
-        </ul>
-        <h4 class="sourceGroup"> Gaming </h4>
-        <ul>
-          {gamingSources}
-        </ul>
-        <h4 class="sourceGroup"> Science and Nature </h4>
-        <ul>
-          {sciencenatureSources}
-        </ul>
+        {sourcesByCategory}
       </div>
     );
   }
 }
+Sidebar.propTypes = {
+  sources: PropTypes.array,
+  headlines: PropTypes.func,
+};

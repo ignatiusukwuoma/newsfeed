@@ -5,8 +5,8 @@ import * as NewsActions from '../actions/NewsActions';
 export default class Login extends React.Component {
 
   componentDidMount() {
-     // FirebaseUI config.
-    const uiConfig = {
+     // Firebase Login User Interface
+    const googleLoginConfiguration = {
       signInFlow: 'popup',
       signInSuccessUrl: '/',
       signInOptions: [
@@ -29,8 +29,8 @@ export default class Login extends React.Component {
     };
 
     // Initialize the FirebaseUI Widget using Firebase.
-    const ui = new firebaseui.auth.AuthUI(firebase.auth());
-    ui.start('#firebaseui-container', uiConfig);
+    const googleLoginButton = new firebaseui.auth.AuthUI(firebase.auth());
+    googleLoginButton.start('#firebaseui-container', googleLoginConfiguration);
   }
 
   render() {

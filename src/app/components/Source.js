@@ -14,7 +14,7 @@ export default class Source extends React.Component {
   }
 
   render() {
-    const { id, name, sortBy, category } = this.props.source;
+    const { id, name, sortBy } = this.props.source;
     return (
       <li class="sources">
         <Link onClick={this.getHeadlines} class="sourcesLink">{name}</Link>

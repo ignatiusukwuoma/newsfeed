@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Home from '../Home';
 import Article from '../Article';
 import Sort from '../Sort';
@@ -46,3 +47,13 @@ export default class MainScreen extends React.Component {
     );
   }
 }
+
+MainScreen.propTypes = {
+  news: PropTypes.array,
+  sortBy: PropTypes.string,
+  id: PropTypes.string,
+  name: PropTypes.string,
+  sortParameters: PropTypes.array,
+  sortedNews: PropTypes.array,
+  headlines: PropTypes.func,
+};

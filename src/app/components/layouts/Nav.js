@@ -1,5 +1,6 @@
 import React from 'react';
 import { IndexLink, Link } from 'react-router';
+import PropTypes from 'prop-types';
 import SearchSources from '../SearchSources';
 
 export default class Nav extends React.Component {
@@ -41,7 +42,8 @@ export default class Nav extends React.Component {
               <li class="dropdown">
                 <a href="bootstrap-elements.html" data-target="#"
                 class="dropdown-toggle" data-toggle="dropdown">
-                <span>Welcome, {name} <img class="user-image" src={photo} />
+                <span>Welcome, {name.match(/\w+(?=\s)/)[0]}
+                  <img class="user-image" src={photo} />
                 </span>
                   <b class="caret"></b></a>
                 <ul class="dropdown-menu">
@@ -57,3 +59,11 @@ export default class Nav extends React.Component {
     );
   }
 }
+
+Nav.propTypes = {
+  location: PropTypes.object,
+  name: PropTypes.string,
+  photo: PropTypes.string,
+  email: PropTypes.string,
+  headlines: PropTypes.func,
+};

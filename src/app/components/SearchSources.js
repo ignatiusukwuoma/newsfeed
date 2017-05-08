@@ -9,18 +9,18 @@ export default class SearchSources extends React.Component {
   }
 
   updateSearch(event) {
-    if (!/\d/.test(event.target.value)) {
+    if (!/[^A-Za-z]/.test(event.target.value)) {
       this.setState({ search: event.target.value.substr(0, 10) });
     }
   }
 
   render() {
-    const filteredSources = this.props.sources.filter(source =>
-    source.name.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1);
-
-    const filteredList = filteredSources.map(source =>
+    const filteredList = this.props.sources.filter(source =>
+    source.name.toLowerCase()
+    .indexOf(this.state.search.toLowerCase()) !== -1).map(source =>
     <Source key={source.id} source={source}
     headlines={this.props.headlines} />);
+
     return (
       <div class="nav-form-div">
         <form class="navbar-form navbar-right">
