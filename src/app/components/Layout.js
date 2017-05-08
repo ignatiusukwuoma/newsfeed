@@ -13,6 +13,7 @@ class Layout extends React.Component {
     super(props);
     this.getAll = this.getAll.bind(this);
     this.signOut = this.signOut.bind(this);
+    this.handleToggle = this.handleToggle.bind(this);
     this.displayHeadlines = this.displayHeadlines.bind(this);
     const userProfile = JSON.parse(localStorage.getItem('hottestnews'));
     this.state = {
@@ -26,6 +27,8 @@ class Layout extends React.Component {
       user: {
         hottestnews: userProfile,
       },
+      grid: '',
+      open: false,
     };
   }
 
@@ -33,10 +36,19 @@ class Layout extends React.Component {
     if (window.location.pathname === '/' && !window.localStorage.hottestnews) {
       window.location.href = '/login';
     }
+    if (window.innerWidth < 768) {
+      this.setState({ grid: 'col-sm-12 mainscreen-main' });
+    } else {
+      this.setState({ grid: 'col-sm-10 mainscreen-main' });
+    }
   }
 
   componentDidMount() {
     Newstore.on('change', this.getAll);
+  }
+
+  handleToggle() {
+    this.setState({ open: !this.state.open });
   }
 
   signOut() {
@@ -70,9 +82,9 @@ class Layout extends React.Component {
       <div>
         <Nav sources={this.state.sources} user={this.state.user.hottestnews}
         headlines={this.displayHeadlines} location={location}
-        signOut={this.signOut}/>
+        signOut={this.signOut} sourcesToggle={this.handleToggle}/>
         <div class="container-fluid">
-          <Home {...this.state} headlines={this.displayHeadlines}/>
+          <Home {...this.state} headlines={this.displayHeadlines} sourcesToggle={this.handleToggle}/>
         </div>
         <Footer />
       </div>

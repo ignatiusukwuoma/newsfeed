@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Drawer from 'material-ui/Drawer';
+import MenuItem from 'material-ui/MenuItem';
 import Home from '../Home';
 import Source from '../Source';
 import * as NewsActions from '../../actions/NewsActions';
@@ -38,6 +40,23 @@ export default class Sidebar extends React.Component {
     return sourcesByCategory;
   }
 
+  getView(sourcesByCategory) {
+    if (window.innerWidth < 768) {
+      return (
+          <Drawer open={this.props.open}>
+            <h3>News Sources</h3>
+            {sourcesByCategory}
+          </Drawer>
+      );
+    }
+    return (
+      <div class="col-sm-2 sidebar-main">
+        <h3>News Sources</h3>
+        {sourcesByCategory}
+      </div>
+    );
+  }
+
   render() {
     const sources = this.getSourcesByCategory();
     const categories = Object.keys(sources);
@@ -52,7 +71,8 @@ export default class Sidebar extends React.Component {
         }
 
         return (<Source key={sourceDetails.id}
-        source={sourceDetails} headlines={this.props.headlines} />);
+        source={sourceDetails} headlines={this.props.headlines}
+        sourcesToggle={this.props.sourcesToggle} open={this.props.open} />);
       });
       return (
         <div key={category}>
@@ -61,12 +81,8 @@ export default class Sidebar extends React.Component {
         </div>
       );
     });
-    return (
-      <div class="col-sm-2 sidebar-main">
-        <h3>News Sources</h3>
-        {sourcesByCategory}
-      </div>
-    );
+
+    return this.getView(sourcesByCategory);
   }
 }
 Sidebar.propTypes = {

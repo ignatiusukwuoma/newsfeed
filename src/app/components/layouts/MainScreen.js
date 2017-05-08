@@ -31,7 +31,7 @@ export default class MainScreen extends React.Component {
     (<Article key={i} article={article} />));
 
     return (
-      <div class="col-sm-10 mainscreen-main">
+      <div class={this.props.grid}>
         <div class="main-headers">
           <h2>{name} - { sortBy || this.state.sortNow } News</h2>
           <select class="styled-select" onChange={this.getWithSort}

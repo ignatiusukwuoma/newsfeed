@@ -13,7 +13,8 @@ class Home extends React.Component {
     return (
       <div class="row">
         <Sidebar sources={this.props.sources}
-        headlines={this.props.headlines} />
+        headlines={this.props.headlines}
+        open={this.props.open} sourcesToggle={this.props.sourcesToggle}/>
         <MainScreen {...this.props} />
       </div>
     );

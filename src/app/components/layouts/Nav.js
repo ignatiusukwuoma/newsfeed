@@ -1,10 +1,13 @@
 import React from 'react';
 import { IndexLink, Link } from 'react-router';
+import RaisedButton from 'material-ui/RaisedButton';
+import injectTapEventPlugin from 'react-tap-event-plugin';
 import PropTypes from 'prop-types';
 import SearchSources from '../SearchSources';
 
 export default class Nav extends React.Component {
   constructor() {
+    injectTapEventPlugin();
     super();
     this.toggleCollapse = this.toggleCollapse.bind(this);
     this.state = {
@@ -35,8 +38,18 @@ export default class Nav extends React.Component {
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
+            <button type="button" class="navbar-toggle"
+            onTouchTap={this.props.sourcesToggle}>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
             <a class="navbar-brand" href="/">Hottest News</a>
           </div>
+          {/*<RaisedButton
+              label="Toggle"
+              onTouchTap={this.props.sourcesToggle}
+            />*/}
           <div class={`navbar-collapse navbar-inverse-collapse ${navClass}`}>
             <ul class="nav navbar-nav navbar-right">
               <li class="dropdown">
