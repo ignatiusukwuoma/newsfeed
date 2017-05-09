@@ -1,19 +1,44 @@
 import React from 'react';
 import Source from './Source';
 
+
+/**
+ * The search form
+ * @class SearchSources
+ * @extends {React.Component}
+ */
 export default class SearchSources extends React.Component {
+
+
+  /**
+   * Creates an instance of SearchSources.
+   * Initialize the value of the search form
+   * @memberOf SearchSources
+   */
   constructor() {
     super();
     this.updateSearch = this.updateSearch.bind(this);
     this.state = { search: '' };
   }
 
+
+  /**
+   * Updates the value of the search form
+   * @param {any} event where user types of the search
+   * @memberOf SearchSources
+   */
   updateSearch(event) {
     if (!/[^A-Za-z]/.test(event.target.value)) {
       this.setState({ search: event.target.value.substr(0, 10) });
     }
   }
 
+
+  /**
+   * Extracts a list of sources that match users search charaters
+   * @returns the search form with a list of sources that matches the value
+   * @memberOf SearchSources
+   */
   render() {
     const filteredList = this.props.sources.filter(source =>
     source.name.toLowerCase()

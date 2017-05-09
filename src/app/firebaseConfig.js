@@ -1,5 +1,8 @@
 import * as firebase from 'firebase';
 
+/**
+ * The configuration for Google Authentication by Firebase
+ */
 const config = {
   apiKey: process.env.FIREBASE_API_KEY,
   authDomain: process.env.AUTH_DOMAIN,

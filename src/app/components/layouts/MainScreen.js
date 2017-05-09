@@ -5,7 +5,19 @@ import Article from '../Article';
 import Sort from '../Sort';
 import * as NewsActions from '../../actions/NewsActions';
 
+/**
+ * Class to display all the Articles
+ * @class MainScreen
+ * @extends {React.Component}
+ * @returns the major part of the screen
+ */
 export default class MainScreen extends React.Component {
+
+  /**
+   * Props are the state from Layout Component
+   * @param {any} sets as state a default value of the select tag
+   * @memberOf MainScreen
+   */
   constructor(props) {
     super(props);
     this.getWithSort = this.getWithSort.bind(this);
@@ -15,6 +27,11 @@ export default class MainScreen extends React.Component {
     };
   }
 
+  /**
+   * Makes an API call with the value of the select tag
+   * @param {any} takes in the value of the select tag
+   * @memberOf MainScreen
+   */
   getWithSort(event) {
     if (event.target.value !== 'sortby') {
       NewsActions.getWithSort(this.props.id, event.target.value);
@@ -22,6 +39,12 @@ export default class MainScreen extends React.Component {
     }
   }
 
+
+  /**
+   * Renders the major part of the view
+   * @memberOf MainScreen
+   * returns the Article and Sort Components
+   */
   render() {
     const { news, sortBy, id, name, sortParameters, sortedNews } = this.props;
     const sortComponent = sortParameters.map((sort, i) =>

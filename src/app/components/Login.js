@@ -2,10 +2,19 @@ import React from 'react';
 import firebase from '../firebaseConfig';
 import * as NewsActions from '../actions/NewsActions';
 
+
+/**
+ * Displays the Login Page
+ * @class Login
+ * @extends {React.Component}
+ */
 export default class Login extends React.Component {
 
+  /**
+   * Sets the Firebase Login User Configuration
+   * @memberOf Login
+   */
   componentDidMount() {
-     // Firebase Login User Interface
     const googleLoginConfiguration = {
       signInFlow: 'popup',
       signInSuccessUrl: '/',
@@ -28,11 +37,17 @@ export default class Login extends React.Component {
       }
     };
 
-    // Initialize the FirebaseUI Widget using Firebase.
+    // Initialize the Google Login Button
     const googleLoginButton = new firebaseui.auth.AuthUI(firebase.auth());
     googleLoginButton.start('#firebaseui-container', googleLoginConfiguration);
   }
 
+
+  /**
+   * Renders the full login page
+   * @returns The Google login button
+   * @memberOf Login
+   */
   render() {
     return (
       <div class="container-fluid login-page">

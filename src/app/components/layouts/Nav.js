@@ -5,6 +5,13 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 import PropTypes from 'prop-types';
 import SearchSources from '../SearchSources';
 
+
+/**
+ * Displays the navigation bar
+ * @export
+ * @class Nav
+ * @extends {React.Component}
+ */
 export default class Nav extends React.Component {
   constructor() {
     injectTapEventPlugin();
@@ -15,11 +22,21 @@ export default class Nav extends React.Component {
     };
   }
 
+
+  /**
+   * Function to collapse and expand the menu
+   * @memberOf Nav
+   */
   toggleCollapse() {
     const collapsed = !this.state.collapsed;
     this.setState({ collapsed });
   }
 
+  /**
+   * Renders the logged in user name and photo
+   * @returns the navigation bar and other elements within it
+   * @memberOf Nav
+   */
   render() {
     const { name, photo, email } = this.props.user;
     const { location } = this.props;

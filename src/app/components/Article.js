@@ -2,6 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import defaultUrlImage from '../../public/images/newsimage.jpg';
 
+/**
+ * Displays an individual article
+ * @param {object} An article object
+ * @returns An article with image, heading and description
+ */
 export default ({ article }) => (
     <div class="col-sm-4">
       <article class="article panel">

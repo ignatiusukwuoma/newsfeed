@@ -4,6 +4,12 @@ import dispatcher from '../dispatcher';
 
 dotenv.config();
 
+/**
+ * Makes the API call to get news headlines
+ * @param {string} id - id of the clicked source
+ * @param {array} sortParameters - sort parameters available for the source
+ * @param {string} name - name of the clicked source
+ */
 export const displayNews = (id, sortParameters, name) => {
   const url = `https://newsapi.org/v1/articles?apiKey=${process.env.NEWS_API_KEY}`;
   Request.get(url)
@@ -25,6 +31,11 @@ export const displayNews = (id, sortParameters, name) => {
     });
 };
 
+/**
+ * Makes an API call to get news headlines using the sort parameters
+ * @param {string} id - id of the clicked source
+ * @param {array} sort - sort parameter to use
+ */
 export const getWithSort = (id, sort) => {
   const url = `https://newsapi.org/v1/articles?apiKey=${process.env.NEWS_API_KEY}`;
   Request.get(url)
@@ -40,6 +51,9 @@ export const getWithSort = (id, sort) => {
     });
 };
 
+/**
+ * Makes API call to retrieve sources
+ */
 export const displaySources = () => {
   const url = 'https://newsapi.org/v1/sources?language=en';
   Request.get(url).end((err, response) => {

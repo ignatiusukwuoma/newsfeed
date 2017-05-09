@@ -5,10 +5,18 @@ import MainScreen from './layouts/MainScreen';
 import * as NewsActions from '../actions/NewsActions';
 
 /**
- * Class to display the Home Page
+ * Displays the entire screen asides Nav and Footer
  * @extends React.Component
  */
 class Home extends React.Component {
+
+
+  /**
+   * Births the Sidebar and MainScreen sections
+   * @param {any} The entire state of Layout
+   * @returns Two sections of the screen as components
+   * @memberOf Home
+   */
   render() {
     return (
       <div class="row">

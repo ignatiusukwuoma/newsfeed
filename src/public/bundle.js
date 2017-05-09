@@ -4825,6 +4825,12 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 _dotenv2.default.config();
 
+/**
+ * Makes the API call to get news headlines
+ * @param {string} id - id of the clicked source
+ * @param {array} sortParameters - sort parameters available for the source
+ * @param {string} name - name of the clicked source
+ */
 var displayNews = exports.displayNews = function displayNews(id, sortParameters, name) {
   var url = 'https://newsapi.org/v1/articles?apiKey=' + "213327409d384371851777e7c7f78dfe";
   _superagent2.default.get(url).query({ source: id }).end(function (err, response) {
@@ -4844,6 +4850,11 @@ var displayNews = exports.displayNews = function displayNews(id, sortParameters,
   });
 };
 
+/**
+ * Makes an API call to get news headlines using the sort parameters
+ * @param {string} id - id of the clicked source
+ * @param {array} sort - sort parameter to use
+ */
 var getWithSort = exports.getWithSort = function getWithSort(id, sort) {
   var url = 'https://newsapi.org/v1/articles?apiKey=' + "213327409d384371851777e7c7f78dfe";
   _superagent2.default.get(url).query({ source: id, sortBy: sort }).end(function (err, response) {
@@ -4857,6 +4868,9 @@ var getWithSort = exports.getWithSort = function getWithSort(id, sort) {
   });
 };
 
+/**
+ * Makes API call to retrieve sources
+ */
 var displaySources = exports.displaySources = function displaySources() {
   var url = 'https://newsapi.org/v1/sources?language=en';
   _superagent2.default.get(url).end(function (err, response) {
@@ -5123,7 +5137,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 /**
- * Class to display the Home Page
+ * Displays the entire screen asides Nav and Footer
  * @extends React.Component
  */
 var Home = function (_React$Component) {
@@ -5137,6 +5151,14 @@ var Home = function (_React$Component) {
 
   _createClass(Home, [{
     key: 'render',
+
+
+    /**
+     * Births the Sidebar and MainScreen sections
+     * @param {any} The entire state of Layout
+     * @returns Two sections of the screen as components
+     * @memberOf Home
+     */
     value: function render() {
       return _react2.default.createElement(
         'div',
@@ -10724,6 +10746,10 @@ var _react2 = _interopRequireDefault(_react);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+/**
+ * Stateless component
+ * @param {string} Sort parameter
+ */
 exports.default = function (_ref) {
   var sort = _ref.sort;
   return _react2.default.createElement(
@@ -10767,9 +10793,19 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+/**
+ * Individual source details
+ * @class Source
+ * @extends {React.Component}
+ */
 var Source = function (_React$Component) {
   _inherits(Source, _React$Component);
 
+  /**
+   * Creates an instance of Source.
+   * @param {object} The source object
+   * @memberOf Source
+   */
   function Source(props) {
     _classCallCheck(this, Source);
 
@@ -10780,11 +10816,26 @@ var Source = function (_React$Component) {
     return _this;
   }
 
+  /**
+   * A function from Layout passed down as props
+   * Makes an API call for articles
+   * @returns a list of article with the source name and its sort parameters
+   * @memberOf Source
+   */
+
+
   _createClass(Source, [{
     key: 'getHeadlines',
     value: function getHeadlines() {
       return this.props.headlines(this.props.source.id, this.props.source.sortBy, this.props.source.name);
     }
+
+    /**
+     * Calls the getHeadlines function
+     * Checks if screen is mobile to collapse sidebar
+     * @memberOf Source
+     */
+
   }, {
     key: 'collapseAfterCall',
     value: function collapseAfterCall() {
@@ -10793,6 +10844,13 @@ var Source = function (_React$Component) {
         this.props.sourcesToggle();
       }
     }
+
+    /**
+     * Renders an Individual source object
+     * @returns a source object
+     * @memberOf Source
+     */
+
   }, {
     key: 'render',
     value: function render() {
@@ -10850,6 +10908,9 @@ var firebase = _interopRequireWildcard(_firebase);
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
+/**
+ * The configuration for Google Authentication by Firebase
+ */
 var config = {
   apiKey: "AIzaSyBfetXIUjgUNRY42M3dtdr1ol6-dV6P5RY",
   authDomain: "newsfeed-165004.firebaseapp.com",
@@ -10888,9 +10949,20 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+/**
+ * Stores all the data from API calls
+ * Emits a change whenever values change
+ * @class Newstore
+ * @extends {EventEmitter}
+ */
 var Newstore = function (_EventEmitter) {
   _inherits(Newstore, _EventEmitter);
 
+  /**
+   * Creates an instance of Newstore.
+   * Initialises the necessary variables
+   * @memberOf Newstore
+   */
   function Newstore() {
     _classCallCheck(this, Newstore);
 
@@ -10901,6 +10973,15 @@ var Newstore = function (_EventEmitter) {
     _this.sortedNews = [];
     return _this;
   }
+
+  /**
+   * Picks up the sources array returned by Actions
+   * Takes what the app requires and arrages it
+   * @param {array} sources - array of objects
+   * emits a change
+   * @memberOf Newstore
+   */
+
 
   _createClass(Newstore, [{
     key: 'displaySources',
@@ -10918,6 +10999,19 @@ var Newstore = function (_EventEmitter) {
       });
       this.emit('change');
     }
+
+    /**
+     * Initialises news and sorted news
+     * Gets the news headlines and keeps what the app needs
+     * @param {array} articles - an array of objects
+     * @param {string} sortBy - the sort parameter used to get the headlines
+     * @param {string} id - the id of the clicked source
+     * @param {array} sortParameters - the sort parameters available for that source
+     * @param {string} name - name of the clicked source
+     * emits change
+     * @memberOf Newstore
+     */
+
   }, {
     key: 'displayNews',
     value: function displayNews(articles, sortBy, id, sortParameters, name) {
@@ -10941,6 +11035,15 @@ var Newstore = function (_EventEmitter) {
       this.news.name = name;
       this.emit('change');
     }
+
+    /**
+     * Initialises news and sorted news
+     * Gets the sorted news headlines and keeps what the app needs
+     * @param {array} articles - an array of objects
+     * emits change
+     * @memberOf Newstore
+     */
+
   }, {
     key: 'getWithSort',
     value: function getWithSort(articles) {
@@ -10976,6 +11079,14 @@ var Newstore = function (_EventEmitter) {
     value: function getSortedNews() {
       return this.sortedNews;
     }
+
+    /**
+     * Specifies how store handles different action types
+     * @param {object} action - event carried out by Actions
+     * Calls the function in charge of an action type
+     * @memberOf Newstore
+     */
+
   }, {
     key: 'handleActions',
     value: function handleActions(action) {
@@ -16453,9 +16564,19 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+/**
+ * The layout of our entire srceen
+ * @class Layout
+ * @extends {React.Component}
+ */
 var Layout = function (_React$Component) {
   _inherits(Layout, _React$Component);
 
+  /**
+   * Creates an instance of Layout.
+   * Sets some state of the application
+   * @memberOf Layout
+   */
   function Layout(props) {
     _classCallCheck(this, Layout);
 
@@ -16483,6 +16604,14 @@ var Layout = function (_React$Component) {
     return _this;
   }
 
+  /**
+   * Checks if user is loggedIn
+   * CHecks if screen is mobile
+   * @returns appropriate location and view
+   * @memberOf Layout
+   */
+
+
   _createClass(Layout, [{
     key: 'componentWillMount',
     value: function componentWillMount() {
@@ -16495,16 +16624,35 @@ var Layout = function (_React$Component) {
         this.setState({ grid: 'col-sm-10 mainscreen-main' });
       }
     }
+
+    /**
+     * Listens for a change event in the store
+     * @returns the function to set new state
+     * @memberOf Layout
+     */
+
   }, {
     key: 'componentDidMount',
     value: function componentDidMount() {
       _Newstore2.default.on('change', this.getAll);
     }
+
+    /**
+     * Determines if mobile sidebar pops up
+     * @memberOf Layout
+     */
+
   }, {
     key: 'handleToggle',
     value: function handleToggle() {
       this.setState({ open: !this.state.open });
     }
+
+    /**
+     * Signs the user out of the application
+     * @memberOf Layout
+     */
+
   }, {
     key: 'signOut',
     value: function signOut() {
@@ -16515,11 +16663,26 @@ var Layout = function (_React$Component) {
         console.error('Sign Out Error', error);
       });
     }
+
+    /**
+     * Makes an API call for Articles
+     * @param {any} id - of a clicked source
+     * @param {any} sortParameters - the sortBys Available of the source
+     * @param {any} name - of the clicked source
+     * @memberOf Layout
+     */
+
   }, {
     key: 'displayHeadlines',
     value: function displayHeadlines(id, sortParameters, name) {
       NewsActions.displayNews(id, sortParameters, name);
     }
+
+    /**
+     * Sets the state of Layout
+     * @memberOf Layout
+     */
+
   }, {
     key: 'getAll',
     value: function getAll() {
@@ -16533,6 +16696,13 @@ var Layout = function (_React$Component) {
         sources: _Newstore2.default.getSources()
       });
     }
+
+    /**
+     * Lays out all parent components in the screen
+     * @returns The major sections of the window
+     * @memberOf Layout
+     */
+
   }, {
     key: 'render',
     value: function render() {
@@ -16547,7 +16717,8 @@ var Layout = function (_React$Component) {
         _react2.default.createElement(
           'div',
           { className: 'container-fluid' },
-          _react2.default.createElement(_Home2.default, _extends({}, this.state, { headlines: this.displayHeadlines, sourcesToggle: this.handleToggle }))
+          _react2.default.createElement(_Home2.default, _extends({}, this.state, { headlines: this.displayHeadlines,
+            sourcesToggle: this.handleToggle }))
         ),
         _react2.default.createElement(_Footer2.default, null)
       );
@@ -16595,6 +16766,11 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+/**
+ * Displays the Login Page
+ * @class Login
+ * @extends {React.Component}
+ */
 var Login = function (_React$Component) {
   _inherits(Login, _React$Component);
 
@@ -16606,8 +16782,13 @@ var Login = function (_React$Component) {
 
   _createClass(Login, [{
     key: 'componentDidMount',
+
+
+    /**
+     * Sets the Firebase Login User Configuration
+     * @memberOf Login
+     */
     value: function componentDidMount() {
-      // Firebase Login User Interface
       var googleLoginConfiguration = {
         signInFlow: 'popup',
         signInSuccessUrl: '/',
@@ -16626,10 +16807,17 @@ var Login = function (_React$Component) {
         }
       };
 
-      // Initialize the FirebaseUI Widget using Firebase.
+      // Initialize the Google Login Button
       var googleLoginButton = new firebaseui.auth.AuthUI(_firebaseConfig2.default.auth());
       googleLoginButton.start('#firebaseui-container', googleLoginConfiguration);
     }
+
+    /**
+     * Renders the full login page
+     * @returns The Google login button
+     * @memberOf Login
+     */
+
   }, {
     key: 'render',
     value: function render() {
@@ -16814,6 +17002,11 @@ var _newsimage2 = _interopRequireDefault(_newsimage);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+/**
+ * Displays an individual article
+ * @param {object} An article object
+ * @returns An article with image, heading and description
+ */
 exports.default = function (_ref) {
   var article = _ref.article;
   return _react2.default.createElement(
@@ -16879,9 +17072,19 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+/**
+ * The search form
+ * @class SearchSources
+ * @extends {React.Component}
+ */
 var SearchSources = function (_React$Component) {
   _inherits(SearchSources, _React$Component);
 
+  /**
+   * Creates an instance of SearchSources.
+   * Initialize the value of the search form
+   * @memberOf SearchSources
+   */
   function SearchSources() {
     _classCallCheck(this, SearchSources);
 
@@ -16892,6 +17095,13 @@ var SearchSources = function (_React$Component) {
     return _this;
   }
 
+  /**
+   * Updates the value of the search form
+   * @param {any} event where user types of the search
+   * @memberOf SearchSources
+   */
+
+
   _createClass(SearchSources, [{
     key: 'updateSearch',
     value: function updateSearch(event) {
@@ -16899,6 +17109,13 @@ var SearchSources = function (_React$Component) {
         this.setState({ search: event.target.value.substr(0, 10) });
       }
     }
+
+    /**
+     * Extracts a list of sources that match users search charaters
+     * @returns the search form with a list of sources that matches the value
+     * @memberOf SearchSources
+     */
+
   }, {
     key: 'render',
     value: function render() {
@@ -16970,6 +17187,11 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+/**
+ * Displays the Footer of the App
+ * @class Footer
+ * @extends {React.Component}
+ */
 var Footer = function (_React$Component) {
   _inherits(Footer, _React$Component);
 
@@ -17047,9 +17269,20 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+/**
+ * Class to display all the Articles
+ * @class MainScreen
+ * @extends {React.Component}
+ * @returns the major part of the screen
+ */
 var MainScreen = function (_React$Component) {
   _inherits(MainScreen, _React$Component);
 
+  /**
+   * Props are the state from Layout Component
+   * @param {any} sets as state a default value of the select tag
+   * @memberOf MainScreen
+   */
   function MainScreen(props) {
     _classCallCheck(this, MainScreen);
 
@@ -17063,6 +17296,13 @@ var MainScreen = function (_React$Component) {
     return _this;
   }
 
+  /**
+   * Makes an API call with the value of the select tag
+   * @param {any} takes in the value of the select tag
+   * @memberOf MainScreen
+   */
+
+
   _createClass(MainScreen, [{
     key: 'getWithSort',
     value: function getWithSort(event) {
@@ -17071,6 +17311,13 @@ var MainScreen = function (_React$Component) {
         this.setState({ sortNow: event.target.value });
       }
     }
+
+    /**
+     * Renders the major part of the view
+     * @memberOf MainScreen
+     * returns the Article and Sort Components
+     */
+
   }, {
     key: 'render',
     value: function render() {
@@ -17185,6 +17432,12 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+/**
+ * Displays the navigation bar
+ * @export
+ * @class Nav
+ * @extends {React.Component}
+ */
 var Nav = function (_React$Component) {
   _inherits(Nav, _React$Component);
 
@@ -17202,12 +17455,25 @@ var Nav = function (_React$Component) {
     return _this;
   }
 
+  /**
+   * Function to collapse and expand the menu
+   * @memberOf Nav
+   */
+
+
   _createClass(Nav, [{
     key: 'toggleCollapse',
     value: function toggleCollapse() {
       var collapsed = !this.state.collapsed;
       this.setState({ collapsed: collapsed });
     }
+
+    /**
+     * Renders the logged in user name and photo
+     * @returns the navigation bar and other elements within it
+     * @memberOf Nav
+     */
+
   }, {
     key: 'render',
     value: function render() {
@@ -17364,9 +17630,20 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+/**
+ * Sidebar to display the list of News sources
+ * @export
+ * @class Sidebar
+ * @extends {React.Component}
+ */
 var Sidebar = function (_React$Component) {
   _inherits(Sidebar, _React$Component);
 
+  /**
+   * Creates an instance of Sidebar.
+   * @param {any} Mainly an array of News sources 
+   * @memberOf Sidebar
+   */
   function Sidebar(props) {
     _classCallCheck(this, Sidebar);
 
@@ -17380,6 +17657,12 @@ var Sidebar = function (_React$Component) {
     return _this;
   }
 
+  /**
+   * Calls the actions to make an API call for sources
+   * @memberOf Sidebar
+   */
+
+
   _createClass(Sidebar, [{
     key: 'showSources',
     value: function showSources() {
@@ -17391,6 +17674,14 @@ var Sidebar = function (_React$Component) {
       this.showSources();
       this.props.headlines(this.state.defaultId, this.state.defaultSortBy, this.state.defaultName);
     }
+
+    /**
+     * Arranges the news sources in categories
+     * @param {array} An array of source objects
+     * @returns {object} News sources arranged in categories
+     * @memberOf Sidebar
+     */
+
   }, {
     key: 'getSourcesByCategory',
     value: function getSourcesByCategory() {
@@ -17407,6 +17698,14 @@ var Sidebar = function (_React$Component) {
       });
       return sourcesByCategory;
     }
+
+    /**
+     * Selects the type of view to display-mobile or desktop
+     * @param {object} sourcesByCategory - source names arranged in categories
+     * @returns a mobile or desktop display
+     * @memberOf Sidebar
+     */
+
   }, {
     key: 'getView',
     value: function getView(sourcesByCategory) {
@@ -17433,6 +17732,13 @@ var Sidebar = function (_React$Component) {
         sourcesByCategory
       );
     }
+
+    /**
+     * Maps through the sources arranged in categories
+     * @returns the news sources in a sidebar
+     * @memberOf Sidebar
+     */
+
   }, {
     key: 'render',
     value: function render() {

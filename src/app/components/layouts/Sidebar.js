@@ -6,7 +6,21 @@ import Home from '../Home';
 import Source from '../Source';
 import * as NewsActions from '../../actions/NewsActions';
 
+
+/**
+ * Sidebar to display the list of News sources
+ * @export
+ * @class Sidebar
+ * @extends {React.Component}
+ */
 export default class Sidebar extends React.Component {
+
+
+  /**
+   * Creates an instance of Sidebar.
+   * @param {any} Mainly an array of News sources 
+   * @memberOf Sidebar
+   */
   constructor(props) {
     super(props);
     this.state = {
@@ -16,6 +30,11 @@ export default class Sidebar extends React.Component {
     };
   }
 
+
+  /**
+   * Calls the actions to make an API call for sources
+   * @memberOf Sidebar
+   */
   showSources() {
     NewsActions.displaySources();
   }
@@ -26,6 +45,13 @@ export default class Sidebar extends React.Component {
     this.state.defaultName);
   }
 
+
+  /**
+   * Arranges the news sources in categories
+   * @param {array} An array of source objects
+   * @returns {object} News sources arranged in categories
+   * @memberOf Sidebar
+   */
   getSourcesByCategory() {
     const { sources } = this.props;
     const sourcesByCategory = {};
@@ -40,6 +66,13 @@ export default class Sidebar extends React.Component {
     return sourcesByCategory;
   }
 
+
+  /**
+   * Selects the type of view to display-mobile or desktop
+   * @param {object} sourcesByCategory - source names arranged in categories
+   * @returns a mobile or desktop display
+   * @memberOf Sidebar
+   */
   getView(sourcesByCategory) {
     if (window.innerWidth < 768) {
       return (
@@ -57,6 +90,12 @@ export default class Sidebar extends React.Component {
     );
   }
 
+
+  /**
+   * Maps through the sources arranged in categories
+   * @returns the news sources in a sidebar
+   * @memberOf Sidebar
+   */
   render() {
     const sources = this.getSourcesByCategory();
     const categories = Object.keys(sources);
