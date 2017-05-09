@@ -16,7 +16,7 @@ export const displayNews = (id, sortParameters, name) => {
     .query({ source: id })
     .end((err, response) => {
       if (err) {
-        console.log('Error', err);
+        alert('Oh snap! There was a problem somewhere. Please refresh the page.');
       }
       dispatcher.dispatch({
         type: 'DISPLAY_NEWS',
@@ -42,7 +42,7 @@ export const getWithSort = (id, sort) => {
     .query({ source: id, sortBy: sort })
     .end((err, response) => {
       if (err) {
-        console.log('Error', err);
+        alert('Oh snap! There was a problem somewhere. Please refresh the page.');
       }
       dispatcher.dispatch({
         type: 'DISPLAY_WITH_SORT',
@@ -58,7 +58,7 @@ export const displaySources = () => {
   const url = 'https://newsapi.org/v1/sources?language=en';
   Request.get(url).end((err, response) => {
     if (err) {
-      console.log('Error', err);
+      alert('Oh snap! There was a problem somewhere. Please refresh the page.');
     }
     dispatcher.dispatch({
       type: 'DISPLAY_SOURCES',

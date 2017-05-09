@@ -31,15 +31,15 @@ describe('After rendering, the sidebar component', () => {
   });
 
   it('should contain the text `News Sources` in the h4 tag', () => {
-    expect(wrapper.find('h4')).to.contain.text('News Sources');
+    expect(wrapper.find('h3')).to.contain.text('News Sources');
   });
 
   it('should have a state with key `defaultId` and value `techcrunch`', () => {
     expect(wrapper).to.have.state('defaultId', 'techcrunch');
   });
 
-  it('should have nine different source groups', () => {
-    expect(wrapper).to.have.exactly(9).descendants('.sourceGroup');
+  it('should have only one descendant', () => {
+    expect(wrapper).to.have.exactly(1).descendants('.sourceGroup');
   });
 });
 
@@ -47,16 +47,5 @@ describe('After rendering, the sidebar component', () => {
 describe('The Source component, child of Sidebar,', () => {
   it('should receives the props `source` and `headlines` from Sidebar', () => {
     expect(wrapper.find(Source).first()).to.have.props(['source', 'headlines']);
-  });
-});
-
-describe('Sidebar component\'s main child element', () => {
-  const children = wrapper.children();
-  it('should have nineteen children', () => {
-    expect(children).to.have.length(19);
-  });
-
-  it('should have a second child with a class of `sourceGroup`', () => {
-    expect(children.at(1)).to.have.className('sourceGroup');
   });
 });

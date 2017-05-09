@@ -55,24 +55,18 @@ export default class Nav extends React.Component {
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <button type="button" class="navbar-toggle"
-            onTouchTap={this.props.sourcesToggle}>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
+            <button class="navbar-toggle btn btn-sm btn-raised btn-primary"
+            type="button" onTouchTap={this.props.sourcesToggle}>
+              Sources
             </button>
             <a class="navbar-brand" href="/">Hottest News</a>
           </div>
-          {/*<RaisedButton
-              label="Toggle"
-              onTouchTap={this.props.sourcesToggle}
-            />*/}
           <div class={`navbar-collapse navbar-inverse-collapse ${navClass}`}>
             <ul class="nav navbar-nav navbar-right">
               <li class="dropdown">
                 <a href="bootstrap-elements.html" data-target="#"
                 class="dropdown-toggle" data-toggle="dropdown">
-                <span>Welcome, {name.match(/\w+(?=\s)/)[0]}
+                <span>Welcome, {name}
                   <img class="user-image" src={photo} />
                 </span>
                   <b class="caret"></b></a>

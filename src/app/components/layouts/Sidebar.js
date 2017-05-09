@@ -18,7 +18,7 @@ export default class Sidebar extends React.Component {
 
   /**
    * Creates an instance of Sidebar.
-   * @param {any} Mainly an array of News sources 
+   * @param {any} Mainly an array of News sources
    * @memberOf Sidebar
    */
   constructor(props) {
@@ -74,11 +74,13 @@ export default class Sidebar extends React.Component {
    * @memberOf Sidebar
    */
   getView(sourcesByCategory) {
-    if (window.innerWidth < 768) {
+    if (screen.width < 768) {
       return (
           <Drawer open={this.props.open}>
-            <h3>News Sources</h3>
-            {sourcesByCategory}
+            <div class="drawer">
+              <h3>News Sources</h3>
+              {sourcesByCategory}
+            </div>
           </Drawer>
       );
     }

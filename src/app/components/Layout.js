@@ -56,7 +56,7 @@ class Layout extends React.Component {
     if (window.location.pathname === '/' && !window.localStorage.hottestnews) {
       window.location.href = '/login';
     }
-    if (window.innerWidth < 768) {
+    if (screen.width < 768) {
       this.setState({ grid: 'col-sm-12 mainscreen-main' });
     } else {
       this.setState({ grid: 'col-sm-10 mainscreen-main' });
@@ -92,7 +92,7 @@ class Layout extends React.Component {
       localStorage.removeItem('hottestnews');
       window.location = '/login';
     }, (error) => {
-      console.error('Sign Out Error', error);
+      alert('There was an error with signing out. Please try again!');
     });
   }
 

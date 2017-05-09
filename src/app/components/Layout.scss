@@ -149,10 +149,21 @@ article.article:hover {
   .content {
     margin: 15% auto;
     width: 65%;
+    @media (max-width: 767px){
+      width: 90%;
+    }
     .headline {
       line-height: 1.5em;
-
     }
+  }
+}
+
+.drawer {
+  padding: 15px;
+  h3 {
+    font-weight: 900;
+    text-transform: uppercase;
+    font-family: $headers-font;
   }
 }
 

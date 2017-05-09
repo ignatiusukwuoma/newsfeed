@@ -18,10 +18,6 @@ describe('The Nav component', () => {
 const wrapper = shallow(<Nav {...data} location={global.window.location} />);
 
 describe('When rendered, Nav component', () => {
-  it('should have a child `button` which makes the navbar toggle', () => {
-    expect(wrapper.find('button')).to.have.className('navbar-toggle');
-  });
-
   it('should have a child component named `SearchSources`', () => {
     expect(wrapper).to.have.descendants(SearchSources);
   });
@@ -40,10 +36,6 @@ describe('When rendered, Nav component', () => {
 
   it('should have a state with key `collapsed` and value `true`', () => {
     expect(wrapper).to.have.state('collapsed', true);
-  });
-
-  it('should have a button which collapses the right elements', () => {
-    expect(wrapper.find('button')).to.have.attr('data-target');
   });
 
   const child = wrapper.children();

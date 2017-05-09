@@ -4835,7 +4835,7 @@ var displayNews = exports.displayNews = function displayNews(id, sortParameters,
   var url = 'https://newsapi.org/v1/articles?apiKey=' + "213327409d384371851777e7c7f78dfe";
   _superagent2.default.get(url).query({ source: id }).end(function (err, response) {
     if (err) {
-      console.log('Error', err);
+      alert('Oh snap! There was a problem somewhere. Please refresh the page.');
     }
     _dispatcher2.default.dispatch({
       type: 'DISPLAY_NEWS',
@@ -4859,7 +4859,7 @@ var getWithSort = exports.getWithSort = function getWithSort(id, sort) {
   var url = 'https://newsapi.org/v1/articles?apiKey=' + "213327409d384371851777e7c7f78dfe";
   _superagent2.default.get(url).query({ source: id, sortBy: sort }).end(function (err, response) {
     if (err) {
-      console.log('Error', err);
+      alert('Oh snap! There was a problem somewhere. Please refresh the page.');
     }
     _dispatcher2.default.dispatch({
       type: 'DISPLAY_WITH_SORT',
@@ -4875,7 +4875,7 @@ var displaySources = exports.displaySources = function displaySources() {
   var url = 'https://newsapi.org/v1/sources?language=en';
   _superagent2.default.get(url).end(function (err, response) {
     if (err) {
-      console.log('Error', err);
+      alert('Oh snap! There was a problem somewhere. Please refresh the page.');
     }
     _dispatcher2.default.dispatch({
       type: 'DISPLAY_SOURCES',
@@ -16618,7 +16618,7 @@ var Layout = function (_React$Component) {
       if (window.location.pathname === '/' && !window.localStorage.hottestnews) {
         window.location.href = '/login';
       }
-      if (window.innerWidth < 768) {
+      if (screen.width < 768) {
         this.setState({ grid: 'col-sm-12 mainscreen-main' });
       } else {
         this.setState({ grid: 'col-sm-10 mainscreen-main' });
@@ -16660,7 +16660,7 @@ var Layout = function (_React$Component) {
         localStorage.removeItem('hottestnews');
         window.location = '/login';
       }, function (error) {
-        console.error('Sign Out Error', error);
+        alert('There was an error with signing out. Please try again!');
       });
     }
 
@@ -17507,11 +17507,9 @@ var Nav = function (_React$Component) {
             ),
             _react2.default.createElement(
               'button',
-              { type: 'button', className: 'navbar-toggle',
-                onTouchTap: this.props.sourcesToggle },
-              _react2.default.createElement('span', { className: 'icon-bar' }),
-              _react2.default.createElement('span', { className: 'icon-bar' }),
-              _react2.default.createElement('span', { className: 'icon-bar' })
+              { className: 'navbar-toggle btn btn-sm btn-raised btn-primary',
+                type: 'button', onTouchTap: this.props.sourcesToggle },
+              'Sources'
             ),
             _react2.default.createElement(
               'a',
@@ -17536,7 +17534,7 @@ var Nav = function (_React$Component) {
                     'span',
                     null,
                     'Welcome, ',
-                    name.match(/\w+(?=\s)/)[0],
+                    name,
                     _react2.default.createElement('img', { className: 'user-image', src: photo })
                   ),
                   _react2.default.createElement('b', { className: 'caret' })
@@ -17641,7 +17639,7 @@ var Sidebar = function (_React$Component) {
 
   /**
    * Creates an instance of Sidebar.
-   * @param {any} Mainly an array of News sources 
+   * @param {any} Mainly an array of News sources
    * @memberOf Sidebar
    */
   function Sidebar(props) {
@@ -17709,16 +17707,20 @@ var Sidebar = function (_React$Component) {
   }, {
     key: 'getView',
     value: function getView(sourcesByCategory) {
-      if (window.innerWidth < 768) {
+      if (screen.width < 768) {
         return _react2.default.createElement(
           _Drawer2.default,
           { open: this.props.open },
           _react2.default.createElement(
-            'h3',
-            null,
-            'News Sources'
-          ),
-          sourcesByCategory
+            'div',
+            { className: 'drawer' },
+            _react2.default.createElement(
+              'h3',
+              null,
+              'News Sources'
+            ),
+            sourcesByCategory
+          )
         );
       }
       return _react2.default.createElement(
@@ -22162,7 +22164,7 @@ exports = module.exports = __webpack_require__(277)(undefined);
 
 
 // module
-exports.push([module.i, "html, body {\n  height: 100%;\n  font-family: \"Open Sans\", sans-serif; }\n\na, a:hover, a:active, a:visited, a:focus {\n  text-decoration: none; }\n\n.mainscreen-main {\n  max-height: calc(100vh - 90px);\n  overflow-y: scroll; }\n  .mainscreen-main h2 {\n    color: #0b1e5e;\n    font-weight: bold;\n    font-family: \"Slabo 27px\", serif; }\n  .mainscreen-main .main-headers {\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n    margin: 0 15px;\n    text-transform: uppercase; }\n  .mainscreen-main select {\n    font-size: 1.5em; }\n\n.sidebar-main {\n  background-color: #DDD;\n  max-height: calc(100vh - 90px);\n  overflow-y: scroll;\n  top: 0;\n  bottom: 0;\n  border-right: 1px solid silver; }\n  .sidebar-main h3 {\n    text-transform: uppercase;\n    margin-top: 25px;\n    font-family: \"Slabo 27px\", serif;\n    font-weight: 800; }\n  .sidebar-main h4 {\n    font-family: \"Slabo 27px\", serif;\n    font-weight: 800; }\n\n.sources {\n  list-style-type: none;\n  margin-left: -25px; }\n  .sources .sourcesLink {\n    color: #0b1e5e;\n    cursor: pointer;\n    font-weight: bold; }\n  .sources .sourcesLink:hover, .sources .sourcesLink:focus {\n    color: #4583c2;\n    margin-left: 2px; }\n\n.sourceGroup {\n  text-transform: uppercase;\n  font-weight: bold;\n  margin-top: 20px;\n  margin-bottom: 5px; }\n\n.navbar {\n  margin-bottom: 0; }\n  .navbar .navbar-form {\n    margin-right: 5px; }\n  .navbar .nav.navbar-right {\n    margin-bottom: -2px; }\n  .navbar .user-image {\n    height: 35px;\n    width: 35px;\n    border-radius: 50%;\n    margin: 0 7px; }\n  .navbar .dropdown-toggle {\n    margin: -6px; }\n  .navbar .nav-form-div {\n    float: right; }\n\narticle.article {\n  margin-top: 20px;\n  min-height: 350px; }\n  article.article .preview {\n    height: 150px;\n    overflow: hidden;\n    margin: 0; }\n  article.article h4 {\n    font-weight: 500;\n    color: #0b1e5e;\n    text-transform: uppercase;\n    margin: 10px; }\n  article.article p {\n    color: black;\n    margin: 10px; }\n\narticle.article:hover {\n  background-color: #4583c2; }\n  article.article:hover h4 {\n    color: white; }\n  article.article:hover p {\n    color: white; }\n\n.searched-sources {\n  position: absolute;\n  top: 100%;\n  z-index: 9999999; }\n  .searched-sources .sources {\n    display: block;\n    padding: 2px 20px 2px 20px;\n    background-color: #DDD;\n    width: 166px; }\n\n.login-page {\n  background: #4583c2;\n  color: white;\n  height: 100vh; }\n  .login-page .brand {\n    font-family: 'Averia Sans Libre', cursive; }\n  .login-page .content {\n    margin: 15% auto;\n    width: 65%; }\n    .login-page .content .headline {\n      line-height: 1.5em; }\n\nfooter {\n  background: #1a1a1a;\n  height: 39px;\n  display: flex;\n  align-items: center;\n  justify-content: center; }\n  footer p {\n    text-align: center;\n    color: white; }\n", ""]);
+exports.push([module.i, "html, body {\n  height: 100%;\n  font-family: \"Open Sans\", sans-serif; }\n\na, a:hover, a:active, a:visited, a:focus {\n  text-decoration: none; }\n\n.mainscreen-main {\n  max-height: calc(100vh - 90px);\n  overflow-y: scroll; }\n  .mainscreen-main h2 {\n    color: #0b1e5e;\n    font-weight: bold;\n    font-family: \"Slabo 27px\", serif; }\n  .mainscreen-main .main-headers {\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n    margin: 0 15px;\n    text-transform: uppercase; }\n  .mainscreen-main select {\n    font-size: 1.5em; }\n\n.sidebar-main {\n  background-color: #DDD;\n  max-height: calc(100vh - 90px);\n  overflow-y: scroll;\n  top: 0;\n  bottom: 0;\n  border-right: 1px solid silver; }\n  .sidebar-main h3 {\n    text-transform: uppercase;\n    margin-top: 25px;\n    font-family: \"Slabo 27px\", serif;\n    font-weight: 800; }\n  .sidebar-main h4 {\n    font-family: \"Slabo 27px\", serif;\n    font-weight: 800; }\n\n.sources {\n  list-style-type: none;\n  margin-left: -25px; }\n  .sources .sourcesLink {\n    color: #0b1e5e;\n    cursor: pointer;\n    font-weight: bold; }\n  .sources .sourcesLink:hover, .sources .sourcesLink:focus {\n    color: #4583c2;\n    margin-left: 2px; }\n\n.sourceGroup {\n  text-transform: uppercase;\n  font-weight: bold;\n  margin-top: 20px;\n  margin-bottom: 5px; }\n\n.navbar {\n  margin-bottom: 0; }\n  .navbar .navbar-form {\n    margin-right: 5px; }\n  .navbar .nav.navbar-right {\n    margin-bottom: -2px; }\n  .navbar .user-image {\n    height: 35px;\n    width: 35px;\n    border-radius: 50%;\n    margin: 0 7px; }\n  .navbar .dropdown-toggle {\n    margin: -6px; }\n  .navbar .nav-form-div {\n    float: right; }\n\narticle.article {\n  margin-top: 20px;\n  min-height: 350px; }\n  article.article .preview {\n    height: 150px;\n    overflow: hidden;\n    margin: 0; }\n  article.article h4 {\n    font-weight: 500;\n    color: #0b1e5e;\n    text-transform: uppercase;\n    margin: 10px; }\n  article.article p {\n    color: black;\n    margin: 10px; }\n\narticle.article:hover {\n  background-color: #4583c2; }\n  article.article:hover h4 {\n    color: white; }\n  article.article:hover p {\n    color: white; }\n\n.searched-sources {\n  position: absolute;\n  top: 100%;\n  z-index: 9999999; }\n  .searched-sources .sources {\n    display: block;\n    padding: 2px 20px 2px 20px;\n    background-color: #DDD;\n    width: 166px; }\n\n.login-page {\n  background: #4583c2;\n  color: white;\n  height: 100vh; }\n  .login-page .brand {\n    font-family: 'Averia Sans Libre', cursive; }\n  .login-page .content {\n    margin: 15% auto;\n    width: 65%; }\n    @media (max-width: 767px) {\n      .login-page .content {\n        width: 90%; } }\n    .login-page .content .headline {\n      line-height: 1.5em; }\n\n.drawer {\n  padding: 15px; }\n  .drawer h3 {\n    font-weight: 900;\n    text-transform: uppercase;\n    font-family: \"Slabo 27px\", serif; }\n\nfooter {\n  background: #1a1a1a;\n  height: 39px;\n  display: flex;\n  align-items: center;\n  justify-content: center; }\n  footer p {\n    text-align: center;\n    color: white; }\n", ""]);
 
 // exports
 
