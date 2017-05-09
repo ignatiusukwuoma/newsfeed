@@ -18,16 +18,8 @@ describe('The Sidebar component', () => {
 const wrapper = shallow(<Sidebar sources={data.sources} />);
 
 describe('After rendering, the sidebar component', () => {
-  it('should have a div as the first child', () => {
-    expect(wrapper).to.have.tagName('div');
-  });
-
   it('should have Source as its child component', () => {
     expect(wrapper).to.have.descendants(Source);
-  });
-
-  it('should be a sidebar with col-sm-2', () => {
-    expect(wrapper.find('.col-sm-2')).be.present();
   });
 
   it('should contain the text `News Sources` in the h4 tag', () => {

@@ -19,10 +19,6 @@ describe('The Home component', () => {
 const wrapper = shallow(<Home {...data}/>);
 
 describe('After rendering, the Home component', () => {
-  it('should have a div as the first child', () => {
-    expect(wrapper).to.have.tagName('div');
-  });
-
   it('should have Sidebar as its child component', () => {
     expect(wrapper).to.have.descendants(Sidebar);
   });
