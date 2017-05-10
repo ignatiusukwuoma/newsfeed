@@ -76,7 +76,7 @@ export default class Sidebar extends React.Component {
   getView(sourcesByCategory) {
     if (screen.width < 768) {
       return (
-          <Drawer open={this.props.open}>
+          <Drawer open={this.props.open} width="60%">
             <div class="drawer">
               <h3>News Sources</h3>
               {sourcesByCategory}

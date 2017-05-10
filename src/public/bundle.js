@@ -10910,6 +10910,7 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 /**
  * The configuration for Google Authentication by Firebase
+ * @returns the firebase configuration object
  */
 var config = {
   apiKey: "AIzaSyBfetXIUjgUNRY42M3dtdr1ol6-dV6P5RY",
@@ -17710,7 +17711,7 @@ var Sidebar = function (_React$Component) {
       if (screen.width < 768) {
         return _react2.default.createElement(
           _Drawer2.default,
-          { open: this.props.open },
+          { open: this.props.open, width: '60%' },
           _react2.default.createElement(
             'div',
             { className: 'drawer' },

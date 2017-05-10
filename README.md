@@ -1,6 +1,8 @@
-# Hottest News    [![Build Status](https://travis-ci.org/andela-iukwuoma/newsfeed.svg?branch=master)](https://travis-ci.org/andela-iukwuoma/newsfeed) [![Coverage Status](https://coveralls.io/repos/github/andela-iukwuoma/newsfeed/badge.svg?branch=ft-write-unit-tests-144580237)](https://coveralls.io/github/andela-iukwuoma/newsfeed?branch=ft-write-unit-tests-144580237)
+# Hottest News    [![Build Status](https://travis-ci.org/andela-iukwuoma/newsfeed.svg?branch=master)](https://travis-ci.org/andela-iukwuoma/newsfeed) [![Coverage Status](https://coveralls.io/repos/github/andela-iukwuoma/newsfeed/badge.svg?branch=ft-write-unit-tests-144580237)](https://coveralls.io/github/andela-iukwuoma/newsfeed?branch=ft-write-unit-tests-144580237) [![license](https://img.shields.io/github/license/mashape/apistatus.svg)]()
 
 This application fetches the most popular and latest news headlines from over 70 of the highest-rated news sites in the world. It provides you with a simple interface to view all the headlines and be redirected to the full article in one click. News sources are arranged in categories and you can search for your favourites in the search box.
+
+This project was built with React and uses the Flux Architecture. Data used in this application is received from [NewsAPI](https://newsapi.org) through API requests. 
 
 ## Table of Contents
 
@@ -89,3 +91,10 @@ where <your\_desired\_port> is the port you want to use. So, if you want to use 
 ```bash
 PORT=9000
 ```
+- **How can I contribute?**
+
+There are two major ways to contribute:
+
+- If you find bugs in the application, create a `New Issue` and let me know about it.
+
+- If you would like to add additional features to this application, fork this repository, make necessary changes and create a Pull Request. Please make sure that all Hound suggestions are implemented and Travis CI passes.

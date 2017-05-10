@@ -2,6 +2,7 @@ import * as firebase from 'firebase';
 
 /**
  * The configuration for Google Authentication by Firebase
+ * @returns the firebase configuration object
  */
 const config = {
   apiKey: process.env.FIREBASE_API_KEY,

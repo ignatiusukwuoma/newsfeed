@@ -26,7 +26,7 @@ export const displayNews = (id, sortParameters, name) => {
           id: response.body.source,
           sortParameters,
           name,
-        }
+        },
       });
     });
 };
