@@ -2,14 +2,12 @@
   "name": "newsfeed-app",
   "version": "1.0.0",
   "description": "An application that allows users to view all headlines from different news sources and link to the original news on those sources.",
-  "main": "src/app/app.js",
+  "main": "server.js",
   "scripts": {
-    "build": "./node_modules/.bin/webpack --output-public-path=/public/",
-    "coveralls": "cat ./coverage/lcov.info | ./node_modules/.bin/coveralls",
-    "coverage": "./node_modules/.bin/nyc report --reporter=text-lcov | ./node_modules/.bin/coveralls",
-    "dev": "webpack-dev-server --content-base src  --output-public-path=/public/ --history-api-fallback",
+    "start": "node server.js",
+    "coverage": "nyc report --reporter=text-lcov | ./node_modules/.bin/coveralls",
     "test": "mocha --require ignore-styles tests/.setup.js tests/**/*[sS]pec.js",
-    "test:nyc": "./node_modules/.bin/nyc --reporter=html --reporter=text mocha tests/.setup.js tests/*[sS]pec.js"
+    "test:nyc": "nyc --reporter=html --reporter=text mocha tests/.setup.js tests/*[sS]pec.js"
   },
   "repository": {
     "type": "git",
@@ -75,6 +73,8 @@
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx-a11y": "^4.0.0",
     "eslint-plugin-react": "^6.10.3",
+    "expect": "^1.20.2",
+    "expect-jsx": "^3.0.0",
     "file-loader": "^0.11.1",
     "ignore-styles": "^5.0.1",
     "jsdoc": "^3.4.3",
@@ -82,7 +82,7 @@
     "mocha": "^3.3.0",
     "mocha-lcov-reporter": "^1.3.0",
     "node-sass": "^4.5.2",
-    "nyc": "^10.3.0",
+    "nyc": "^10.2.0",
     "postcss": "^5.2.16",
     "postcss-loader": "^1.3.3",
     "react-addons-test-utils": "^15.5.1",
