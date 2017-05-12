@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Newstore from '../stores/Newstore';
 import Sidebar from './layouts/Sidebar';
 import MainScreen from './layouts/MainScreen';
@@ -9,7 +10,6 @@ import * as NewsActions from '../actions/NewsActions';
  * @extends React.Component
  */
 class Home extends React.Component {
-
 
   /**
    * Births the Sidebar and MainScreen sections
@@ -29,3 +29,17 @@ class Home extends React.Component {
   }
 }
 export default Home;
+Home.propTypes = {
+  headlines: PropTypes.func,
+  sourcesToggle: PropTypes.func,
+  name: PropTypes.string,
+  sortParameters: PropTypes.array,
+  id: PropTypes.string,
+  sortBy: PropTypes.string,
+  news: PropTypes.array,
+  sortedNews: PropTypes.array,
+  sources: PropTypes.array,
+  user: PropTypes.object,
+  grid: PropTypes.string,
+  open: PropTypes.bool,
+};

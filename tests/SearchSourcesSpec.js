@@ -16,7 +16,7 @@ describe('The SearchSources component', () => {
 
 const wrapper = shallow(<SearchSources sources={data.sources}/>);
 
-describe('After rendering, the mainscreen component', () => {
+describe('After rendering, the SearchSources component', () => {
   it('should have a div as the first child', () => {
     expect(wrapper).to.have.tagName('div');
   });
@@ -34,7 +34,7 @@ describe('After rendering, the mainscreen component', () => {
   });
 });
 
-describe('The component', () => {
+describe('SearchSources component', () => {
   const children = wrapper.children();
   it('should have two direct children of the top most div', () => {
     expect(children).to.have.length(2);

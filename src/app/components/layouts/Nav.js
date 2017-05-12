@@ -1,8 +1,7 @@
 import React from 'react';
 import { IndexLink, Link } from 'react-router';
-import RaisedButton from 'material-ui/RaisedButton';
-import injectTapEventPlugin from 'react-tap-event-plugin';
 import PropTypes from 'prop-types';
+import injectTapEventPlugin from 'react-tap-event-plugin';
 import SearchSources from '../SearchSources';
 
 
@@ -21,7 +20,6 @@ export default class Nav extends React.Component {
       collapsed: true,
     };
   }
-
 
   /**
    * Function to collapse and expand the menu
@@ -90,4 +88,5 @@ Nav.propTypes = {
   photo: PropTypes.string,
   email: PropTypes.string,
   headlines: PropTypes.func,
+  user: PropTypes.object,
 };

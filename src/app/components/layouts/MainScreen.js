@@ -39,14 +39,13 @@ export default class MainScreen extends React.Component {
     }
   }
 
-
   /**
    * Renders the major part of the view
    * @memberOf MainScreen
    * returns the Article and Sort Components
    */
   render() {
-    const { news, sortBy, id, name, sortParameters, sortedNews } = this.props;
+    const { news, sortBy, name, sortParameters, sortedNews } = this.props;
     const sortComponent = sortParameters.map((sort, i) =>
     (<Sort sort={sort} key={i} />));
     const displayedNews = news.length > 1 ? news : sortedNews;

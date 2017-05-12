@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
+import PropTypes from 'prop-types';
 import firebase from '../firebaseConfig';
 import Nav from './layouts/Nav';
 import Home from './Home';
@@ -10,12 +11,11 @@ import './Layout.scss';
 
 
 /**
- * The layout of our entire srceen
+ * The layout of the entire srceen
  * @class Layout
  * @extends {React.Component}
  */
 class Layout extends React.Component {
-
 
   /**
    * Creates an instance of Layout.
@@ -45,10 +45,9 @@ class Layout extends React.Component {
     };
   }
 
-
   /**
    * Checks if user is loggedIn
-   * CHecks if screen is mobile
+   * Checks if screen is mobile
    * @returns appropriate location and view
    * @memberOf Layout
    */
@@ -63,7 +62,6 @@ class Layout extends React.Component {
     }
   }
 
-
   /**
    * Listens for a change event in the store
    * @returns the function to set new state
@@ -73,7 +71,6 @@ class Layout extends React.Component {
     Newstore.on('change', this.getAll);
   }
 
-
   /**
    * Determines if mobile sidebar pops up
    * @memberOf Layout
@@ -81,7 +78,6 @@ class Layout extends React.Component {
   handleToggle() {
     this.setState({ open: !this.state.open });
   }
-
 
   /**
    * Signs the user out of the application
@@ -96,7 +92,6 @@ class Layout extends React.Component {
     });
   }
 
-
   /**
    * Makes an API call for Articles
    * @param {any} id - of a clicked source
@@ -107,7 +102,6 @@ class Layout extends React.Component {
   displayHeadlines(id, sortParameters, name) {
     NewsActions.displayNews(id, sortParameters, name);
   }
-
 
   /**
    * Sets the state of Layout
@@ -124,7 +118,6 @@ class Layout extends React.Component {
       sources: Newstore.getSources(),
     });
   }
-
 
   /**
    * Lays out all parent components in the screen
@@ -149,3 +142,6 @@ class Layout extends React.Component {
 }
 
 export default Layout;
+Layout.propTypes = {
+  location: PropTypes.object,
+};

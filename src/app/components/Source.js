@@ -1,7 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router';
 import Sort from './Sort';
-
 
 /**
  * Individual source details
@@ -21,7 +21,6 @@ export default class Source extends React.Component {
     this.collapseAfterCall = this.collapseAfterCall.bind(this);
   }
 
-
   /**
    * A function from Layout passed down as props
    * Makes an API call for articles
@@ -32,7 +31,6 @@ export default class Source extends React.Component {
     return this.props.headlines(this.props.source.id,
     this.props.source.sortBy, this.props.source.name);
   }
-
 
   /**
    * Calls the getHeadlines function
@@ -52,7 +50,7 @@ export default class Source extends React.Component {
    * @memberOf Source
    */
   render() {
-    const { id, name, sortBy } = this.props.source;
+    const { name } = this.props.source;
     return (
       <li class="sources">
         <Link onClick={this.collapseAfterCall} class="sourcesLink">{name}</Link>
@@ -60,3 +58,8 @@ export default class Source extends React.Component {
     );
   }
 }
+
+Source.propTypes = {
+  source: PropTypes.object,
+  headlines: PropTypes.func,
+};

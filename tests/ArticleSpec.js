@@ -10,11 +10,11 @@ const expect = chai.expect;
 
 describe('The Article component', () => {
   it('should be defined', () => {
-    expect(<Article />).to.not.equal(undefined);
+    expect(Article).to.not.equal(undefined);
   });
 });
 
-const wrapper = shallow(<Article article={data.news}/>);
+const wrapper = shallow(<Article article={data.news[0]}/>);
 
 describe('The Article component', () => {
   it('should have the class name `article` in the article tag', () => {
@@ -31,6 +31,14 @@ describe('The Article component', () => {
 
   it('should have a div as the first child', () => {
     expect(wrapper).to.have.tagName('div');
+  });
+
+  it('should have a p tag that is empty since article description is null', () => {
+    expect(wrapper.find('p')).to.be.blank();
+  });
+
+  it('should have a p tag that is empty since article description is null', () => {
+    expect(wrapper.find('img')).to.have.attr('src').equal(data.news[0].urlImage);
   });
 });
 

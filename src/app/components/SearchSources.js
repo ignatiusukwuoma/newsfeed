@@ -1,6 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Source from './Source';
-
 
 /**
  * The search form
@@ -8,7 +8,6 @@ import Source from './Source';
  * @extends {React.Component}
  */
 export default class SearchSources extends React.Component {
-
 
   /**
    * Creates an instance of SearchSources.
@@ -21,7 +20,6 @@ export default class SearchSources extends React.Component {
     this.state = { search: '' };
   }
 
-
   /**
    * Updates the value of the search form
    * @param {any} event where user types of the search
@@ -32,7 +30,6 @@ export default class SearchSources extends React.Component {
       this.setState({ search: event.target.value.substr(0, 10) });
     }
   }
-
 
   /**
    * Extracts a list of sources that match users search charaters
@@ -63,3 +60,7 @@ export default class SearchSources extends React.Component {
     );
   }
 }
+SearchSources.propTypes = {
+  headlines: PropTypes.func,
+  sources: PropTypes.array,
+};
