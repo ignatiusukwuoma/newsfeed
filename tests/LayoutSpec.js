@@ -15,4 +15,3 @@ describe('The Layout component', () => {
     expect(<Layout />).to.not.equal(undefined);
   });
 });
-

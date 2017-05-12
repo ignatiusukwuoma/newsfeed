@@ -8,20 +8,24 @@ import * as data from './testData';
 chai.use(chaiEnzyme());
 const expect = chai.expect;
 
-describe('The Sort component', () => {
+describe('The Source component', () => {
   it('should be defined', () => {
     expect(<Source />).to.not.equal(undefined);
   });
 });
 
-const wrapper = shallow(<Source source={data} />);
+const wrapper = shallow(<Source source={data.sources[0]} />);
 
 describe('After rendering, the source component', () => {
-  it('should have an li tag as the onlychild', () => {
+  it('should have an li tag rendered, which contains everything else', () => {
     expect(wrapper).to.have.tagName('li');
   });
 
   it('should have an element with class name `sources`', () => {
     expect(wrapper.find('.sources')).be.present();
+  });
+
+  it('should have its Link tag math the class name `sourcesLink`', () => {
+    expect(wrapper.find('Link')).to.match('.sourcesLink');
   });
 });

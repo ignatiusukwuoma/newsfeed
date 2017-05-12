@@ -1,7 +1,5 @@
 import React from 'react';
 import firebase from '../firebaseConfig';
-import * as NewsActions from '../actions/NewsActions';
-
 
 /**
  * Displays the Login Page
@@ -23,25 +21,24 @@ export default class Login extends React.Component {
       ],
       tosUrl: 'https://www.google.com',
       callbacks: {
-        signInSuccess: (user, credential, redirectUrl) => {
+        signInSuccess: (user) => {
           const userDetails = JSON.stringify(
             {
               uid: user.uid,
               name: user.displayName,
               photo: user.photoURL,
-            }
+            },
           );
           localStorage.setItem('hottestnews', userDetails);
           return true;
-        }
-      }
+        },
+      },
     };
 
     // Initialize the Google Login Button
     const googleLoginButton = new firebaseui.auth.AuthUI(firebase.auth());
     googleLoginButton.start('#firebaseui-container', googleLoginConfiguration);
   }
-
 
   /**
    * Renders the full login page

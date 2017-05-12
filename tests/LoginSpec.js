@@ -24,12 +24,16 @@ describe('After rendering, the login component', () => {
     expect(wrapper.find('.headline')).be.present();
   });
 
-  it('should contain the text `Hottest News` in the h1 tag', () => {
+  it('should contain the brand name `Hottest News` in the h1 tag', () => {
     expect(wrapper.find('h1')).to.contain.text('HOTTEST NEWS');
   });
 
-  it('should contain the firebase UI container', () => {
+  it('should contain the firebase Google Auth Button container', () => {
     expect(wrapper.find('#firebaseui-container')).be.present();
+  });
+
+  it('should contain the firebase UI container', () => {
+    expect(wrapper).to.have.className('container-fluid login-page');
   });
 });
 

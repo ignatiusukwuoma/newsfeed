@@ -19,25 +19,27 @@ describe('The Home component', () => {
 const wrapper = shallow(<Home {...data}/>);
 
 describe('After rendering, the Home component', () => {
-  it('should have Sidebar as its child component', () => {
+  it('should have Sidebar as one of its child component', () => {
     expect(wrapper).to.have.descendants(Sidebar);
   });
 
   it('should be a sidebar with row', () => {
     expect(wrapper.find('.row')).be.present();
   });
-});
 
-
-describe('The Sidebar component, child of Home,', () => {
-  it('should receives props named `source` from Sidebar', () => {
-    expect(wrapper.find(Sidebar).first()).to.have.prop('sources');
+  const children = wrapper.children();
+  it('should have two children of the top most div', () => {
+    expect(children).to.have.length(2);
   });
 });
 
-describe('The component', () => {
-  const children = wrapper.children();
-  it('should have two direct children of the top most div', () => {
-    expect(children).to.have.length(2);
+
+describe('The child of Home,', () => {
+  it('Sidebar, should receive a prop named `source`', () => {
+    expect(wrapper.find(Sidebar)).to.have.prop('sources');
+  });
+
+  it('MainScreen, should receive the prop `sortParameters`', () => {
+    expect(wrapper.find(MainScreen)).to.have.prop('sortParameters');
   });
 });
