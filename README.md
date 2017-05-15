@@ -1,14 +1,8 @@
-# Hottest News    [![Build Status](https://travis-ci.org/andela-iukwuoma/newsfeed.svg?branch=master)](https://travis-ci.org/andela-iukwuoma/newsfeed) [![Coverage Status](https://coveralls.io/repos/github/andela-iukwuoma/newsfeed/badge.svg?branch=ft-write-unit-tests-144580237)](https://coveralls.io/github/andela-iukwuoma/newsfeed?branch=ft-write-unit-tests-144580237) [![license](https://img.shields.io/github/license/mashape/apistatus.svg)]()
+# Hottest News    [![Build Status](https://travis-ci.org/andela-iukwuoma/newsfeed.svg?branch=master)](https://travis-ci.org/andela-iukwuoma/newsfeed) [![Coverage Status](https://coveralls.io/repos/github/andela-iukwuoma/newsfeed/badge.svg?branch=develop)](https://coveralls.io/github/andela-iukwuoma/newsfeed?branch=develop) [![license](https://img.shields.io/github/license/mashape/apistatus.svg)]()
 
 This application fetches the most popular and latest news headlines from over 70 of the highest-rated news sites in the world. It provides you with a simple interface to view all the headlines and be redirected to the full article in one click. News sources are arranged in categories and you can search for your favourites in the search box.
 
-This project was built with React and uses the Flux Architecture. Data used in this application is received from [NewsAPI](https://newsapi.org) through API requests. 
-
-## Table of Contents
-
-  1. [Installation and setup](#installation-and-setup).
-  1. [Technologies](#technologies)
-  1. [FAQ](#faq)
+This project is built with React using the Flux Architecture. Code is written in ES2015, Babel is used to transpile down to ES5, SCSS is used to implement all custom styling, and Webpack is used to bundle all modules in the project and convert SCSS to CSS. Data is received from [NewsAPI](https://newsapi.org) through API requests. Authentication is made via Firebase Google Authentication. [Airbnb](https://github.com/airbnb/javascript) styleguide is used and configured in my .eslintrc to expose and flag incorrect ES6 syntax. HoundCI checks forstyle violations in PRs and TravisCI ensure that all test pass. The app is tested using Mocha test runner with Chai, Enzyme and Chai-Enzyme.
 
 ## Installation and setup
 
@@ -76,6 +70,13 @@ for details.
 
 - [Firebase Authentication](https://firebase.google.com/): Provides backend services, easy-to-use SDKs, and ready-made UI libraries to authenticate users to your app.
 
+## Limitations
+
+- This version of has the following limitations:
+
+* Full articles can not be opened and read within the application.
+* Users cannot create a list of favorite articles
+
 ## FAQ
 
 - **What if I want to use another port?**
@@ -98,3 +99,7 @@ There are two major ways to contribute:
 - If you find bugs in the application, create a `New Issue` and let me know about it.
 
 - If you would like to add additional features to this application, fork this repository, make necessary changes and create a Pull Request. Please make sure that all Hound suggestions are implemented and Travis CI passes.
+
+## Liense
+
+**The MIT License**

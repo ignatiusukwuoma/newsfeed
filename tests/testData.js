@@ -15,7 +15,7 @@ export const name = 'Techcrunch',
     title: 'Reasons to be cheerful2',
     description: 'There are many reasons to be cheerful. Number one, you are alive2...',
     url: 'https://foo.hotnews2.com',
-    urlImage: 'https://bar.hotnews2.com/image.png',
+    urlImage: 'https://bar.hotnews.com/image.png',
     date: '2017-05-21T14:40:57B',
   }],
   sortedNews = [{

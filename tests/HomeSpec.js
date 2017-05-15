@@ -19,11 +19,15 @@ describe('The Home component', () => {
 const wrapper = shallow(<Home {...data}/>);
 
 describe('After rendering, the Home component', () => {
-  it('should have Sidebar as one of its child component', () => {
+  it('should have Sidebar as a child component', () => {
     expect(wrapper).to.have.descendants(Sidebar);
   });
 
-  it('should be a sidebar with row', () => {
+  it('should have MainScreen as a child component', () => {
+    expect(wrapper).to.have.descendants(Sidebar);
+  });
+
+  it('should have a class `row`', () => {
     expect(wrapper.find('.row')).be.present();
   });
 

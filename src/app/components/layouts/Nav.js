@@ -1,19 +1,23 @@
 import React from 'react';
-import { IndexLink, Link } from 'react-router';
+import { Link } from 'react-router';
 import PropTypes from 'prop-types';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import SearchSources from '../SearchSources';
 
-
+injectTapEventPlugin();
 /**
  * Displays the navigation bar
- * @export
  * @class Nav
  * @extends {React.Component}
  */
 export default class Nav extends React.Component {
+
+  /**
+   * Creates an instance of Nav.
+   * 
+   * @memberOf Nav
+   */
   constructor() {
-    injectTapEventPlugin();
     super();
     this.toggleCollapse = this.toggleCollapse.bind(this);
     this.state = {
@@ -36,10 +40,9 @@ export default class Nav extends React.Component {
    * @memberOf Nav
    */
   render() {
-    const { name, photo, email } = this.props.user;
-    const { location } = this.props;
+    const { name, photo } = this.props.user;
     const { collapsed } = this.state;
-    const homeClass = location.pathname === '/' ? 'active' : '';
+    // const homeClass = location.pathname === '/' ? 'active' : '';
     const navClass = collapsed ? 'collapse' : '';
 
     return (
@@ -47,8 +50,8 @@ export default class Nav extends React.Component {
         <div class="container-fluid">
           <div class="navbar-header">
             <button type="button" class="navbar-toggle"
-            onClick={this.toggleCollapse}
-            data-target=".navbar-inverse-collapse">
+              onClick={this.toggleCollapse}
+              data-target=".navbar-inverse-collapse">
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
@@ -64,10 +67,11 @@ export default class Nav extends React.Component {
               <li class="dropdown">
                 <a href="bootstrap-elements.html" data-target="#"
                 class="dropdown-toggle" data-toggle="dropdown">
-                <span>Welcome, {name}
-                  <img class="user-image" src={photo} />
-                </span>
-                  <b class="caret"></b></a>
+                  <span>Welcome, {name}
+                    <img class="user-image" src={photo} />
+                  </span>
+                  <b class="caret"></b>
+                </a>
                 <ul class="dropdown-menu">
                   <li><Link onClick={this.props.signOut}>Logout</Link></li>
                 </ul>

@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router';
 import PropTypes from 'prop-types';
 import firebase from '../firebaseConfig';
 import Nav from './layouts/Nav';
@@ -8,7 +7,6 @@ import Footer from './layouts/Footer';
 import Newstore from '../stores/Newstore';
 import * as NewsActions from '../actions/NewsActions';
 import './Layout.scss';
-
 
 /**
  * The layout of the entire srceen
@@ -88,7 +86,7 @@ class Layout extends React.Component {
       localStorage.removeItem('hottestnews');
       window.location = '/login';
     }, (error) => {
-      alert('There was an error with signing out. Please try again!');
+      alert('There was an error with signing out. Please try again!', error);
     });
   }
 

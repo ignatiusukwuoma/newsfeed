@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Home from '../Home';
 import Article from '../Article';
 import Sort from '../Sort';
 import * as NewsActions from '../../actions/NewsActions';

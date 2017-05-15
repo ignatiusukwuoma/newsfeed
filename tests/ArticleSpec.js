@@ -3,6 +3,7 @@ import chai from 'chai';
 import chaiEnzyme from 'chai-enzyme';
 import { shallow } from 'enzyme';
 import Article from '../src/app/components/Article';
+import defaultUrlImage from '../src/public/images/newsimage.jpg';
 import * as data from './testData';
 
 chai.use(chaiEnzyme());
@@ -21,7 +22,7 @@ describe('The Article component', () => {
     expect(wrapper.find('article')).to.have.className('article');
   });
 
-  it('should have a descendant with the class `preview`', () => {
+  it('should have a class `preview`', () => {
     expect(wrapper).to.have.descendants('.preview');
   });
 
@@ -37,7 +38,7 @@ describe('The Article component', () => {
     expect(wrapper.find('p')).to.be.blank();
   });
 
-  it('should have a p tag that is empty since article description is null', () => {
+  it('should have an image with src `urlImage` from the article API', () => {
     expect(wrapper.find('img')).to.have.attr('src').equal(data.news[0].urlImage);
   });
 });
