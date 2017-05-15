@@ -3,7 +3,7 @@ const path = require('path');
 const DotEnvPlugin = require('dotenv-webpack');
 
 const dotenvPlugin = new DotEnvPlugin({
-  path: '.env'
+  path: '.env',
 });
 
 const BUILD_DIR = path.resolve(__dirname, 'src/public');
@@ -22,7 +22,7 @@ const config = {
         include: APP_DIR,
         loader: 'babel-loader',
         query: {
-          plugins: ['react-html-attrs', 'transform-decorators-legacy', 'transform-class-properties'],
+          plugins: ['react-html-attrs', 'transform-class-properties'],
         },
       },
       {
@@ -36,10 +36,10 @@ const config = {
     ],
   },
   plugins: [
-    dotenvPlugin
+    dotenvPlugin,
   ],
   node: {
-    fs: 'empty'
-  }
+    fs: 'empty',
+  },
 };
 module.exports = config;

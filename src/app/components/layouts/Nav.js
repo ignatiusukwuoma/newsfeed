@@ -14,7 +14,7 @@ export default class Nav extends React.Component {
 
   /**
    * Creates an instance of Nav.
-   * 
+   * Sets the state of Nav
    * @memberOf Nav
    */
   constructor() {

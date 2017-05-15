@@ -34,12 +34,13 @@ describe('The Article component', () => {
     expect(wrapper).to.have.tagName('div');
   });
 
-  it('should have a p tag that is empty since article description is null', () => {
+  it('should have an empty p tag since article description is null', () => {
     expect(wrapper.find('p')).to.be.blank();
   });
 
   it('should have an image with src `urlImage` from the article API', () => {
-    expect(wrapper.find('img')).to.have.attr('src').equal(data.news[0].urlImage);
+    expect(wrapper.find('img')).to.have.attr('src')
+      .equal(data.news[0].urlImage);
   });
 });
 

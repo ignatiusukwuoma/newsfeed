@@ -30,8 +30,9 @@ describe('When rendered, Nav component', () => {
     expect(wrapper.find('.dropdown')).be.present();
   });
 
-  it('should have the name and logo of the application in the right place', () => {
-    expect(wrapper.find('.navbar-brand')).to.have.html('<a class="navbar-brand" href="/">Hottest News</a>');
+  it('should have name and logo of the application in the right place', () => {
+    expect(wrapper.find('.navbar-brand'))
+      .to.have.html('<a class="navbar-brand" href="/">Hottest News</a>');
   });
 
   it('should have a state with key `collapsed` and value `true`', () => {
@@ -54,7 +55,8 @@ describe('The child component of Nav', () => {
     expect(wrapper.find(SearchSources)).to.have.props(['sources', 'headlines']);
   });
 
-  it('should have a prop `sources` that gets the sources props of the Nav component', () => {
-    expect(wrapper.find(SearchSources)).to.have.prop('sources').deep.equal(data.sources);
+  it('Searchsources, should have prop inherited from Nav component', () => {
+    expect(wrapper.find(SearchSources))
+      .to.have.prop('sources').deep.equal(data.sources);
   });
 });
