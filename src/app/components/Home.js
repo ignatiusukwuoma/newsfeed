@@ -1,9 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Newstore from '../stores/Newstore';
 import Sidebar from './layouts/Sidebar';
 import MainScreen from './layouts/MainScreen';
-import * as NewsActions from '../actions/NewsActions';
 
 /**
  * Displays the entire screen asides Nav and Footer

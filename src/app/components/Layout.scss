@@ -1,4 +1,3 @@
-@import '../../public/stylesheets/style';
 $primary-color: #0b1e5e;
 $secondary-color: #4583c2;
 $primary-font: 'Open Sans', sans-serif;
@@ -14,7 +13,7 @@ a, a:hover, a:active, a:visited, a:focus {
 }
 
 .mainscreen-main {
-  max-height: calc(100vh - 90px);
+  max-height: calc(100vh - 100px);
   overflow-y: scroll;
   h2 {
     color: $primary-color;
@@ -35,7 +34,7 @@ a, a:hover, a:active, a:visited, a:focus {
 
 .sidebar-main {
   background-color: #DDD;
-  max-height: calc(100vh - 90px);
+  max-height: calc(100vh - 100px);
   overflow-y: scroll;
   top: 0;
   bottom: 0;

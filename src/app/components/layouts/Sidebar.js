@@ -6,15 +6,12 @@ import Home from '../Home';
 import Source from '../Source';
 import * as NewsActions from '../../actions/NewsActions';
 
-
 /**
- * Sidebar to display the list of News sources
- * @export
+ * Creates the sidebar to display the list of News sources
  * @class Sidebar
  * @extends {React.Component}
  */
 export default class Sidebar extends React.Component {
-
 
   /**
    * Creates an instance of Sidebar.
@@ -30,7 +27,6 @@ export default class Sidebar extends React.Component {
     };
   }
 
-
   /**
    * Calls the actions to make an API call for sources
    * @memberOf Sidebar
@@ -45,7 +41,6 @@ export default class Sidebar extends React.Component {
     this.state.defaultName);
   }
 
-
   /**
    * Arranges the news sources in categories
    * @param {array} An array of source objects
@@ -57,15 +52,16 @@ export default class Sidebar extends React.Component {
     const sourcesByCategory = {};
     sources.forEach((source) => {
       if (sourcesByCategory[source.category] !== undefined) {
-        sourcesByCategory[source.category].push(`${source.id}_${source.name}_${source.sortBy}`);
+        sourcesByCategory[source.category]
+          .push(`${source.id}_${source.name}_${source.sortBy}`);
       } else {
         sourcesByCategory[source.category] = [];
-        sourcesByCategory[source.category].push(`${source.id}_${source.name}_${source.sortBy}`);
+        sourcesByCategory[source.category]
+          .push(`${source.id}_${source.name}_${source.sortBy}`);
       }
     });
     return sourcesByCategory;
   }
-
 
   /**
    * Selects the type of view to display-mobile or desktop
@@ -92,7 +88,6 @@ export default class Sidebar extends React.Component {
     );
   }
 
-
   /**
    * Maps through the sources arranged in categories
    * @returns the news sources in a sidebar
@@ -110,7 +105,6 @@ export default class Sidebar extends React.Component {
           sourceDetails.name = sourceSplit[1];
           sourceDetails.sortBy = sourceSplit[2].split(',');
         }
-
         return (<Source key={sourceDetails.id}
         source={sourceDetails} headlines={this.props.headlines}
         sourcesToggle={this.props.sourcesToggle} open={this.props.open} />);

@@ -1,6 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router';
-
 
 /**
  * Displays the Footer of the App

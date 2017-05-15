@@ -6,17 +6,18 @@ dotenv.config();
 
 /**
  * Makes the API call to get news headlines
- * @param {string} id - id of the clicked source
+ * @param {string} id - ID of the clicked source
  * @param {array} sortParameters - sort parameters available for the source
  * @param {string} name - name of the clicked source
  */
 export const displayNews = (id, sortParameters, name) => {
-  const url = `https://newsapi.org/v1/articles?apiKey=${process.env.NEWS_API_KEY}`;
+  const url =
+    `https://newsapi.org/v1/articles?apiKey=${process.env.NEWS_API_KEY}`;
   Request.get(url)
     .query({ source: id })
     .end((err, response) => {
       if (err) {
-        alert('Oh snap! There was a problem somewhere. Please refresh the page.');
+        alert('Oh snap! There was a problem. Please refresh the page.');
       }
       dispatcher.dispatch({
         type: 'DISPLAY_NEWS',
@@ -32,17 +33,18 @@ export const displayNews = (id, sortParameters, name) => {
 };
 
 /**
- * Makes an API call to get news headlines using the sort parameters
- * @param {string} id - id of the clicked source
- * @param {array} sort - sort parameter to use
+ * Makes an API call to get news headlines using one of the sort parameters
+ * @param {string} id - ID of the clicked source
+ * @param {array} sort - sort parameter used to make request
  */
 export const getWithSort = (id, sort) => {
-  const url = `https://newsapi.org/v1/articles?apiKey=${process.env.NEWS_API_KEY}`;
+  const url =
+    `https://newsapi.org/v1/articles?apiKey=${process.env.NEWS_API_KEY}`;
   Request.get(url)
     .query({ source: id, sortBy: sort })
     .end((err, response) => {
       if (err) {
-        alert('Oh snap! There was a problem somewhere. Please refresh the page.');
+        alert('Oh snap! There was a problem. Please refresh the page.');
       }
       dispatcher.dispatch({
         type: 'DISPLAY_WITH_SORT',
@@ -52,13 +54,13 @@ export const getWithSort = (id, sort) => {
 };
 
 /**
- * Makes API call to retrieve sources
+ * Makes API call to retrieve the list of sources
  */
 export const displaySources = () => {
   const url = 'https://newsapi.org/v1/sources?language=en';
   Request.get(url).end((err, response) => {
     if (err) {
-      alert('Oh snap! There was a problem somewhere. Please refresh the page.');
+      alert('Oh snap! There was a problem. Please refresh the page.');
     }
     dispatcher.dispatch({
       type: 'DISPLAY_SOURCES',

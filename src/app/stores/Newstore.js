@@ -1,7 +1,6 @@
 import { EventEmitter } from 'events';
 import dispatcher from '../dispatcher';
 
-
 /**
  * Stores all the data from API calls
  * Emits a change whenever values change
@@ -9,7 +8,6 @@ import dispatcher from '../dispatcher';
  * @extends {EventEmitter}
  */
 class Newstore extends EventEmitter {
-
 
   /**
    * Creates an instance of Newstore.
@@ -22,7 +20,6 @@ class Newstore extends EventEmitter {
     this.sourceNames = [];
     this.sortedNews = [];
   }
-
 
   /**
    * Picks up the sources array returned by Actions
@@ -44,14 +41,13 @@ class Newstore extends EventEmitter {
     this.emit('change');
   }
 
-
   /**
    * Initialises news and sorted news
    * Gets the news headlines and keeps what the app needs
    * @param {array} articles - an array of objects
    * @param {string} sortBy - the sort parameter used to get the headlines
    * @param {string} id - the id of the clicked source
-   * @param {array} sortParameters - the sort parameters available for that source
+   * @param {array} sortParameters - the sort parameters for that source
    * @param {string} name - name of the clicked source
    * emits change
    * @memberOf Newstore
@@ -75,7 +71,6 @@ class Newstore extends EventEmitter {
     this.news.name = name;
     this.emit('change');
   }
-
 
   /**
    * Initialises news and sorted news
@@ -113,10 +108,9 @@ class Newstore extends EventEmitter {
     return this.sortedNews;
   }
 
-
   /**
    * Specifies how store handles different action types
-   * @param {object} action - event carried out by Actions
+   * @param {object} action - event dispatched by Actions
    * Calls the function in charge of an action type
    * @memberOf Newstore
    */
