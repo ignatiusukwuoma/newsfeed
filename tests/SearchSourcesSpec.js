@@ -44,11 +44,11 @@ describe('SearchSources component', () => {
     expect(children.at(0)).to.have.className('navbar-right');
   });
 
-  it('should have a first child that contains a div element with a class name of `form-group`', () => {
+  it('should have div tag with class `form-group`', () => {
     expect(children.at(0).find('div')).to.have.className('form-group');
   });
 
-  it('should have a second child with an class name of `searched-sources`', () => {
+  it('should have a second child with an class of `searched-sources`', () => {
     expect(children.at(1)).to.have.className('searched-sources');
   });
 });

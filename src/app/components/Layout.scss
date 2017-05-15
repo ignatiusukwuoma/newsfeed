@@ -34,11 +34,11 @@ a, a:hover, a:active, a:visited, a:focus {
 
 .sidebar-main {
   background-color: #DDD;
+  border-right: 1px solid silver;
+  bottom: 0;
   max-height: calc(100vh - 100px);
   overflow-y: scroll;
   top: 0;
-  bottom: 0;
-  border-right: 1px solid silver;
   h3 {
     text-transform: uppercase;
     margin-top: 25px;

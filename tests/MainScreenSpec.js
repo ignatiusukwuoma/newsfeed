@@ -39,7 +39,7 @@ describe('After rendering, the mainscreen component', () => {
     expect(wrapper.find('h2')).to.contain.text('News');
   });
 
-  it('should have the value `sortby` as the default value of the select tag', () => {
+  it('should have the default value `sortby` for the select tag', () => {
     expect(wrapper.find('select')).to.have.value('sortby');
   });
 
@@ -69,7 +69,7 @@ describe('The component', () => {
     expect(children.at(0)).to.have.className('main-headers');
   });
 
-  it('should have a first child that contains a select element with a class name of `styled-select`', () => {
+  it('should have a select tag with class of `styled-select`', () => {
     expect(children.at(0).find('select')).to.have.className('styled-select');
   });
 
