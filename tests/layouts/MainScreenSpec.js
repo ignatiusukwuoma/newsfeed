@@ -2,10 +2,10 @@ import React from 'react';
 import chai from 'chai';
 import chaiEnzyme from 'chai-enzyme';
 import { shallow } from 'enzyme';
-import MainScreen from '../src/app/components/layouts/MainScreen';
-import Article from '../src/app/components/Article';
-import Sort from '../src/app/components/Sort';
-import * as data from './testData';
+import MainScreen from '../../src/app/components/layouts/MainScreen';
+import Article from '../../src/app/components/Article';
+import Sort from '../../src/app/components/Sort';
+import * as data from '../testData';
 
 chai.use(chaiEnzyme());
 const expect = chai.expect;

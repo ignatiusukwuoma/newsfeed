@@ -2,7 +2,7 @@ import React from 'react';
 import chai from 'chai';
 import chaiEnzyme from 'chai-enzyme';
 import { shallow } from 'enzyme';
-import Footer from '../src/app/components/layouts/Footer';
+import Footer from '../../src/app/components/layouts/Footer';
 
 chai.use(chaiEnzyme());
 const expect = chai.expect;

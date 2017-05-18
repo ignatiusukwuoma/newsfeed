@@ -1,5 +1,5 @@
 import chai from 'chai';
-import * as NewsActions from '../src/app/actions/NewsActions';
+import * as NewsActions from '../../src/app/actions/NewsActions';
 
 const expect = chai.expect;
 

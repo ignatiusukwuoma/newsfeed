@@ -5,6 +5,7 @@ import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 import Layout from './components/Layout';
 import Home from './components/Home';
 import Login from './components/Login';
+import Error from './components/Error';
 import './components/Layout.scss';
 
 /**
@@ -17,6 +18,7 @@ ReactDOM.render(
         <IndexRoute component={Home} />
       </Route>
       <Route path="/login" component={Login}></Route>
+      <Route path="/error" component={Error}></Route>
     </Router>
   </MuiThemeProvider>,
 document.getElementById('app'));
