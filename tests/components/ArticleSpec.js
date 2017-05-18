@@ -2,9 +2,9 @@ import React from 'react';
 import chai from 'chai';
 import chaiEnzyme from 'chai-enzyme';
 import { shallow } from 'enzyme';
-import Article from '../src/app/components/Article';
-import defaultUrlImage from '../src/public/images/newsimage.jpg';
-import * as data from './testData';
+import Article from '../../src/app/components/Article';
+import defaultUrlImage from '../../src/public/images/newsimage.jpg';
+import * as data from '../testData';
 
 chai.use(chaiEnzyme());
 const expect = chai.expect;

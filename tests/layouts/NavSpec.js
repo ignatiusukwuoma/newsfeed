@@ -2,9 +2,9 @@ import React from 'react';
 import chai from 'chai';
 import chaiEnzyme from 'chai-enzyme';
 import { shallow } from 'enzyme';
-import Nav from '../src/app/components/layouts/Nav';
-import SearchSources from '../src/app/components/SearchSources';
-import * as data from './testData';
+import Nav from '../../src/app/components/layouts/Nav';
+import SearchSources from '../../src/app/components/SearchSources';
+import * as data from '../testData';
 
 chai.use(chaiEnzyme());
 const expect = chai.expect;
