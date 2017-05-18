@@ -46,7 +46,7 @@ export const displayNews = (id, sortParameters, name) => {
  */
 export const getWithSort = (id, sort) => {
   const url =
-    `https://newsapi.org/v1/articles?apiKey=${process.env.NEWS_API_KEY}`;
+    `https://newsapi.or/v1/articles?apiKey=${process.env.NEWS_API_KEY}`;
   Request.get(url)
     .query({ source: id, sortBy: sort })
     .end((err, response) => {
@@ -74,4 +74,8 @@ export const displaySources = () => {
       sources: response.body.sources,
     });
   });
+};
+
+export const displayError = () => {
+  dispatchError();
 };

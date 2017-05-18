@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import swal from 'sweetalert';
 import firebase from '../firebaseConfig';
 import Nav from './layouts/Nav';
 import Home from './Home';
@@ -88,7 +87,7 @@ class Layout extends React.Component {
       localStorage.removeItem('hottestnews');
       window.location = '/login';
     }, (error) => {
-      alert('There was an error with signing out. Please try again!', error);
+      NewsActions.displayError();
     });
   }
 
