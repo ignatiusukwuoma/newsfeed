@@ -19,7 +19,6 @@ class Newstore extends EventEmitter {
     this.news = { news: [], sortBy: '', id: '', sortParameters: [], name: '' };
     this.sourceNames = [];
     this.sortedNews = [];
-    this.error = false;
   }
 
   /**
@@ -97,13 +96,6 @@ class Newstore extends EventEmitter {
     this.emit('change');
   }
 
-  handleError(error) {
-    if (error === true) {
-      this.error = error;
-      this.emit('change');
-    }
-  }
-
   getNews() {
     return this.news;
   }
@@ -116,9 +108,6 @@ class Newstore extends EventEmitter {
     return this.sortedNews;
   }
 
-  getError() {
-    return this.error;
-  }
   /**
    * Specifies how store handles different action types
    * @param {object} action - event dispatched by Actions
@@ -136,9 +125,6 @@ class Newstore extends EventEmitter {
         break;
       case 'DISPLAY_SOURCES':
         this.displaySources(action.sources);
-        break;
-      case 'ERROR_LOADING':
-        this.handleError(action.error);
         break;
       default:
         // No operation

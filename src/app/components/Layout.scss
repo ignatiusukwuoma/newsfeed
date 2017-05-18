@@ -19,9 +19,6 @@ a, a:hover, a:active, a:visited, a:focus {
     color: $primary-color;
     font-weight: bold;
     font-family: $headers-font;
-    @media (max-width: 767px) {
-      font-size: 1.3em;
-    }
   }
   .main-headers {
     display: flex;
@@ -32,9 +29,6 @@ a, a:hover, a:active, a:visited, a:focus {
   }
   select {
     font-size: 1.5em;
-    @media (max-width: 767px) {
-      font-size: 1.2em;
-    }
   }
 }
 
@@ -170,27 +164,6 @@ article.article:hover {
     text-transform: uppercase;
     font-family: $headers-font;
   }
-}
-
-.error-message {
-  background-color: #ddd;
-  width: 400px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  padding: 30px;
-}
-
-.error-message p {
-  line-height: 2;
-}
-
-.error-message img {
-  display: block;
-  height: 50px;
-  width: 50px;
-  margin: 0 auto 20px auto;
 }
 
 footer {

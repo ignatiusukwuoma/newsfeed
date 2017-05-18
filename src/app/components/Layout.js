@@ -40,7 +40,6 @@ class Layout extends React.Component {
       },
       grid: '',
       open: false,
-      error: false,
     };
   }
 
@@ -115,14 +114,16 @@ class Layout extends React.Component {
       sortParameters: Newstore.getNews().sortParameters,
       name: Newstore.getNews().name,
       sources: Newstore.getSources(),
-      error: Newstore.getError(),
     });
   }
 
-  displayLayout() {
-    if (this.state.error) {
-      window.location.pathname = '/error';
-    }
+  /**
+   * Lays out all parent components in the screen
+   * @returns The major sections of the window
+   * @memberOf Layout
+   */
+  render() {
+    const { location } = this.props;
     return (
       <div>
         <Nav sources={this.state.sources} user={this.state.user.hottestnews}
@@ -135,16 +136,6 @@ class Layout extends React.Component {
         <Footer />
       </div>
     );
-  }
-
-  /**
-   * Lays out all parent components in the screen
-   * @returns The major sections of the window
-   * @memberOf Layout
-   */
-  render() {
-    const { location } = this.props;
-    return this.displayLayout();
   }
 }
 

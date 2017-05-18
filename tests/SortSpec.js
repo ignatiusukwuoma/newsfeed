@@ -2,8 +2,8 @@ import React from 'react';
 import chai from 'chai';
 import chaiEnzyme from 'chai-enzyme';
 import { shallow } from 'enzyme';
-import Sort from '../../src/app/components/Sort';
-import * as data from '../testData';
+import Sort from '../src/app/components/Sort';
+import * as data from './testData';
 
 chai.use(chaiEnzyme());
 const expect = chai.expect;

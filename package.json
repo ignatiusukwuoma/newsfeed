@@ -7,7 +7,7 @@
     "start": "node server.js",
     "coverage": "./node_modules/.bin/nyc report --reporter=text-lcov | ./node_modules/.bin/coveralls",
     "test": "./node_modules/.bin/mocha --require ignore-styles -r mock-local-storage tests/.setup.js tests/**/*[sS]pec.js",
-    "test:nyc": "./node_modules/.bin/nyc --reporter=html --reporter=text --require ignore-styles ./node_modules/.bin/mocha tests/.setup.js tests/**/*[sS]pec.js"
+    "test:nyc": "./node_modules/.bin/nyc --reporter=html --reporter=text --require ignore-styles ./node_modules/.bin/mocha tests/.setup.js tests/*[sS]pec.js"
   },
   "repository": {
     "type": "git",

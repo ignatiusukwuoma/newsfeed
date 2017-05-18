@@ -1,6 +1,6 @@
 import expect from 'expect';
-import dispatcher from '../../src/app/dispatcher';
-import NewsStore from '../../src/app/stores/Newstore';
+import dispatcher from '../src/app/dispatcher';
+import NewsStore from '../src/app/stores/Newstore';
 
 describe('News Store', () => {
   const response = {
