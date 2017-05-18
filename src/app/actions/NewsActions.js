@@ -4,6 +4,9 @@ import dispatcher from '../dispatcher';
 
 dotenv.config();
 
+/**
+ * Function that dispatches an error
+ */
 const dispatchError = () => {
   dispatcher.dispatch({
     type: 'ERROR_LOADING',
@@ -46,7 +49,7 @@ export const displayNews = (id, sortParameters, name) => {
  */
 export const getWithSort = (id, sort) => {
   const url =
-    `https://newsapi.or/v1/articles?apiKey=${process.env.NEWS_API_KEY}`;
+    `https://newsapi.org/v1/articles?apiKey=${process.env.NEWS_API_KEY}`;
   Request.get(url)
     .query({ source: id, sortBy: sort })
     .end((err, response) => {

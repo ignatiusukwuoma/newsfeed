@@ -1,9 +1,16 @@
+require('dotenv').config();
 const webpack = require('webpack');
 const path = require('path');
-const DotEnvPlugin = require('dotenv-webpack');
 
-const dotenvPlugin = new DotEnvPlugin({
-  path: '.env',
+const envsDefinePlugin = new webpack.DefinePlugin({
+  'process.env.NEWS_API_KEY': JSON.stringify(process.env.NEWS_API_KEY),
+  'process.env.FIREBASE_API_KEY': JSON.stringify(process.env.FIREBASE_API_KEY),
+  'process.env.AUTH_DOMAIN': JSON.stringify(process.env.AUTH_DOMAIN),
+  'process.env.DATABASE_URL': JSON.stringify(process.env.DATABASE_URL),
+  'process.env.PROJECT_ID': JSON.stringify(process.env.PROJECT_ID),
+  'process.env.STORAGE_BUCKET': JSON.stringify(process.env.STORAGE_BUCKET),
+  'process.env.MESSAGING_SENDER_ID': JSON
+    .stringify(process.env.MESSAGING_SENDER_ID),
 });
 
 const BUILD_DIR = path.resolve(__dirname, 'src/public');
@@ -36,7 +43,7 @@ const config = {
     ],
   },
   plugins: [
-    dotenvPlugin,
+    envsDefinePlugin,
   ],
   node: {
     fs: 'empty',
