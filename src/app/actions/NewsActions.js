@@ -6,6 +6,7 @@ dotenv.config();
 
 /**
  * Function that dispatches an error
+ * @returns {object} an action object sets error to true
  */
 const dispatchError = () => {
   dispatcher.dispatch({
@@ -19,6 +20,7 @@ const dispatchError = () => {
  * @param {string} id - ID of the clicked source
  * @param {array} sortParameters - sort parameters available for the source
  * @param {string} name - name of the clicked source
+ * @returns {object} an action object contains the news object
  */
 export const displayNews = (id, sortParameters, name) => {
   const url =
@@ -46,6 +48,7 @@ export const displayNews = (id, sortParameters, name) => {
  * Makes an API call to get news headlines using one of the sort parameters
  * @param {string} id - ID of the clicked source
  * @param {array} sort - sort parameter used to make request
+ * @returns {object} an action object contains the news object
  */
 export const getWithSort = (id, sort) => {
   const url =
@@ -65,6 +68,7 @@ export const getWithSort = (id, sort) => {
 
 /**
  * Makes API call to retrieve the list of sources
+ * @returns {object} an action object contains the sort object
  */
 export const displaySources = () => {
   const url = 'https://newsapi.org/v1/sources?language=en';
@@ -79,6 +83,10 @@ export const displaySources = () => {
   });
 };
 
+/**
+ * Call the function that leads to an error page
+ * @returns {function} to dispatch an error
+ */
 export const displayError = () => {
   dispatchError();
 };

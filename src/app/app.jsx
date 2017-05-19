@@ -17,8 +17,8 @@ ReactDOM.render(
       <Route path="/" component={Layout}>
         <IndexRoute component={Home} />
       </Route>
-      <Route path="/login" component={Login}></Route>
-      <Route path="/error" component={Error}></Route>
+      <Route path="/login" component={Login} />
+      <Route path="/error" component={Error} />
     </Router>
   </MuiThemeProvider>,
 document.getElementById('app'));

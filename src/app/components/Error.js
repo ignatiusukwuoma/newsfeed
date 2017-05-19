@@ -2,14 +2,14 @@ import React from 'react';
 import errorIcon from '../../public/images/error-icon.png';
 
 /**
- * Component to display when there is an error with an api
+ * Component to display when there is an error
  * @class Error
  * @extends {React.Component}
  */
 export default class Error extends React.Component {
 
   /**
-   * @returns the error page
+   * @returns {View} the error page
    * @memberOf Error
    */
   render() {

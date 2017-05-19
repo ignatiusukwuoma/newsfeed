@@ -8,13 +8,13 @@ import * as NewsActions from '../../actions/NewsActions';
  * Class to display all the Articles
  * @class MainScreen
  * @extends {React.Component}
- * @returns the major part of the screen
+ * @returns {MainScreen} the major part of the screen
  */
 export default class MainScreen extends React.Component {
 
   /**
    * Props are the state from Layout Component
-   * @param {any} sets as state a default value of the select tag
+   * @param {any} props is the state of Layout
    * @memberOf MainScreen
    */
   constructor(props) {
@@ -28,8 +28,9 @@ export default class MainScreen extends React.Component {
 
   /**
    * Makes an API call with the value of the select tag
-   * @param {any} takes in the value of the select tag
+   * @param {object} event contains the value selected in the select tag
    * @memberOf MainScreen
+   * @returns {function} call to a function in the Newsactions
    */
   getWithSort(event) {
     if (event.target.value !== 'sortby') {
@@ -41,10 +42,10 @@ export default class MainScreen extends React.Component {
   /**
    * Renders the major part of the view
    * @memberOf MainScreen
-   * returns the Article and Sort Components
+   * @returns {View} The MainScreen
    */
   render() {
-    const { news, sortBy, name, sortParameters, sortedNews } = this.props;
+    const { news, sortBy, name, sortParameters, sortedNews, grid } = this.props;
     const sortComponent = sortParameters.map((sort, i) =>
     (<Sort sort={sort} key={i} />));
     const displayedNews = news.length > 1 ? news : sortedNews;
@@ -52,7 +53,7 @@ export default class MainScreen extends React.Component {
     (<Article key={i} article={article} />));
 
     return (
-      <div class={this.props.grid}>
+      <div class={grid}>
         <div class="main-headers">
           <h2>{name} - { sortBy || this.state.sortNow } News</h2>
           <select class="styled-select" onChange={this.getWithSort}
@@ -77,4 +78,5 @@ MainScreen.propTypes = {
   sortParameters: PropTypes.array,
   sortedNews: PropTypes.array,
   headlines: PropTypes.func,
+  grid: PropTypes.string,
 };

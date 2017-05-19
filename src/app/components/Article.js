@@ -2,9 +2,10 @@ import React from 'react';
 import defaultUrlImage from '../../public/images/newsimage.jpg';
 
 /**
+ * Stateless component
  * Displays an individual article
  * @param {object} An article object
- * @returns An article with image, heading and description
+ * @returns {object} An article with image, heading and description
  */
 export default ({ article }) => (
     <div class="col-sm-4">
