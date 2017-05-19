@@ -23,6 +23,7 @@ export default class SearchSources extends React.Component {
   /**
    * Updates the value of the search form
    * @param {any} event where user types of the search
+   * @returns {string} Adds the character typed to state
    * @memberOf SearchSources
    */
   updateSearch(event) {
@@ -33,7 +34,7 @@ export default class SearchSources extends React.Component {
 
   /**
    * Extracts a list of sources that match users search charaters
-   * @returns the search form with a list of sources that matches the value
+   * @returns {View} the search form with it's content
    * @memberOf SearchSources
    */
   render() {

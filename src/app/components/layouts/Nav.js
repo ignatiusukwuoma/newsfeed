@@ -28,6 +28,7 @@ export default class Nav extends React.Component {
   /**
    * Function to collapse and expand the menu
    * @memberOf Nav
+   * @returns {function} to reset that state of collaosed
    */
   toggleCollapse() {
     const collapsed = !this.state.collapsed;
@@ -36,13 +37,12 @@ export default class Nav extends React.Component {
 
   /**
    * Renders the logged in user name and photo
-   * @returns the navigation bar and other elements within it
+   * @returns {navigation} the nav bar and other elements within it
    * @memberOf Nav
    */
   render() {
     const { name, photo } = this.props.user;
     const { collapsed } = this.state;
-    // const homeClass = location.pathname === '/' ? 'active' : '';
     const navClass = collapsed ? 'collapse' : '';
 
     return (
@@ -52,9 +52,9 @@ export default class Nav extends React.Component {
             <button type="button" class="navbar-toggle"
               onClick={this.toggleCollapse}
               data-target=".navbar-inverse-collapse">
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
+              <span class="icon-bar" />
+              <span class="icon-bar" />
+              <span class="icon-bar" />
             </button>
             <button class="navbar-toggle btn btn-sm btn-raised btn-primary"
             type="button" onTouchTap={this.props.sourcesToggle}>
@@ -70,7 +70,7 @@ export default class Nav extends React.Component {
                   <span>Welcome, {name}
                     <img class="user-image" src={photo} />
                   </span>
-                  <b class="caret"></b>
+                  <b class="caret" />
                 </a>
                 <ul class="dropdown-menu">
                   <li><Link onClick={this.props.signOut}>Logout</Link></li>
@@ -87,10 +87,12 @@ export default class Nav extends React.Component {
 }
 
 Nav.propTypes = {
-  location: PropTypes.object,
   name: PropTypes.string,
   photo: PropTypes.string,
   email: PropTypes.string,
   headlines: PropTypes.func,
   user: PropTypes.object,
+  signOut: PropTypes.func,
+  sources: PropTypes.array,
+  sourcesToggle: PropTypes.func,
 };

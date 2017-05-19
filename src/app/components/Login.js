@@ -10,6 +10,7 @@ export default class Login extends React.Component {
 
   /**
    * Sets the Firebase Login User Configuration
+   * @returns {View} The Google Login Button
    * @memberOf Login
    */
   componentDidMount() {
@@ -42,7 +43,7 @@ export default class Login extends React.Component {
 
   /**
    * Renders the full login page
-   * @returns The Google login button
+   * @returns {View} The Google login button
    * @memberOf Login
    */
   render() {
@@ -52,7 +53,7 @@ export default class Login extends React.Component {
         <div class="content">
           <h2 class="text-center headline">Get Live Headlines From The
             Most Popular News Sources Around The World</h2>
-          <div id="firebaseui-container"></div>
+          <div id="firebaseui-container" />
         </div>
       </div>
     );

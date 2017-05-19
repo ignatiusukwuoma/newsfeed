@@ -26,6 +26,7 @@ class Newstore extends EventEmitter {
    * Picks up the sources array returned by Actions
    * Takes what the app requires and arrages it
    * @param {array} sources - array of objects
+   * @returns {array} sources stored in stores
    * emits a change
    * @memberOf Newstore
    */
@@ -50,6 +51,7 @@ class Newstore extends EventEmitter {
    * @param {string} id - the id of the clicked source
    * @param {array} sortParameters - the sort parameters for that source
    * @param {string} name - name of the clicked source
+   * @returns {object} containing parameters of needed to display the MainScreen
    * emits change
    * @memberOf Newstore
    */
@@ -77,6 +79,7 @@ class Newstore extends EventEmitter {
    * Initialises news and sorted news
    * Gets the sorted news headlines and keeps what the app needs
    * @param {array} articles - an array of objects
+   * @returns {object} containing parameters of needed to display the MainScreen
    * emits change
    * @memberOf Newstore
    */
@@ -119,9 +122,11 @@ class Newstore extends EventEmitter {
   getError() {
     return this.error;
   }
+
   /**
    * Specifies how store handles different action types
    * @param {object} action - event dispatched by Actions
+   * @returns {function} call the handle an action
    * Calls the function in charge of an action type
    * @memberOf Newstore
    */

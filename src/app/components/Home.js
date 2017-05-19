@@ -12,7 +12,7 @@ class Home extends React.Component {
   /**
    * Births the Sidebar and MainScreen sections
    * @param {any} The entire state of Layout
-   * @returns Two sections of the screen as components
+   * @returns {View} Two sections of the screen as components
    * @memberOf Home
    */
   render() {

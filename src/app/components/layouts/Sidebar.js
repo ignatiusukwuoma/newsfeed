@@ -1,8 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Drawer from 'material-ui/Drawer';
-import MenuItem from 'material-ui/MenuItem';
-import Home from '../Home';
 import Source from '../Source';
 import * as NewsActions from '../../actions/NewsActions';
 
@@ -15,7 +13,7 @@ export default class Sidebar extends React.Component {
 
   /**
    * Creates an instance of Sidebar.
-   * @param {any} Mainly an array of News sources
+   * @param {any} props for an array of News sources
    * @memberOf Sidebar
    */
   constructor(props) {
@@ -27,18 +25,19 @@ export default class Sidebar extends React.Component {
     };
   }
 
-  /**
-   * Calls the actions to make an API call for sources
-   * @memberOf Sidebar
-   */
-  showSources() {
-    NewsActions.displaySources();
-  }
-
   componentDidMount() {
     this.showSources();
     this.props.headlines(this.state.defaultId, this.state.defaultSortBy,
     this.state.defaultName);
+  }
+
+  /**
+   * Calls the actions to make an API call for sources
+   * @memberOf Sidebar
+   * @returns {function} call to Newsactions
+   */
+  showSources() {
+    NewsActions.displaySources();
   }
 
   /**
@@ -66,7 +65,7 @@ export default class Sidebar extends React.Component {
   /**
    * Selects the type of view to display-mobile or desktop
    * @param {object} sourcesByCategory - source names arranged in categories
-   * @returns a mobile or desktop display
+   * @returns {View} a mobile or desktop display
    * @memberOf Sidebar
    */
   getView(sourcesByCategory) {
@@ -90,7 +89,7 @@ export default class Sidebar extends React.Component {
 
   /**
    * Maps through the sources arranged in categories
-   * @returns the news sources in a sidebar
+   * @returns {Sidebar} the news sources in a sidebar
    * @memberOf Sidebar
    */
   render() {
@@ -123,4 +122,6 @@ export default class Sidebar extends React.Component {
 Sidebar.propTypes = {
   sources: PropTypes.array,
   headlines: PropTypes.func,
+  sourcesToggle: PropTypes.func,
+  open: PropTypes.bool,
 };

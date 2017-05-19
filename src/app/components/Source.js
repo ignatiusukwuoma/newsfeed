@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router';
-import Sort from './Sort';
 
 /**
  * Individual source details
@@ -12,7 +11,7 @@ export default class Source extends React.Component {
 
   /**
    * Creates an instance of Source.
-   * @param {object} The source object
+   * @param {object} props - source object
    * @memberOf Source
    */
   constructor(props) {
@@ -24,7 +23,7 @@ export default class Source extends React.Component {
   /**
    * A function from Layout passed down as props
    * Makes an API call for articles
-   * @returns a list of article with the source name and its sort parameters
+   * @returns {function} call to display news
    * @memberOf Source
    */
   getHeadlines() {
@@ -35,6 +34,7 @@ export default class Source extends React.Component {
   /**
    * Calls the getHeadlines function
    * Checks if screen is mobile to collapse sidebar
+   * @returns {function} call to display news and check screensize
    * @memberOf Source
    */
   collapseAfterCall() {
@@ -46,7 +46,7 @@ export default class Source extends React.Component {
 
   /**
    * Renders an Individual source object
-   * @returns a source object
+   * @returns {object} a source object
    * @memberOf Source
    */
   render() {
@@ -62,4 +62,6 @@ export default class Source extends React.Component {
 Source.propTypes = {
   source: PropTypes.object,
   headlines: PropTypes.func,
+  open: PropTypes.bool,
+  sourcesToggle: PropTypes.func,
 };
