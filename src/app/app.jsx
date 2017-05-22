@@ -2,10 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
-import Layout from './components/Layout';
-import Home from './components/Home';
-import Login from './components/Login';
-import Error from './components/Error';
+import Layout from './components/Layout.jsx';
+import Home from './components/Home.jsx';
+import Login from './components/Login.jsx';
+import Error from './components/Error.jsx';
 import './components/Layout.scss';
 
 /**

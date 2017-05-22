@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Drawer from 'material-ui/Drawer';
-import Source from '../Source';
+import Source from '../Source.jsx';
 import * as NewsActions from '../../actions/NewsActions';
 
 /**
@@ -46,17 +46,20 @@ export default class Sidebar extends React.Component {
    * @returns {object} News sources arranged in categories
    * @memberOf Sidebar
    */
+  pushSource(sourcesByCategory, source) {
+    sourcesByCategory[source.category]
+      .push(`${source.id}_${source.name}_${source.sortBy}`);
+  }
+
   getSourcesByCategory() {
     const { sources } = this.props;
     const sourcesByCategory = {};
     sources.forEach((source) => {
       if (sourcesByCategory[source.category] !== undefined) {
-        sourcesByCategory[source.category]
-          .push(`${source.id}_${source.name}_${source.sortBy}`);
+        this.pushSource(sourcesByCategory, source);
       } else {
         sourcesByCategory[source.category] = [];
-        sourcesByCategory[source.category]
-          .push(`${source.id}_${source.name}_${source.sortBy}`);
+        this.pushSource(sourcesByCategory, source);
       }
     });
     return sourcesByCategory;
@@ -104,9 +107,13 @@ export default class Sidebar extends React.Component {
           sourceDetails.name = sourceSplit[1];
           sourceDetails.sortBy = sourceSplit[2].split(',');
         }
-        return (<Source key={sourceDetails.id}
-        source={sourceDetails} headlines={this.props.headlines}
-        sourcesToggle={this.props.sourcesToggle} open={this.props.open} />);
+        return (
+          <Source
+            key={sourceDetails.id}
+            source={sourceDetails} headlines={this.props.headlines}
+            sourcesToggle={this.props.sourcesToggle} open={this.props.open}
+          />
+        );
       });
       return (
         <div key={category}>
