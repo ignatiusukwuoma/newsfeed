@@ -46,17 +46,20 @@ export default class Sidebar extends React.Component {
    * @returns {object} News sources arranged in categories
    * @memberOf Sidebar
    */
+  pushSource(sourcesByCategory, source) {
+    sourcesByCategory[source.category]
+      .push(`${source.id}_${source.name}_${source.sortBy}`);
+  }
+
   getSourcesByCategory() {
     const { sources } = this.props;
     const sourcesByCategory = {};
     sources.forEach((source) => {
       if (sourcesByCategory[source.category] !== undefined) {
-        sourcesByCategory[source.category]
-          .push(`${source.id}_${source.name}_${source.sortBy}`);
+        this.pushSource(sourcesByCategory, source);
       } else {
         sourcesByCategory[source.category] = [];
-        sourcesByCategory[source.category]
-          .push(`${source.id}_${source.name}_${source.sortBy}`);
+        this.pushSource(sourcesByCategory, source);
       }
     });
     return sourcesByCategory;

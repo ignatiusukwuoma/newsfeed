@@ -94,12 +94,12 @@ export default class Nav extends React.Component {
 }
 
 Nav.propTypes = {
-  name: PropTypes.string,
+  signOut: PropTypes.func,
   photo: PropTypes.string,
   email: PropTypes.string,
   headlines: PropTypes.func,
   user: PropTypes.object,
-  signOut: PropTypes.func,
   sources: PropTypes.array,
   sourcesToggle: PropTypes.func,
+  name: PropTypes.string,
 };
