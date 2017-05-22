@@ -1,12 +1,16 @@
 import * as firebase from 'firebase';
 
+/**
+ * The configuration for Google Authentication by Firebase
+ * @returns the firebase configuration object
+ */
 const config = {
-  apiKey: 'AIzaSyBfetXIUjgUNRY42M3dtdr1ol6-dV6P5RY',
-  authDomain: 'newsfeed-165004.firebaseapp.com',
-  databaseURL: 'https://newsfeed-165004.firebaseio.com',
-  projectId: 'newsfeed-165004',
-  storageBucket: 'newsfeed-165004.appspot.com',
-  messagingSenderId: '315341524768'
+  apiKey: process.env.FIREBASE_API_KEY,
+  authDomain: process.env.AUTH_DOMAIN,
+  databaseURL: process.env.DATABASE_URL,
+  projectId: process.env.PROJECT_ID,
+  storageBucket: process.env.STORAGE_BUCKET,
+  messagingSenderId: process.env.MESSAGING_SENDER_ID,
 };
 firebase.initializeApp(config);
 export default firebase;

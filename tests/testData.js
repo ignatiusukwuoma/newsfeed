@@ -1,47 +1,48 @@
 export const name = 'Techcrunch',
-  sort = ['top', 'latest'],
+  sortParameters = ['top', 'latest'],
   id = 'techcrunch',
+  sortBy = 'top',
   news = [{
     author: 'Reporter',
     title: 'Reasons to be cheerful',
-    description: 'There are many reasons to be cheerful. Number one, you are alive...',
+    description: null,
     url: 'https://foo.hotnews.com',
     urlImage: 'https://bar.hotnews.com/image.png',
-    date: '2017-05-21T14:40:57Z'
+    date: '2017-05-21T14:40:57Z',
   },
   {
     author: 'Repo',
     title: 'Reasons to be cheerful2',
-    description: 'There are many reasons to be cheerful. Number one, you are alive2...',
+    description: 'There are many reasons to be cheerful. Number one...',
     url: 'https://foo.hotnews2.com',
-    urlImage: 'https://bar.hotnews2.com/image.png',
-    date: '2017-05-21T14:40:57B'
+    urlImage: 'https://bar.hotnews.com/image.png',
+    date: '2017-05-21T14:40:57B',
   }],
   sortedNews = [{
     author: 'Repo',
     title: 'Reasons to be cheerful2',
-    description: 'There are many reasons to be cheerful. Number one, you are alive2...',
+    description: 'There are many reasons to be cheerful. Number one...',
     url: 'https://foo.hotnews2.com',
     urlImage: 'https://bar.hotnews2.com/image.png',
-    date: '2017-05-21T14:40:57B'
+    date: '2017-05-21T14:40:57B',
   },
   {
     author: 'Reporter',
     title: 'Reasons to be cheerful',
-    description: 'There are many reasons to be cheerful. Number one, you are alive...',
+    description: 'There are many reasons to be cheerful. Number one...',
     url: 'https://foo.hotnews.com',
     urlImage: 'https://bar.hotnews.com/image.png',
-    date: '2017-05-21T14:40:57Z'
+    date: '2017-05-21T14:40:57Z',
   }],
   sources = [{
     id: 'ars-technica',
     name: 'Ars Technica',
-    description: 'The PC enthusiast\'s resource. Power users and the tools they love, without computing religion.',
+    description: 'The PC enthusiast\'s resource. Power users..',
     category: 'technology',
     sortBy: [
       'top',
-      'latest'
-    ]
+      'latest',
+    ],
   },
   {
     id: 'techcrunch',
@@ -50,8 +51,8 @@ export const name = 'Techcrunch',
     category: 'technology',
     sortBy: [
       'top',
-      'latest'
-    ]
+      'latest',
+    ],
   }],
   user = {
     name: 'Ignatius',

@@ -1,39 +1,29 @@
 import React from 'react';
 import chai from 'chai';
 import chaiEnzyme from 'chai-enzyme';
-import { mount, render, shallow } from 'enzyme';
-import Article from '../src/app/components/Article';
+import { shallow } from 'enzyme';
+import Article from '../../src/app/components/Article';
+import defaultUrlImage from '../../src/public/images/newsimage.jpg';
+import * as data from '../testData';
 
 chai.use(chaiEnzyme());
 const expect = chai.expect;
 
 describe('The Article component', () => {
   it('should be defined', () => {
-    expect(<Article />).to.not.equal(undefined);
+    expect(Article).to.not.equal(undefined);
   });
 });
 
-const article = {
-  title: 'Reasons to be cheerful',
-  description: 'There are many reasons to be cheerful. Number one, you are alive...',
-  url: 'https://foo.hotnews.com',
-  urlImage: 'https://bar.hotnews.com/image.png',
-  author: 'The Reporter',
-  date: '2017-05-21T14:40:57Z',
-};
-const wrapper = shallow(<Article article={article}/>);
+const wrapper = shallow(<Article article={data.news[0]}/>);
 
 describe('The Article component', () => {
   it('should have the class name `article` in the article tag', () => {
     expect(wrapper.find('article')).to.have.className('article');
   });
 
-  it('should have a descendant with the class `preview`', () => {
+  it('should have a class `preview`', () => {
     expect(wrapper).to.have.descendants('.preview');
-  });
-
-  it('should have only one image', () => {
-    expect(wrapper).to.have.exactly(1).descendants('.img-responsive');
   });
 
   it('should have the h4 tag', () => {
@@ -42,6 +32,15 @@ describe('The Article component', () => {
 
   it('should have a div as the first child', () => {
     expect(wrapper).to.have.tagName('div');
+  });
+
+  it('should have an empty p tag since article description is null', () => {
+    expect(wrapper.find('p')).to.be.blank();
+  });
+
+  it('should have an image with src `urlImage` from the article API', () => {
+    expect(wrapper.find('img')).to.have.attr('src')
+      .equal(data.news[0].urlImage);
   });
 });
 

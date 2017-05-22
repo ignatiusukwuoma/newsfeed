@@ -1,11 +1,11 @@
 import React from 'react';
 import chai from 'chai';
 import chaiEnzyme from 'chai-enzyme';
-import { mount, render, shallow } from 'enzyme';
-import MainScreen from '../src/app/components/layouts/MainScreen';
-import Article from '../src/app/components/Article';
-import Sort from '../src/app/components/Sort';
-import * as data from './testData';
+import { shallow } from 'enzyme';
+import MainScreen from '../../src/app/components/layouts/MainScreen';
+import Article from '../../src/app/components/Article';
+import Sort from '../../src/app/components/Sort';
+import * as data from '../testData';
 
 chai.use(chaiEnzyme());
 const expect = chai.expect;
@@ -35,11 +35,11 @@ describe('After rendering, the mainscreen component', () => {
     expect(wrapper.find('select')).to.match('.styled-select');
   });
 
-  it('should contain the text `from` in the h2 tag', () => {
-    expect(wrapper.find('h2')).to.contain.text('from');
+  it('should contain the text `News` in the h2 tag', () => {
+    expect(wrapper.find('h2')).to.contain.text('News');
   });
 
-  it('should have the value `sortby` as the default value of the select tag', () => {
+  it('should have the default value `sortby` for the select tag', () => {
     expect(wrapper.find('select')).to.have.value('sortby');
   });
 
@@ -61,7 +61,7 @@ describe('The Article component, child of MainScreen,', () => {
 
 describe('The component', () => {
   const children = wrapper.children();
-  it('should have three direct children of the top most div', () => {
+  it('should have two direct children of the top most div', () => {
     expect(children).to.have.length(2);
   });
 
@@ -69,7 +69,7 @@ describe('The component', () => {
     expect(children.at(0)).to.have.className('main-headers');
   });
 
-  it('should have a first child that contains a select element with a class name of `styled-select`', () => {
+  it('should have a select tag with class of `styled-select`', () => {
     expect(children.at(0).find('select')).to.have.className('styled-select');
   });
 

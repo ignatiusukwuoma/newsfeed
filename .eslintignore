@@ -1,0 +1,6 @@
+src/public/javascripts/*.js
+src/public/bundle.js
+.nyc_output
+node_modules
+coverage
+out

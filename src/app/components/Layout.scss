@@ -1,9 +1,11 @@
-@import '../../public/stylesheets/style';
 $primary-color: #0b1e5e;
 $secondary-color: #4583c2;
+$primary-font: 'Open Sans', sans-serif;
+$headers-font: 'Slabo 27px', serif;
 
 html, body {
   height: 100%;
+  font-family: $primary-font;
 }
 
 a, a:hover, a:active, a:visited, a:focus {
@@ -11,39 +13,54 @@ a, a:hover, a:active, a:visited, a:focus {
 }
 
 .mainscreen-main {
-  max-height: 100vh;
+  max-height: calc(100vh - 100px);
   overflow-y: scroll;
   h2 {
     color: $primary-color;
-    font-weight: 500;
+    font-weight: bold;
+    font-family: $headers-font;
+    @media (max-width: 767px) {
+      font-size: 1.5em;
+    }
   }
   .main-headers {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin: 0 15px;
+    text-transform: uppercase;
   }
   select {
     font-size: 1.5em;
+    @media (max-width: 767px) {
+      font-size: 1.2em;
+    }
   }
 }
 
 .sidebar-main {
   background-color: #DDD;
-  max-height: 100vh;
+  border-right: 1px solid #c0c0c0;
+  bottom: 0;
+  max-height: calc(100vh - 100px);
   overflow-y: scroll;
   top: 0;
-  bottom: 0;
-  border-right: 1px solid silver;
-  h4 {
+  h3 {
     text-transform: uppercase;
-    margin-top: 28px;
+    margin-top: 25px;
+    font-family: $headers-font;
+    font-weight: 800;
+  }
+  h4 {
+    font-family: $headers-font;
+    font-weight: 800;
+
   }
 }
 
 .sources {
   list-style-type: none;
-  margin-left: -35px;
+  margin-left: -25px;
   .sourcesLink {
     color: $primary-color;
     cursor: pointer;
@@ -79,25 +96,34 @@ a, a:hover, a:active, a:visited, a:focus {
   .dropdown-toggle {
     margin: -6px;
   }
+  .nav-form-div {
+    float: right;
+  }
 }
 
 
 article.article {
   margin-top: 20px;
-  padding: 10px;
-  height: 450px;
+  min-height: 350px;
+  .preview {
+    height: 150px;
+    overflow: hidden;
+    margin: 0;
+  }
   h4 {
     font-weight: 500;
     color: $primary-color;
     text-transform: uppercase;
+    margin: 10px;
   }
   p {
     color: black;
+    margin: 10px;
   }
 }
 
 article.article:hover {
-  background-color: $primary-color;
+  background-color: $secondary-color;
   h4 {
     color: white;
   }
@@ -109,13 +135,73 @@ article.article:hover {
 .searched-sources {
     position: absolute;
     top: 100%;
-    left: 61%;
     z-index: 9999999;
   .sources {
     display: block;
     padding: 2px 20px 2px 20px;
     background-color: #DDD;
-    width: 200px;
+    width: 166px;
+  }
+}
+
+.login-page {
+  background: $secondary-color;
+  color: white;
+  height: 100vh;
+  .brand {
+    font-family: 'Averia Sans Libre', cursive;
+  }
+  .content {
+    margin: 15% auto;
+    width: 65%;
+    @media (max-width: 767px){
+      width: 90%;
+    }
+    .headline {
+      line-height: 1.5em;
+    }
+  }
+}
+
+.drawer {
+  padding: 15px;
+  h3 {
+    font-weight: 900;
+    text-transform: uppercase;
+    font-family: $headers-font;
+  }
+}
+
+.error-message {
+  background-color: #ddd;
+  width: 400px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 30px;
+}
+
+.error-message p {
+  line-height: 2;
+}
+
+.error-message img {
+  display: block;
+  height: 50px;
+  width: 50px;
+  margin: 0 auto 20px auto;
+}
+
+footer {
+  background: #1a1a1a;
+  height: 39px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  p {
+    text-align: center;
+    color: white;
   }
 }
 
