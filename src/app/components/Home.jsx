@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Sidebar from './layouts/Sidebar';
-import MainScreen from './layouts/MainScreen';
+import Sidebar from './layouts/Sidebar.jsx';
+import MainScreen from './layouts/MainScreen.jsx';
 
 /**
  * Displays the entire screen asides Nav and Footer
@@ -18,9 +18,10 @@ class Home extends React.Component {
   render() {
     return (
       <div class="row">
-        <Sidebar sources={this.props.sources}
-        headlines={this.props.headlines}
-        open={this.props.open} sourcesToggle={this.props.sourcesToggle}/>
+        <Sidebar
+          sources={this.props.sources} headlines={this.props.headlines}
+          open={this.props.open} sourcesToggle={this.props.sourcesToggle}
+        />
         <MainScreen {...this.props} />
       </div>
     );

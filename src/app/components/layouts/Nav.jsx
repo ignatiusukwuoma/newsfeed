@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router';
 import PropTypes from 'prop-types';
 import injectTapEventPlugin from 'react-tap-event-plugin';
-import SearchSources from '../SearchSources';
+import SearchSources from '../SearchSources.jsx';
 
 injectTapEventPlugin();
 /**
@@ -49,15 +49,19 @@ export default class Nav extends React.Component {
       <div class="navbar navbar-inverse">
         <div class="container-fluid">
           <div class="navbar-header">
-            <button type="button" class="navbar-toggle"
+            <button
+              type="button" class="navbar-toggle"
               onClick={this.toggleCollapse}
-              data-target=".navbar-inverse-collapse">
+              data-target=".navbar-inverse-collapse"
+            >
               <span class="icon-bar" />
               <span class="icon-bar" />
               <span class="icon-bar" />
             </button>
-            <button class="navbar-toggle btn btn-sm btn-raised btn-primary"
-            type="button" onTouchTap={this.props.sourcesToggle}>
+            <button
+              class="navbar-toggle btn btn-sm btn-raised btn-primary"
+              type="button" onTouchTap={this.props.sourcesToggle}
+            >
               Sources
             </button>
             <a class="navbar-brand" href="/">Hottest News</a>
@@ -65,10 +69,12 @@ export default class Nav extends React.Component {
           <div class={`navbar-collapse navbar-inverse-collapse ${navClass}`}>
             <ul class="nav navbar-nav navbar-right">
               <li class="dropdown">
-                <a href="bootstrap-elements.html" data-target="#"
-                class="dropdown-toggle" data-toggle="dropdown">
+                <a
+                  href="bootstrap-elements.html" data-target="#"
+                  class="dropdown-toggle" data-toggle="dropdown"
+                >
                   <span>Welcome, {name}
-                    <img class="user-image" src={photo} />
+                    <img class="user-image" src={photo} alt=""/>
                   </span>
                   <b class="caret" />
                 </a>
@@ -77,8 +83,9 @@ export default class Nav extends React.Component {
                 </ul>
               </li>
             </ul>
-            <SearchSources sources={this.props.sources}
-            headlines={this.props.headlines} />
+            <SearchSources
+              sources={this.props.sources} headlines={this.props.headlines}
+            />
           </div>
         </div>
       </div>

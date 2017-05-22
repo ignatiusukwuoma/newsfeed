@@ -1,8 +1,8 @@
 import React from 'react';
 import firebase from '../firebaseConfig';
-import Nav from './layouts/Nav';
-import Home from './Home';
-import Footer from './layouts/Footer';
+import Nav from './layouts/Nav.jsx';
+import Home from './Home.jsx';
+import Footer from './layouts/Footer.jsx';
 import Newstore from '../stores/Newstore';
 import * as NewsActions from '../actions/NewsActions';
 import './Layout.scss';
@@ -129,12 +129,16 @@ class Layout extends React.Component {
     }
     return (
       <div>
-        <Nav sources={this.state.sources} user={this.state.user.hottestnews}
-        headlines={this.displayHeadlines} signOut={this.signOut}
-        sourcesToggle={this.handleToggle} />
+        <Nav
+          sources={this.state.sources} user={this.state.user.hottestnews}
+          headlines={this.displayHeadlines} signOut={this.signOut}
+          sourcesToggle={this.handleToggle}
+        />
         <div class="container-fluid">
-          <Home {...this.state} headlines={this.displayHeadlines}
-          sourcesToggle={this.handleToggle} />
+          <Home
+            {...this.state} headlines={this.displayHeadlines}
+            sourcesToggle={this.handleToggle}
+          />
         </div>
         <Footer />
       </div>

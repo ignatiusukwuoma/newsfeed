@@ -51,8 +51,10 @@ export default class Login extends React.Component {
       <div class="container-fluid login-page">
         <h1 class="brand">HOTTEST NEWS</h1>
         <div class="content">
-          <h2 class="text-center headline">Get Live Headlines From The
-            Most Popular News Sources Around The World</h2>
+          <h2 class="text-center headline">
+            Get Live Headlines From The
+            Most Popular News Sources Around The World
+          </h2>
           <div id="firebaseui-container" />
         </div>
       </div>

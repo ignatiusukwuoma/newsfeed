@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Source from './Source';
+import Source from './Source.jsx';
 
 /**
  * The search form
@@ -48,8 +48,10 @@ export default class SearchSources extends React.Component {
       <div class="nav-form-div">
         <form class="navbar-form navbar-right">
           <div class="form-group">
-            <input type="text" class="form-control" value={this.state.search}
-            onChange={this.updateSearch} placeholder="Search sources..." />
+            <input
+              type="text" class="form-control" value={this.state.search}
+              onChange={this.updateSearch} placeholder="Search sources..."
+            />
           </div>
         </form>
         <div class="searched-sources">

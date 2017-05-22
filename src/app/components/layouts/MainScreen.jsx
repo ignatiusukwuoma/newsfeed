@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Article from '../Article';
-import Sort from '../Sort';
+import Article from '../Article.jsx';
+import Sort from '../Sort.jsx';
 import * as NewsActions from '../../actions/NewsActions';
 
 /**
@@ -56,8 +56,10 @@ export default class MainScreen extends React.Component {
       <div class={grid}>
         <div class="main-headers">
           <h2>{name} - { sortBy || this.state.sortNow } News</h2>
-          <select class="styled-select" onChange={this.getWithSort}
-          value={this.state.defaultSort}>
+          <select
+            class="styled-select" onChange={this.getWithSort}
+            value={this.state.defaultSort}
+          >
             <option value="sortby">Sort By</option>
             {sortComponent}
           </select>

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Drawer from 'material-ui/Drawer';
-import Source from '../Source';
+import Source from '../Source.jsx';
 import * as NewsActions from '../../actions/NewsActions';
 
 /**
@@ -104,9 +104,13 @@ export default class Sidebar extends React.Component {
           sourceDetails.name = sourceSplit[1];
           sourceDetails.sortBy = sourceSplit[2].split(',');
         }
-        return (<Source key={sourceDetails.id}
-        source={sourceDetails} headlines={this.props.headlines}
-        sourcesToggle={this.props.sourcesToggle} open={this.props.open} />);
+        return (
+          <Source
+            key={sourceDetails.id}
+            source={sourceDetails} headlines={this.props.headlines}
+            sourcesToggle={this.props.sourcesToggle} open={this.props.open}
+          />
+        );
       });
       return (
         <div key={category}>
